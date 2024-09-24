@@ -1,12 +1,12 @@
 #pragma once
+#include "interface.h"
 
 
-class Orthogonal
+class Orthogonal : public Item , public ItemVisual
 {
-private:
-    /* data */
-public:
-    Orthogonal(/* args */);
-    ~Orthogonal();
+    Orthogonal(ID id):Item(id){};
+    Position position;
+    short height;
+    short width;
 };
 

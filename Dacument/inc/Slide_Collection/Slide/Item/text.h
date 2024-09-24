@@ -1,18 +1,8 @@
 #pragma once
+#include "interface.h"
 
-class Text
-{
-private:
-    /* data */
-public:
-    Text(/* args */);
-    ~Text();
+class Text : public Item, public ItemVisual{
+    Text(ID id):Item(id){};
+    Position position;
 };
 
-Text::Text(/* args */)
-{
-}
-
-Text::~Text()
-{
-}
