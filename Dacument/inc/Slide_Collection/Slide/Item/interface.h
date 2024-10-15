@@ -50,12 +50,16 @@ enum eKeysGeometry{
     WIDHTH,
 };
 
+
+
 enum eAttributes{
     RED,
     GREEN,
     BLUE,
     LINE_THICKNESS
 };
+
+
 
 struct  Point
 {
