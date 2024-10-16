@@ -8,8 +8,6 @@ void Lexer::setString(std::istream& is){
         //output "invalid comand"
     }
     split();
-    str = strings.front();
-    strings.erase(0);
 }
 
 void Lexer::makeTokenList(){
