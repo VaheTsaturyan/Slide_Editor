@@ -3,9 +3,22 @@
 
 
 void Lexer::setString(std::istream& is){
-    std::getline(is, str, ' ');
+    std::getline(is, inputString);
     if(!str.empty()){
         //output "invalid comand"
+    }
+    split();
+    str = strings.front();
+    strings.erase(0);
+}
+
+void Lexer::makeTokenList(){
+    while(strings.empty()){
+        str = strings.front();
+        strings.erase(0);
+        lexerAnaliz();
+        convert_String_to_Token();
+        tokens.push_back(token);
     }
 }
 
@@ -13,6 +26,7 @@ void Lexer::lexerAnaliz(){
     auto tokenType = returnTokenType();
     try{
         if(tokenType = eTokenType::BADTYPE){
+            //str.clear();
             throw std::runtime_error("CLI: NOT VALID OPTION");
         }
         token.tokenType = tokenType;
@@ -37,8 +51,8 @@ void Lexer::convert_String_to_Token(){
     }
 }
 
-typename sToken Lexer::getToken(){
-    return token;
+std::vector<sToken>& Lexer::getToken(){
+    return tokens;
 }
 
 
@@ -62,3 +76,14 @@ typename eTokenType Lexer::returnTokenType(){
     }
 }
 
+void Lexer::split(char delimiter){
+    auto begin = inputString.begin();
+    auto end = std::find(begin, inputString.end(), delimiter);
+
+    while(end != inputString.end()){
+        strings.emplace_back(begin, end);
+        begin = ++end;
+        end = std::find(begin, inputString.end(), delimiter);
+    }
+
+}
