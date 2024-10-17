@@ -6,33 +6,39 @@
 
 using word = std::string;
 using number = int;
-using argument = char; 
+using argument = std::string; 
 
 enum class eTokenType{
     WORD,
-    NUMBER,
+    OPTION_NUMBER,
+    OPTION_WORD,
     ARGUMENT,
     BADTYPE
-}
+};
+
+enum class eTokenOrder{
+    VALID,
+    INVALID,
+    NULL_TOKEN
+};
 
 enum class eState{
     START,
     CMAND,
     ARGUMENT,
+    OPTION_WORD,
+    OPTION_NUMBER,
     DEAD_STATE
-    //CREATE_COMAND
-}
+};
 
 
 struct sToken{
     eTokenType tokenType;
-    std::variant<word, number, argument> tokenContent;
+    std::variant<number, word, argument> tokenContent;
 };
 
 
-/*
-struct sAftomat{
-    std::unordered_map<eState, > aftomatState;
-};
 
-*/
+
+
+

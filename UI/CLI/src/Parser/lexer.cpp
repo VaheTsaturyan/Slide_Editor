@@ -3,85 +3,67 @@
 
 
 void Lexer::setString(std::istream& is){
-    std::getline(is, inputString);
+    std::getline(is, str, ' ');
     if(!str.empty()){
-        //output "invalid comand"
+        tokeValidFactor = eTokenOrder::NULL_TOKEN;
+        return;
     }
-    split();
-}
-
-void Lexer::makeTokenList(){
-    while(strings.empty()){
-        str = strings.front();
-        strings.erase(0);
-        lexerAnaliz();
-        convert_String_to_Token();
-        tokens.push_back(token);
-    }
+    tokeValidFactor = eTokenOrder::VALID;
 }
 
 void Lexer::lexerAnaliz(){
     auto tokenType = returnTokenType();
-    try{
-        if(tokenType = eTokenType::BADTYPE){
-            //str.clear();
-            throw std::runtime_error("CLI: NOT VALID OPTION");
-        }
-        token.tokenType = tokenType;
-    }catch(std::exception& except){
-        except.what();
+    if(tokenType == eTokenType::BADTYPE){
+        tokeValidFactor = eTokenOrder::INVALID;
+        return;
     }
-
+    token.tokenType = tokenType;
 }
 
 void Lexer::convert_String_to_Token(){
     switch (token.tokenType)
     {
-    case eTokenType::WORD
+    case eTokenType::WORD:
         token.tokenContent = str;
         break;
-    case eTokenType::NUMBER
+    case eTokenType::OPTION_NUMBER:
         token.tokenContent = std::stoi(str);
         break;
-    case eTokenType::ARGUMENT
-        token.tokenContent = str[1];
+    case eTokenType::OPTION_WORD:
+        token.tokenContent = str.substr(1, str.szie() - 2);
+        break;
+    case eTokenType::ARGUMENT:
+        token.tokenContent = str.substr(1, str.size()- 1);
         break;
     }
 }
 
-std::vector<sToken>& Lexer::getToken(){
-    return tokens;
+sToken Lexer::getToken(){
+    return token;
 }
 
+eTokenOrder Lexer::getTokenOrder(){
+    return tokeValidFactor;
+}
 
-/*            if(std::all_of(str.begin + 2, str.end(), ::isdigit))
-                return eTokenType::NUMBER;
-            else if (std::all_of(token.begin() + 2, token.end(), ::isalpha))
-                return eTokenType::WORD;   */
 
 
 typename eTokenType Lexer::returnTokenType(){
-    if (std::all_of(token.begin(), token.end(), ::isalpha))
+    if (std::all_of(token.begin(), token.end(), ::isalpha)){
         return eTokenType::WORD;
-    else if(std::all_of(str.begin, str.end(), ::isdigit))
-        return eTokenType::NUMBER;
-    if(str[0] == '-'){
-        if( str[1] >= 'a' && str[1] <= 'z' ){
-            eTokenType::ARGUMENT;
+    }       
+    if(std::all_of(str.begin, str.end(), ::isdigit)){
+        return eTokenType::OPTION_NUMBER;
+    }
+    if(str.size() >= 2 && str.front() == '<' && str.back() == '>'){
+        if (std::all_of( token.begin(), token.end(), ::isalpha))
+            return eTokenType::OPTION_WORD;
+    }
+    if(str[0] == '-' && str.size() >= 2){
+        if(std::all_of( token.begin() + 1, token.end(), ::isalpha)){
+            return eTokenType::ARGUMENT;
         }
-    }else{
-        return eTokenType::BADTYPE;
     }
-}
-
-void Lexer::split(char delimiter){
-    auto begin = inputString.begin();
-    auto end = std::find(begin, inputString.end(), delimiter);
-
-    while(end != inputString.end()){
-        strings.emplace_back(begin, end);
-        begin = ++end;
-        end = std::find(begin, inputString.end(), delimiter);
-    }
-
+    return eTokenType::BADTYPE;
+    
 }
