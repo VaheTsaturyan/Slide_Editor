@@ -1,13 +1,17 @@
 #include "comandCreate.h"
+#include <stdexcept>
 
 
-void ComandFactory::registorComand(const Comand& comand, const IComand& iCmd){
-    comandMap.insert(comand, std::make_shared(iCmd));
+void ComandFactory::registorComand(const Comand &comand, std::shared_ptr<IComand> iCmd){
+    comandMap.insert(comand, iCmd);
 }
 
 
 IComand& ComandFactory::createComand(const std::vector<sToken>& tokens){
-    AComand comand = *comandMap[generateCommandFromToken()];
+    auto comand = comandMap.find(generateCommandFromToken());
+    if(comand == comandMap.emd()){  
+        throw std::runtime_error("CLI: coma");
+    }
     comand.setParams(std::move(genereytParamsFromToken()));
     return comand;
 }

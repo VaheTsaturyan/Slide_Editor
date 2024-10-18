@@ -7,7 +7,12 @@ void Parser::input(std::istream& is){
 void Parser::setOutputStream(std::ostream &os){
     this->os = os;
 }
-void Parser::startProces(){
+void Parser::registrComand(const Comand &comand, std::shared_ptr<IComand> iCmd){
+    comandCreater.registorComand(comand, iCmd);
+
+}
+void Parser::startProces()
+{
     while(auto lexsResult = lexerAnaliz() != eTokenOrder::NULL_TOKEN)
     {
         if(lexsResult == eTokenOrder::INVALID){
@@ -20,10 +25,10 @@ void Parser::startProces(){
         }
     }
     addInTokenList(lexsik_analizer.getToken());
-
-    //if tokenList is no Empty return;
-    //else comandCreaet(tokens)
-
+    if(!tokens.empty()){
+        return;
+    }
+    comandCreater.createComand(tokens).execute();
 }
 
 eTokenOrder Parser::lexerAnaliz(){

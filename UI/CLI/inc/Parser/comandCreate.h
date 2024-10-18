@@ -8,7 +8,7 @@
 
 class ComandFactory{
 public:
-    void registorComand(const Comand& comand, const IComand& iCmd);
+    void registorComand(const Comand &comand, std::shared_ptr<IComand> iCmd);
     IComand& createComand(const std::vector<sToken>& tokens);
 private:
     Comand&& generateCommandFromToken(const std::vector<sToken>& tokens);
