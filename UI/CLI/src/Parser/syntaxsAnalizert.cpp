@@ -59,10 +59,9 @@ void SyntaxsAnilizer::setToken(const sToken& token){
 
 */
 
-bool SyntaxsAnilizer::syntaxsAnaliz(const sToken& token){
+void SyntaxsAnilizer::syntaxsAnaliz(const sToken& token){
     stateMeneger.cangeState(token);
     if(stateMeneger.getAftomatState() == eState::DEAD_STATE){
-        return false;
+        return std::runtime_error("CLI: invalid comand !\n");
     }
-    return true;
 }

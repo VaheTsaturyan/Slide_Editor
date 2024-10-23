@@ -18,7 +18,7 @@ enum class eTokenType{
 
 enum class eTokenOrder{
     VALID,
-    INVALID,
+    //INVALID,
     NULL_TOKEN
 };
 

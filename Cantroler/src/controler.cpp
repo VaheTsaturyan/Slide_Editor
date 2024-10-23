@@ -6,7 +6,6 @@ void Controler::startProces(){
     while(true){
         try{
             parser.input(std::cin);
-            parser.setOutputStream(std::cout);
             parser.startProces();
         }
         catch(const std::exception& e){
@@ -16,10 +15,10 @@ void Controler::startProces(){
 }
 
 void Controler::registrComand(){
-    parser.registrComand("Newfpath", std::make_shared<NewComand>());
+    parser.registrComand("new", std::make_shared<NewComand>());
+    parser.registrComand("addslidepos", std::make_shared<NewComand>());
     /*
     
-    parser.registrComand("Newfpath", std::make_shared<NewComand>());
     parser.registrComand("Newfpath", std::make_shared<NewComand>());
     parser.registrComand("Newfpath", std::make_shared<NewComand>());
     parser.registrComand("Newfpath", std::make_shared<NewComand>());

@@ -13,11 +13,10 @@ private:
 
 class SyntaxsAnilizer{
 public:
-    //void setToken(const sToken& token);
-    bool syntaxsAnaliz(const sToken& token);
+    void syntaxsAnaliz(const sToken& token);
 private:
     StateMeneger stateMeneger;
-    //sToken token;
+    
 };
 
 

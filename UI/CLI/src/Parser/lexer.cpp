@@ -14,8 +14,7 @@ void Lexer::setString(std::istream& is){
 void Lexer::lexerAnaliz(){
     auto tokenType = returnTokenType();
     if(tokenType == eTokenType::BADTYPE){
-        tokeValidFactor = eTokenOrder::INVALID;
-        return;
+        throw std::runtime_error("CLI: invalid comand !\n");
     }
     token.tokenType = tokenType;
 }
