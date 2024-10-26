@@ -18,7 +18,8 @@ public:
     constIterator cBegin();
     constIterator cEnd();
 
-    std::vector<std::shared_ptr<Page>>& getPages();
+    std::vector<std::shared_ptr<Page>>& getPages(Pos pos);
+    size_t getPageCount();
 
 private:
     std::vector<std::shared_ptr<Page>> pages;

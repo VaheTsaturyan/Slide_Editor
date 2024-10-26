@@ -3,43 +3,133 @@
 
 void AComand::setParams(Params &&params){
     this->params.integerArguments = std::move(params.integerArguments);
-    this->params.stringArguments = std::move(params.stringArguments)
+    this->params.stringArguments = std::move(params.stringArguments);
 }
 
-const Params &AComand::getParams() const
-{
+const Params &AComand::getParams() const{
     return params;
 }
 
-
-
-
-void NewComand::execute(std::shared_ptr<Slide_Collection> sldColection){
-    if(!paramsIsValid()){
-        throw std::runtime_error("CLI: coma");
+void New::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::newSlide();
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
     }
-    sldColection = std::make_shared<Slide_Collection>(); 
 }
 
-bool NewComand::paramsIsValid(){
-    return !(getParams().integerArguments.empty() || getParams().stringArguments.empty());
+bool New::paramsIsValid(){
+    return !(params.integerArguments.empty() || params.stringArguments.empty());
 }
 
-
-
-void AddSlide::execute(std::shared_ptr<Slide_Collection> sldColection){
-    if(!paramsIsValid()){
-        throw std::runtime_error("CLI: coma");
+void AddPage::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::addPage(params.integerArguments.front());
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
     }
-    Slide_Collection::Iterator  it = (*sldColection).begin();
-    for(int i = 0 , i < getParams().getParams().integerArguments.front()){
-        ++it;
-    }
-    (*sldColection).insert(it);
-    
 }
 
-bool AddSlide::paramsIsValid()
+bool AddPage::paramsIsValid()
 {
-    return (!getParams().stringArguments.empty() && getParams().integerArguments.size() == 1);
+    return (params.integerArguments.size() == 1) && (!params.stringArguments.empty());
+}
+
+void RemovePage::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::removePage(params.integerArguments.front());
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+
+bool RemovePage::paramsIsValid()
+{
+    return return (params.integerArguments.size() == 1) && (!params.stringArguments.empty());
+}
+
+void OpenPage::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::openPage(params.integerArguments.front());
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+
+bool OpenPage::paramsIsValid()
+{
+    return (params.integerArguments.size() == 1) && (!params.stringArguments.empty());
+}
+
+void AddRectangle::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::addRectangle(params.integerArguments[0], params.integerArguments[1], params.integerArguments[2], params.integerArguments[3]);
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+
+bool AddRectangle::paramsIsValid(){
+    return (params.integerArguments.size() == 4) && (!params.stringArguments.empty());
+}
+
+void MoveVertical::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::moveVertical(params.integerArguments[0], params.integerArguments[1]);
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+
+bool MoveVertical::paramsIsValid(){
+    return (params.integerArguments.size() == 2) && (!params.stringArguments.empty());
+}
+
+void MoveHorizontal::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::moveHorizontal(params.integerArguments[0], params.integerArguments[1]);
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+
+bool MoveHorizontal::paramsIsValid(){
+    return (params.integerArguments.size() == 2) && (!params.stringArguments.empty());
+}
+
+void ChangeIthemLenghth::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::changeIthemLength(params.integerArguments[0], params.integerArguments[1]);
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+
+bool ChangeIthemLenghth::paramsIsValid()
+{
+    return (params.integerArguments.size() == 2) && (!params.stringArguments.empty());
+}
+
+void ChangeIthemHeight::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::changeIthemHeight(params.integerArguments[0], params.integerArguments[1]);
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+bool ChangeIthemHeight::paramsIsValid()
+{
+    return (params.integerArguments.size() == 2) && (!params.stringArguments.empty());
+}
+
+void RemoveIthem::execute(){
+    if(paramsIsValid()){
+        SlideMeneger::removeIthem(params.integerArguments.front());
+    }else{
+        throw std::runtime_error("CLI: the command is not valid");
+    }
+}
+bool RemoveIthem::paramsIsValid()
+{
+    return (params.integerArguments.size() == 1) && (!params.stringArguments.empty());
 }

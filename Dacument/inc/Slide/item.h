@@ -1,20 +1,23 @@
 #pragma once
 
 
-class Item{
+class AItem{
 public:
-    explicit Item(ID id);
+    explicit Atem(ID id);
     
-    void setGeometry();
-    void getGeometry();
-    void getID();
+    void setGeometry(const sGeometry& geometry);
+    sGeometry& getGeometry() const;
+    id getID() const;
     
-    virtual void setAtributs() = 0;
-    virtual void getAtributs() = 0;
-    virtual ~Item() = default;
+    //virtual void setAtributs() = 0;
+    //virtual void getAtributs() = 0;
+    virtual ~AItem() = default;
 private:
-    const ID id;
-    sGeometry geometry;
+    const ID id_;
+    sGeometry geometry_;
 
 };
 
+class Rectangle : public AItem {
+
+};

@@ -4,7 +4,7 @@
 #include "item.h"
 
 #include <string>
-#include <unordered_map> 
+#include <unordered_map>
 #include <memory>
 
 
@@ -19,9 +19,14 @@ public:
     constIterator cBegin();
     constIterator cEnd();
 
+    void addIthem(std::shared_ptr<AItem> ithem);
+    void removeIthem(ID id);
+
+    std::shared_ptr<AItem> find(ID id);
+
 
 private:
-    std::unordered_map<ID, std::shared_ptr<Item>> items;
+    std::unordered_map<ID, std::shared_ptr<AItem>> items;
 };
 
 

@@ -3,14 +3,14 @@
 
 
 void ComandFactory::registorComand(const Comand &comand, std::shared_ptr<IComand> iCmd){
-    comandMap.insert(comand, iCmd);
+    comandMap.emplace(comand, iCmd);
 }
 
 
 IComand& ComandFactory::createComand(const std::vector<sToken>& tokens){
     auto comand = comandMap.find(generateCommandFromToken());
-    if(comand == comandMap.emd()){  
-        throw std::runtime_error("CLI: coma");
+    if(comand == comandMap.end()){  
+        throw std::runtime_error("CLI: the command is not valid");
     }
     comand.setParams(std::move(genereytParamsFromToken()));
     return comand;

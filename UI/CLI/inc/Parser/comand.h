@@ -1,7 +1,8 @@
 #pragma once
 
 #include "types.h"
-#include "../../Dacument/inc/dacumet.h"
+#include "../../../../Dacument/slideMeneger/slideMeneger.h"
+
 
 #include <vector>
 #include <memory>
@@ -17,7 +18,7 @@ struct Params{
 class AComand{
 public:
     virtual ~AComand() = default;
-    virtual void execute(std::sharide_ptr<Slide_Collection> sldColection) = 0;
+    virtual void execute() = 0;
     void setParams(Params&& params);
     const Params& getParams() const;
 protected:
@@ -26,18 +27,82 @@ private:
     Params params;
 };
 
-class NewComand : public AComand{
+class New : public AComand{
 public:
-    void execute(std::shared_ptr<Slide_Collection> sldColection) override;
+    void execute() override;
 protected:
     bool paramsIsValid() override;
 };
 
 
-class AddSlide : public AComand{
+class AddPage : public AComand{
 public:
-    void execute(std::shared_ptr<Slide_Collection> sldColection) override;
+    void execute() override;
 protected:
     bool paramsIsValid() override;
 
 };
+
+class RemovePage : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+
+};
+
+
+class OpenPage : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+
+};
+
+
+class AddRectangle : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+
+};
+
+class MoveVertical : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+
+};
+
+class MoveHorizontal : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+};
+
+
+class ChangeIthemLenghth : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+};
+
+class ChangeIthemHeight : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+};
+
+class RemoveIthem : public AComand{
+public:
+    void execute() override;
+protected:
+    bool paramsIsValid() override;
+};
+

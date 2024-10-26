@@ -27,10 +27,13 @@ namespace color
 
 
 struct sGeometry{
+    sGeometry() = default;
+    ~sGeometry() = default;
     Pos x;
     Pos y;
     length len;
     length hig;
+    sGeometry& operator=(const sGeometry& other);
 };
 
 enum class eAtributs{
