@@ -1,14 +1,11 @@
-#include "parser.h"
+#include "./Cantroler/inc/controler.h"
+
 
 #include <iostream>
 
 int main(){
-/*
-    Parser pars;
-    pars.setOutputStream(std::cout);
-    pars.input(std::cin);
-    pars.startProces();
+    Controler controler;
+    controler.startProces();
 
-*/
     return 0;
 }

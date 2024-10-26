@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef> 
+
 using Pos = int;
 using ID = size_t;
 using textSize = size_t;

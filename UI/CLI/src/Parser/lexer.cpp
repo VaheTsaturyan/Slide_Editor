@@ -1,5 +1,6 @@
 #include "lexer.h"
 
+#include <algorithm>
 
 
 void Lexer::setString(std::istream& is){
@@ -29,7 +30,7 @@ void Lexer::convert_String_to_Token(){
         token.tokenContent = std::stoi(str);
         break;
     case eTokenType::OPTION_WORD:
-        token.tokenContent = str.substr(1, str.szie() - 2);
+        token.tokenContent = str.substr(1, str.size() - 2);
         break;
     case eTokenType::ARGUMENT:
         token.tokenContent = str.substr(1, str.size()- 1);
@@ -47,19 +48,27 @@ eTokenOrder Lexer::getTokenOrder(){
 
 
 
-typename eTokenType Lexer::returnTokenType(){
-    if (std::all_of(token.begin(), token.end(), ::isalpha)){
+eTokenType Lexer::returnTokenType(){
+    if (std::all_of(str.begin(), str.end(), [](unsigned char c) {
+                                                return std::isalpha(c);
+                                            })){
         return eTokenType::WORD;
     }       
-    if(std::all_of(str.begin, str.end(), ::isdigit)){
+    if(std::all_of(str.begin(), str.end(), [](unsigned char c) {
+                                            return std::isdigit(c);
+                                        })){
         return eTokenType::OPTION_NUMBER;
     }
     if(str.size() >= 2 && str.front() == '<' && str.back() == '>'){
-        if (std::all_of( token.begin(), token.end(), ::isalpha))
+        if (std::all_of( str.begin() + 1, str.end()-1, [](unsigned char c) {
+                                                            return std::isalpha(c);
+                                                        }))
             return eTokenType::OPTION_WORD;
     }
     if(str[0] == '-' && str.size() >= 2){
-        if(std::all_of( token.begin() + 1, token.end(), ::isalpha)){
+        if(std::all_of( str.begin() + 1, str.end(),  [](unsigned char c) {
+                                                            return std::isalpha(c);
+                                                        })){
             return eTokenType::ARGUMENT;
         }
     }

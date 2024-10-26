@@ -17,7 +17,7 @@ public:
 
 private:
     void convert_String_to_Token();
-    typename eTokenType returnTokenType();
+    eTokenType returnTokenType();
 
 private:
     std::string str;

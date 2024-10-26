@@ -8,7 +8,7 @@ public:
     //void addCircle(pos x, pos y, length radius);
     //void addSquare(pos x, pos y, length len);
 
-    void addRectangle(pos x, pos y, length len, lenght high);
+    void addRectangle(Pos x, Pos y, length len, length high);
     
     void moveVertical(ID id, Pos y);
     void moveHorizontal(ID id, Pos x);
@@ -21,7 +21,7 @@ public:
 
     void setPage(std::shared_ptr<Page> page);
 private:
-    Id genereytId();
+    ID genereytId();
 
 private:
     ID ithemCaont = 0;

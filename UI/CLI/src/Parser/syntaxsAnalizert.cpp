@@ -1,5 +1,6 @@
 #include "syntaxsAnalizer.h"
 
+#include <stdexcept>
 
 
 void StateMeneger::cangeState(const sToken& token){
@@ -62,6 +63,6 @@ void SyntaxsAnilizer::setToken(const sToken& token){
 void SyntaxsAnilizer::syntaxsAnaliz(const sToken& token){
     stateMeneger.cangeState(token);
     if(stateMeneger.getAftomatState() == eState::DEAD_STATE){
-        return std::runtime_error("CLI: invalid comand !\n");
+        throw std::runtime_error("CLI: invalid comand !\n");
     }
 }

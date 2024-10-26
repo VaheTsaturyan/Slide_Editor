@@ -2,8 +2,13 @@
 
 #include <stdexcept>
 
+Slide SlideMeneger::slide;
+Editor SlideMeneger::editor;
+Sterializer SlideMeneger::sterializer;
+
+
 void SlideMeneger::newSlide(){
-    slide = slide();
+    slide.newSlide();
 }
 
 void SlideMeneger::addPage(Pos pos)
@@ -25,7 +30,7 @@ void SlideMeneger::removePage(Pos pos){
 }
 
 void SlideMeneger::swopPages(Pos first, Pos second){
-    if(firs > slide.getPageCount() || second > slide.getPageCount()){
+    if(first > slide.getPageCount() || second > slide.getPageCount()){
         std::runtime_error("CLI: The specified pages or one of them does not exist");
     }
 }
@@ -37,8 +42,8 @@ void SlideMeneger::openPage(Pos pos){
     editor.setPage(slide.getPages()[pos]);
 }
 
-void SlideMeneger::addRectangle(pos x, pos y, length len, lenght high){
-    editor.addRectangle(x, y, len, high)
+void SlideMeneger::addRectangle(Pos x, Pos y, length len, length high){
+    editor.addRectangle(x, y, len, high);
 }
 
 void SlideMeneger::moveVertical(ID id, Pos y){

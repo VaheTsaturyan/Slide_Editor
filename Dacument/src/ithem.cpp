@@ -1,7 +1,6 @@
-#include "ithem.h"
 #include "item.h"
 
-AItem::Atem(ID id):id_(id){
+AItem::AItem(ID id):id_(id){
 }
 
 
@@ -9,10 +8,14 @@ void AItem::setGeometry(const sGeometry &geometry){
     geometry_ = geometry;
 }
 
-sGeometry& AItem::getGeometry() const{
+sGeometry& AItem::getGeometry(){
     return geometry_;
 }
 
-id AItem::getID() const{
+ID AItem::getID() const{
     return this->id_;
+}
+
+
+Rectangle::Rectangle(ID id): AItem(id){
 }

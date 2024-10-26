@@ -1,10 +1,11 @@
 #include "parser.h"
 
+
 void Parser::input(std::istream& is){
     this->lexsik_analizer.setString(is);
 }
 
-void Parser::registrComand(const Comand &comand, std::shared_ptr<IComand> iCmd){
+void Parser::registrComand(const Comand &comand, std::shared_ptr<AComand> iCmd){
     comandCreater.registorComand(comand, iCmd);
 
 }

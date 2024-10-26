@@ -1,13 +1,13 @@
 #pragma once
-
+#include "types.h"
 
 class AItem{
 public:
-    explicit Atem(ID id);
+    explicit AItem(ID id);
     
     void setGeometry(const sGeometry& geometry);
-    sGeometry& getGeometry() const;
-    id getID() const;
+    sGeometry& getGeometry();
+    ID getID() const;
     
     //virtual void setAtributs() = 0;
     //virtual void getAtributs() = 0;
@@ -19,5 +19,6 @@ private:
 };
 
 class Rectangle : public AItem {
-
+public:
+    explicit Rectangle(ID id);
 };

@@ -11,6 +11,8 @@ class Slide{
 public:
     using Iterator = std::vector<std::shared_ptr<Page>>::iterator;
     using constIterator = std::vector<std::shared_ptr<Page>>::const_iterator;
+    
+    void newSlide();
 
     Iterator begin();
     Iterator end();
@@ -18,26 +20,9 @@ public:
     constIterator cBegin();
     constIterator cEnd();
 
-    std::vector<std::shared_ptr<Page>>& getPages(Pos pos);
+    std::vector<std::shared_ptr<Page>>& getPages();
     size_t getPageCount();
 
 private:
     std::vector<std::shared_ptr<Page>> pages;
 };
-
-/*
-
-    
-    void addShape(Pos pos);
-    void save();
-    void RemoveShape(Pos pos);    
-    void pushBackShape();
-    void popBackShape();
-    void pushFrontShape();
-    void popFrontShape();
-    void swapShape(Pos first, Pos second);
-    void openShape(Pos pos);
-
-
-
-*/

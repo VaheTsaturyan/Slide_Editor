@@ -6,7 +6,7 @@
 
 using word = std::string;
 using number = int;
-using argument = std::string; 
+//using argument = std::string; 
 
 enum class eTokenType{
     WORD,
@@ -34,7 +34,7 @@ enum class eState{
 
 struct sToken{
     eTokenType tokenType;
-    std::variant<number, word, argument> tokenContent;
+    std::variant<number, word> tokenContent;
 };
 
 

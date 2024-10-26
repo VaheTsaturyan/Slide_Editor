@@ -1,11 +1,11 @@
 #include "types.h"
 
-sColor::sColor(char red, char green, char blue): red(red), green(green), blue(blue){
+color::sColor::sColor(char red, char green, char blue): red(red), green(green), blue(blue){
 }
 
 sGeometry& sGeometry::operator=(const sGeometry& other){
     if(this == (&other)){
-        return;
+        return *this;
     }
     this->x = other.x;
     this->y = other.y;

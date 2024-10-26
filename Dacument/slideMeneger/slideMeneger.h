@@ -35,7 +35,8 @@ public:
     static void swopPages(Pos first, Pos second);
    
     static void openPage(Pos pos);
-    static void addRectangle(pos x, pos y, length len, lenght high);
+
+    static void addRectangle(Pos x, Pos y, length len, length high);
     
     static void moveVertical(ID id, Pos y);
     static void moveHorizontal(ID id, Pos x);

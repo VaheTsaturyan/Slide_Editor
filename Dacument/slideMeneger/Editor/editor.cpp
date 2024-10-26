@@ -11,7 +11,7 @@ void Editor::addElips(pos x, pos y, length len, lenght high){
 }
 
 */
-void Editor::addRectangle(pos x, pos y, length len, lenght high){
+void Editor::addRectangle(Pos x, Pos y, length len, length high){
     page_->addIthem(std::make_shared<Rectangle>(genereytId()));
 }
 
@@ -44,7 +44,7 @@ void Editor::changeIthemLength(ID id, length len){
 void Editor::changeIthemHeight(ID id, length high){
     auto result = page_->find(id);
     auto geometry = result->getGeometry();
-    geometry.high += high;
+    geometry.hig += high;
     result->setGeometry(geometry);
 }
 
@@ -56,7 +56,7 @@ void Editor::setPage(std::shared_ptr<Page> page){
     this->page_ = page;
 }
 
-Id Editor::genereytId()
+ID Editor::genereytId()
 {
     return ithemCaont++;
 }
