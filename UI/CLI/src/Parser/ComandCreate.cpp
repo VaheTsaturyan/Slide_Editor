@@ -2,7 +2,7 @@
 #include <stdexcept>
 
 
-void ComandFactory::registorComand(const Comand &comand, std::shared_ptr<AComand> iCmd){
+void ComandFactory::registorComand(const KeyComand &comand, std::shared_ptr<AComand> iCmd){
     comandMap.emplace(comand, iCmd);
 }
 
@@ -21,8 +21,8 @@ AComand& ComandFactory::createComand(const std::vector<sToken>& tokens){
 
 
 
-Comand&& ComandFactory::generateCommandFromToken(const std::vector<sToken>& tokens){
-    Comand comand;
+KeyComand&& ComandFactory::generateCommandFromToken(const std::vector<sToken>& tokens){
+    KeyComand comand;
     for(auto token : tokens){
         if(token.tokenType == eTokenType::WORD){
             comand += std::get<word>(token.tokenContent);
