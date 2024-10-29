@@ -10,7 +10,7 @@ class Parser{
 public:
     void input(std::istream& is);
     void startProces();
-    void registrComand(const KeyComand& comand, std::shared_ptr<AComand> iCmd);
+    void registrComand(const NameComand& comand, std::shared_ptr<AComand> iCmd);
 private:
     eTokenOrder lexerAnaliz();
     void syntaxsAnaliz();

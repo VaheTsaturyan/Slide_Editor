@@ -7,7 +7,7 @@
 #include <vector>
 #include <memory>
 
-using KeyComand = std::string;
+using NameComand = std::string;
 
 struct Params{
     std::vector<number> integerArguments;

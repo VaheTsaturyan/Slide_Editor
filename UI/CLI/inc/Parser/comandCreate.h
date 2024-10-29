@@ -8,13 +8,13 @@
 
 class ComandFactory{
 public:
-    void registorComand(const KeyComand &comand, std::shared_ptr<AComand> iCmd);
+    void registorComand(const NameComand &comand, std::shared_ptr<AComand> iCmd);
     AComand& createComand(const std::vector<sToken>& tokens);
 private:
-    KeyComand&& generateCommandFromToken(const std::vector<sToken>& tokens);
+    NameComand&& generateCommandFromToken(const std::vector<sToken>& tokens);
     Params&& genereytParamsFromToken(const std::vector<sToken>& token);
 
 private:
-    std::unordered_map<KeyComand, std::shared_ptr<AComand>> comandMap;
+    std::unordered_map<NameComand, std::shared_ptr<AComand>> comandMap;
 
 };
