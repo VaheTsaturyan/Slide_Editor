@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/vts/repos/Slide_Editor/Cantroler/inc -I/home/vts/repos/Slide_Editor/Dacument/inc -I/home/vts/repos/Slide_Editor/Dacument/inc/Slide -I/home/vts/repos/Slide_Editor/Dacument/slideMeneger -I/home/vts/repos/Slide_Editor/Dacument/slideMeneger/Editor -I/home/vts/repos/Slide_Editor/Dacument/slideMeneger/Sterializer -I/home/vts/repos/Slide_Editor/UI/CLI/inc -I/home/vts/repos/Slide_Editor/UI/CLI/inc/Parser
 
-CXX_FLAGS = -D_GLIBCXX_ASSERTIONS=0
+CXX_FLAGS = -g -O0 -D_GLIBCXX_ASSERTIONS=0
 

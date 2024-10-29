@@ -1694,7 +1694,9 @@ CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/lexer.cpp.o: ../UI/CLI/src/Parser/l
   /usr/include/c++/11/functional \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/std_function.h \
-  /usr/include/c++/11/pstl/execution_defs.h
+  /usr/include/c++/11/pstl/execution_defs.h \
+  /usr/include/c++/11/iterator \
+  /usr/include/c++/11/bits/stream_iterator.h
 
 CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/parser.cpp.o: ../UI/CLI/src/Parser/parser.cpp \
   /usr/include/stdc-predef.h \
@@ -2390,6 +2392,8 @@ CMakeFiles/SlideEditor.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/bits/istream.tcc:
 
+/usr/include/c++/11/iterator:
+
 /usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/include/c++/11/ostream:
@@ -2555,6 +2559,8 @@ CMakeFiles/SlideEditor.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/11/bits/stream_iterator.h:
 
 /usr/include/ctype.h:
 

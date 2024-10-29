@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 project(SlideEditor)
 
-# Установить стандарт C++
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-D_GLIBCXX_ASSERTIONS=0)
 
-
-# Добавляем все каталоги с заголовочными файлами
+# Add include directories
 include_directories(
     ${CMAKE_SOURCE_DIR}/Cantroler/inc
     ${CMAKE_SOURCE_DIR}/Dacument/inc
@@ -18,7 +17,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/UI/CLI/inc/Parser
 )
 
-# Добавляем все .cpp файлы из папок проекта
+# Add source files
 file(GLOB_RECURSE SOURCES
     "${CMAKE_SOURCE_DIR}/Cantroler/src/*.cpp"
     "${CMAKE_SOURCE_DIR}/Dacument/src/*.cpp"
@@ -29,5 +28,14 @@ file(GLOB_RECURSE SOURCES
     "${CMAKE_SOURCE_DIR}/main.cpp"
 )
 
-# Создаем исполняемый файл
+# Create executable
 add_executable(SlideEditor ${SOURCES})
+
+# Set build configurations
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")  # Enable debug symbols, disable optimization
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")   # Enable optimization for release
+
+# Set default build type to Debug if none specified
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()

@@ -18,9 +18,12 @@ public:
 private:
     void convert_String_to_Token();
     eTokenType returnTokenType();
+    void conversInputStringToStringVector();
 
 private:
+    std::string inputStr;
     std::string str;
+    std::vector<std::string> strings;
     sToken token;
     eTokenOrder tokeValidFactor;
 

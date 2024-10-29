@@ -13,9 +13,9 @@ void Parser::startProces()
 {
     while( lexerAnaliz() != eTokenOrder::NULL_TOKEN){
         syntaxsAnaliz();
+        addInTokenList(lexsik_analizer.getToken());
     }
-    addInTokenList(lexsik_analizer.getToken());
-    if(!tokens.empty()){
+    if(tokens.empty()){
         return;
     }
     comandCreater.createComand(tokens).execute();
@@ -26,6 +26,7 @@ eTokenOrder Parser::lexerAnaliz(){
     if(lexsik_analizer.getTokenOrder() == eTokenOrder::NULL_TOKEN){
         return eTokenOrder::NULL_TOKEN;
     }
+    lexsik_analizer.lexerAnaliz();
     return eTokenOrder::VALID;
 }
 
