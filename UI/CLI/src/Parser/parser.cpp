@@ -23,10 +23,10 @@ void Parser::startProces()
 }
 
 eTokenOrder Parser::lexerAnaliz(){
+    lexsik_analizer.lexerAnaliz();
     if(lexsik_analizer.getTokenOrder() == eTokenOrder::NULL_TOKEN){
         return eTokenOrder::NULL_TOKEN;
     }
-    lexsik_analizer.lexerAnaliz();
     return eTokenOrder::VALID;
 }
 

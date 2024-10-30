@@ -19,6 +19,11 @@ private:
     void convert_String_to_Token();
     eTokenType returnTokenType();
     void conversInputStringToStringVector();
+    bool isWord();
+    bool isOptionNumber();
+    bool isOptionWord();
+    bool isArgument();
+
 
 private:
     std::string inputStr;
