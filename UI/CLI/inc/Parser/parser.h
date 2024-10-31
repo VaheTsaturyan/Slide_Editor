@@ -11,6 +11,7 @@ public:
     void input(std::istream& is);
     void startProces();
     void registrComand(const NameComand& comand, std::shared_ptr<AComand> iCmd);
+    void zeroState();
 private:
     eTokenOrder lexerAnaliz();
     void syntaxsAnaliz();

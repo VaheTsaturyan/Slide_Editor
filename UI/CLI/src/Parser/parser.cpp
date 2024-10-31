@@ -9,12 +9,19 @@ void Parser::registrComand(const NameComand &comand, std::shared_ptr<AComand> iC
     comandCreater.registorComand(comand, iCmd);
 
 }
+void Parser::zeroState(){
+    tokens.clear();
+//    syntaxs_analizer.goToStartState();
+//    lexsik_analizer.zeroState();
+
+}
 void Parser::startProces()
 {
     while( lexerAnaliz() != eTokenOrder::NULL_TOKEN){
         syntaxsAnaliz();
         addInTokenList(lexsik_analizer.getToken());
     }
+    syntaxs_analizer.goToStartState();
     if(tokens.empty()){
         return;
     }

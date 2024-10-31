@@ -1,13 +1,12 @@
 #include "comand.h"
 #include <stdexcept>
 
-void AComand::setParams(Params &&params){
-    this->params.integerArguments = std::move(params.integerArguments);
-    this->params.stringArguments = std::move(params.stringArguments);
+void AComand::setParams(std::shared_ptr<Params> params){
+    this->params = params;
 }
 
 const Params &AComand::getParams() const{
-    return params;
+    return *params;
 }
 
 void New::execute(){
@@ -19,7 +18,7 @@ void New::execute(){
 }
 
 bool New::paramsIsValid(){
-    return !(getParams().integerArguments.empty() || getParams().stringArguments.empty());
+    return getParams().integerArguments.empty() && getParams().stringArguments.empty();
 }
 
 void AddPage::execute(){
@@ -32,7 +31,7 @@ void AddPage::execute(){
 
 bool AddPage::paramsIsValid()
 {
-    return (getParams().integerArguments.size() == 1) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
 }
 
 void RemovePage::execute(){
@@ -45,7 +44,7 @@ void RemovePage::execute(){
 
 bool RemovePage::paramsIsValid()
 {
-    return (getParams().integerArguments.size() == 1) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
 }
 
 void OpenPage::execute(){
@@ -58,7 +57,7 @@ void OpenPage::execute(){
 
 bool OpenPage::paramsIsValid()
 {
-    return (getParams().integerArguments.size() == 1) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
 }
 
 void AddRectangle::execute(){
@@ -70,7 +69,7 @@ void AddRectangle::execute(){
 }
 
 bool AddRectangle::paramsIsValid(){
-    return (getParams().integerArguments.size() == 4) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 4) && (getParams().stringArguments.empty());
 }
 
 void MoveVertical::execute(){
@@ -82,7 +81,7 @@ void MoveVertical::execute(){
 }
 
 bool MoveVertical::paramsIsValid(){
-    return (getParams().integerArguments.size() == 2) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 2) && (getParams().stringArguments.empty());
 }
 
 void MoveHorizontal::execute(){
@@ -107,7 +106,7 @@ void ChangeIthemLenghth::execute(){
 
 bool ChangeIthemLenghth::paramsIsValid()
 {
-    return (getParams().integerArguments.size() == 2) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 2) && (getParams().stringArguments.empty());
 }
 
 void ChangeIthemHeight::execute(){
@@ -119,7 +118,7 @@ void ChangeIthemHeight::execute(){
 }
 bool ChangeIthemHeight::paramsIsValid()
 {
-    return (getParams().integerArguments.size() == 2) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 2) && (getParams().stringArguments.empty());
 }
 
 void RemoveIthem::execute(){
@@ -131,5 +130,5 @@ void RemoveIthem::execute(){
 }
 bool RemoveIthem::paramsIsValid()
 {
-    return (getParams().integerArguments.size() == 1) && (!getParams().stringArguments.empty());
+    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
 }

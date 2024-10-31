@@ -12,7 +12,7 @@ AComand& ComandFactory::createComand(const std::vector<sToken>& tokens){
     if(comand == comandMap.end()){  
         throw std::runtime_error("CLI: the command is not valid");
     }
-    comand->second->setParams(std::move(genereytParamsFromToken(tokens)));
+    comand->second->setParams(genereytParamsFromToken(tokens));
     return *comand->second;
 }
 
@@ -21,7 +21,7 @@ AComand& ComandFactory::createComand(const std::vector<sToken>& tokens){
 
 
 
-NameComand&& ComandFactory::generateCommandFromToken(const std::vector<sToken>& tokens){
+NameComand ComandFactory::generateCommandFromToken(const std::vector<sToken>& tokens){
     NameComand comand;
     for(auto token : tokens){
         if(token.tokenType == eTokenType::WORD){
@@ -31,20 +31,20 @@ NameComand&& ComandFactory::generateCommandFromToken(const std::vector<sToken>& 
             comand += std::get<word>(token.tokenContent);
         }
     }
-    return std::move(comand);
+    return comand;
 }
 
-Params&& ComandFactory::genereytParamsFromToken(const std::vector<sToken>& tokens){
-    Params params;
+std::shared_ptr<Params> ComandFactory::genereytParamsFromToken(const std::vector<sToken>& tokens){
+    std::shared_ptr<Params> params = std::make_shared<Params>();
     for(auto token : tokens){
         if(token.tokenType == eTokenType::OPTION_NUMBER){
-            params.integerArguments.push_back(std::get<number>(token.tokenContent));
+            params->integerArguments.push_back(std::get<number>(token.tokenContent));
         }
         if(token.tokenType == eTokenType::OPTION_WORD){
-            params.stringArguments.push_back(std::get<word>(token.tokenContent));
+            params->stringArguments.push_back(std::get<word>(token.tokenContent));
         }
     }
-    return std::move(params);
+    return params;
 }
 
 

@@ -19,12 +19,12 @@ class AComand{
 public:
     virtual ~AComand() = default;
     virtual void execute() = 0;
-    void setParams(Params&& params);
+    void setParams(std::shared_ptr<Params> params);
     const Params& getParams() const;
 protected:
     virtual bool paramsIsValid() = 0;
 private:
-    Params params;
+    std::shared_ptr<Params> params;
 };
 
 class New : public AComand{
