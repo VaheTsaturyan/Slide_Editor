@@ -3,7 +3,11 @@
 color::sColor::sColor(char red, char green, char blue): red(red), green(green), blue(blue){
 }
 
-sGeometry& sGeometry::operator=(const sGeometry& other){
+sGeometry::sGeometry(Pos x_, Pos y_, length len_, length hig_):x(x_), y(y_), len(len_), hig(hig_){
+}
+
+sGeometry &sGeometry::operator=(const sGeometry &other)
+{
     if(this == (&other)){
         return *this;
     }
@@ -11,5 +15,9 @@ sGeometry& sGeometry::operator=(const sGeometry& other){
     this->y = other.y;
     this->len = other.len;
     this->hig = other.hig;
-    return *this; 
+    return *this;
+}
+
+sAtributs &sAtributs::operator=(sAtributs && other){
+    this->map = std::move(other.map);
 }

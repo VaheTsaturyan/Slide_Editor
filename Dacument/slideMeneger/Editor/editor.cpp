@@ -11,8 +11,14 @@ void Editor::addElips(pos x, pos y, length len, lenght high){
 }
 
 */
-void Editor::addRectangle(Pos x, Pos y, length len, length high){
-    page_->addIthem(std::make_shared<Rectangle>(genereytId()));
+void Editor::addShape(std::string type, Pos x, Pos y, length len, length high){
+    std::shared_ptr<AItem> ithem = std::make_shared<AItem>(genereytId());
+    sAtributs temp;
+    temp.map.emplace(atr::Type, type);
+    temp.map.emplace(atr::Color, "0.0.0");
+    ithem->setAtributs(std::move(temp));
+    ithem->setGeometry(sGeometry(x,y,len,high));
+    page_->addIthem(ithem);
 }
 
 

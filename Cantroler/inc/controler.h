@@ -8,9 +8,14 @@
 
 class Controler{
 public:
+
     void startProces();
+
 private:
+
     void registrComand();
+
 private:
-    Parser parser;
+
+    ComandFactory comandFactory;
 };

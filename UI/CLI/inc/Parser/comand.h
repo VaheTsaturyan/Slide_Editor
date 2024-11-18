@@ -1,7 +1,6 @@
 #pragma once
 
 #include "types.h"
-#include "../../../../Dacument/slideMeneger/slideMeneger.h"
 
 
 #include <vector>
@@ -61,7 +60,7 @@ protected:
 };
 
 
-class AddRectangle : public AComand{
+class AddShape : public AComand{
 public:
     void execute() override;
 protected:

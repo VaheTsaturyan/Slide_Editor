@@ -9,6 +9,7 @@
 
 class Slide{
 public:
+
     using Iterator = std::vector<std::shared_ptr<Page>>::iterator;
     using constIterator = std::vector<std::shared_ptr<Page>>::const_iterator;
     
@@ -24,5 +25,6 @@ public:
     size_t getPageCount();
 
 private:
+
     std::vector<std::shared_ptr<Page>> pages;
 };

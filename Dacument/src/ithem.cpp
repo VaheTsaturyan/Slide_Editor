@@ -16,6 +16,10 @@ ID AItem::getID() const{
     return this->id_;
 }
 
+void AItem::setAtributs(sAtributs&& atributs){
+    atributs_ = std::move(atributs);
+}
 
-Rectangle::Rectangle(ID id): AItem(id){
+sAtributs &AItem::getAtributs(){
+    return atributs_;
 }

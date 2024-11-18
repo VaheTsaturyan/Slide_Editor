@@ -42,8 +42,8 @@ void SlideMeneger::openPage(Pos pos){
     editor.setPage(slide.getPages()[pos]);
 }
 
-void SlideMeneger::addRectangle(Pos x, Pos y, length len, length high){
-    editor.addRectangle(x, y, len, high);
+void SlideMeneger::addShape(std::string type, Pos x, Pos y, length len, length high){
+    editor.addShape(type, x, y, len, high);
 }
 
 void SlideMeneger::moveVertical(ID id, Pos y){

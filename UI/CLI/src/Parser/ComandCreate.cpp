@@ -10,7 +10,7 @@ void ComandFactory::registorComand(const NameComand &comand, std::shared_ptr<ACo
 AComand& ComandFactory::createComand(const std::vector<sToken>& tokens){
     auto comand = comandMap.find(generateCommandFromToken(tokens));
     if(comand == comandMap.end()){  
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: the command is not valid\n");
     }
     comand->second->setParams(genereytParamsFromToken(tokens));
     return *comand->second;

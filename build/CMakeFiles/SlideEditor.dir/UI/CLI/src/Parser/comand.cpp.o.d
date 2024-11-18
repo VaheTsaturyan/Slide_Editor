@@ -141,15 +141,11 @@ CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/comand.cpp.o: \
  /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/slideMeneger.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/editor.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/slide.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/types.h \
- /usr/include/c++/11/cstddef \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/page.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/item.h \
- /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -166,9 +162,13 @@ CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/comand.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Sterializer/Sterializer.h \
+ /usr/include/c++/11/pstl/execution_defs.h \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/slideMeneger.h \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/editor.h \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/slide.h \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/types.h \
+ /usr/include/c++/11/cstddef \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/page.h \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/item.h \
+ /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Sterializer/Sterializer.h \
  /usr/include/c++/11/stdexcept

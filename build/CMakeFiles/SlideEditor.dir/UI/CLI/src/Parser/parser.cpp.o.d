@@ -171,13 +171,6 @@ CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/parser.cpp.o: \
  /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/syntaxsAnalizer.h \
  /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/comandCreate.h \
  /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/comand.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/slideMeneger.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/editor.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/slide.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/types.h \
- /usr/include/c++/11/cstddef \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/page.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/item.h \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -191,5 +184,4 @@ CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/parser.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h \
- /home/vts/repos/Slide_Editor/UI/CLI/inc/Parser/../../../../Dacument/slideMeneger/./Sterializer/Sterializer.h
+ /usr/include/c++/11/pstl/execution_defs.h

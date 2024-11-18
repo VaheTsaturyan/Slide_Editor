@@ -20,7 +20,6 @@ void Lexer::lexerAnaliz(){
     }
     auto tokenType = returnTokenType();
     if(tokenType == eTokenType::BADTYPE){
-        zeroState();
         throw std::runtime_error("CLI: la -invalid comand !\n");
     }
     token.tokenType = tokenType;

@@ -4,16 +4,9 @@
 void Parser::input(std::istream& is){
     this->lexsik_analizer.setString(is);
 }
-
-void Parser::registrComand(const NameComand &comand, std::shared_ptr<AComand> iCmd){
-    comandCreater.registorComand(comand, iCmd);
-
-}
-void Parser::zeroState(){
-    tokens.clear();
-//    syntaxs_analizer.goToStartState();
-//    lexsik_analizer.zeroState();
-
+const std::vector<sToken> &Parser::getTokensList()
+{
+    return this->tokens;
 }
 void Parser::startProces()
 {
@@ -21,12 +14,9 @@ void Parser::startProces()
         syntaxsAnaliz();
         addInTokenList(lexsik_analizer.getToken());
     }
-    syntaxs_analizer.goToStartState();
     if(tokens.empty()){
         return;
     }
-    comandCreater.createComand(tokens).execute();
-    tokens.clear();
 }
 
 eTokenOrder Parser::lexerAnaliz(){
@@ -44,3 +34,20 @@ void Parser::syntaxsAnaliz(){
 void Parser::addInTokenList(const sToken& token){
     tokens.push_back(token);
 }
+
+
+/*
+
+
+void Parser::registrComand(const NameComand &comand, std::shared_ptr<AComand> iCmd){
+    comandCreater.registorComand(comand, iCmd);
+
+}
+void Parser::zeroState()
+{
+    tokens.clear();
+    syntaxs_analizer.goToStartState();
+    lexsik_analizer.zeroState();
+}
+
+*/

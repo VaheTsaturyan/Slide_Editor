@@ -1,4 +1,7 @@
 #include "comand.h"
+#include "../../../../Dacument/slideMeneger/slideMeneger.h"
+
+
 #include <stdexcept>
 
 void AComand::setParams(std::shared_ptr<Params> params){
@@ -13,7 +16,7 @@ void New::execute(){
     if(paramsIsValid()){
         SlideMeneger::newSlide();
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -25,7 +28,7 @@ void AddPage::execute(){
     if(paramsIsValid()){
         SlideMeneger::addPage(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -38,7 +41,7 @@ void RemovePage::execute(){
     if(paramsIsValid()){
         SlideMeneger::removePage(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -51,7 +54,7 @@ void OpenPage::execute(){
     if(paramsIsValid()){
         SlideMeneger::openPage(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -60,23 +63,23 @@ bool OpenPage::paramsIsValid()
     return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
 }
 
-void AddRectangle::execute(){
+void AddShape::execute(){
     if(paramsIsValid()){
-        SlideMeneger::addRectangle(getParams().integerArguments[0], getParams().integerArguments[1], getParams().integerArguments[2], getParams().integerArguments[3]);
+        SlideMeneger::addShape(getParams().stringArguments.front(), getParams().integerArguments[0], getParams().integerArguments[1], getParams().integerArguments[2], getParams().integerArguments[3]);
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
-bool AddRectangle::paramsIsValid(){
-    return (getParams().integerArguments.size() == 4) && (getParams().stringArguments.empty());
+bool AddShape ::paramsIsValid(){
+    return (getParams().integerArguments.size() == 4) && (getParams().stringArguments.size() == 1);
 }
 
 void MoveVertical::execute(){
     if(paramsIsValid()){
         SlideMeneger::moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -88,7 +91,7 @@ void MoveHorizontal::execute(){
     if(paramsIsValid()){
         SlideMeneger::moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -100,7 +103,7 @@ void ChangeIthemLenghth::execute(){
     if(paramsIsValid()){
         SlideMeneger::changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 
@@ -113,7 +116,7 @@ void ChangeIthemHeight::execute(){
     if(paramsIsValid()){
         SlideMeneger::changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 bool ChangeIthemHeight::paramsIsValid()
@@ -125,7 +128,7 @@ void RemoveIthem::execute(){
     if(paramsIsValid()){
         SlideMeneger::removeIthem(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: the command is not valid");
+        throw std::runtime_error("CLI: parameters are invalid");
     }
 }
 bool RemoveIthem::paramsIsValid()

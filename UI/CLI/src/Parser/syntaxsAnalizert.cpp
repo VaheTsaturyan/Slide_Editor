@@ -53,25 +53,25 @@ eState StateMeneger::getAftomatState(){
     return activState;
 }
 
-void StateMeneger::goToStartState(){
-    activState = eState::START;
-}
-
-/*
-void SyntaxsAnilizer::setToken(const sToken& token){
-    this->token = token;
-}
-
-*/
 
 void SyntaxsAnilizer::syntaxsAnaliz(const sToken& token){
     stateMeneger.cangeState(token);
     if(stateMeneger.getAftomatState() == eState::DEAD_STATE){
-        goToStartState();
         throw std::runtime_error("CLI: SA -invalid comand !\n");
     }
+}
+
+
+/*
+void StateMeneger::goToStartState(){
+    activState = eState::START;
+}
+
+void SyntaxsAnilizer::setToken(const sToken& token){
+    this->token = token;
 }
 
 void SyntaxsAnilizer::goToStartState(){
     stateMeneger.goToStartState();
 }
+*/
