@@ -54,7 +54,8 @@
         "ios": "cpp",
         "queue": "cpp",
         "cstdbool": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "unordered_set": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

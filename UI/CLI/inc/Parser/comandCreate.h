@@ -16,6 +16,7 @@ private:
 
     NameComand generateCommandFromToken(const std::vector<sToken>& tokens);
     std::shared_ptr<Params> genereytParamsFromToken(const std::vector<sToken>& token);
+    std::shared_ptr<Options> genereytOptionsFromToken(const std::vector<sToken>& token);
 
 private:
 

@@ -19,14 +19,15 @@ void Controler::startProces(){
 }
 
 void Controler::registrComand(){
-    comandFactory.registorComand("new", std::make_shared<New>());
-    comandFactory.registorComand("addpagepos", std::make_shared<AddPage>());
-    comandFactory.registorComand("removepagepos", std::make_shared<RemovePage>());
-    comandFactory.registorComand("openpagepos", std::make_shared<OpenPage>());
-    comandFactory.registorComand("addtxylengthhight", std::make_shared<AddShape>());
-    comandFactory.registorComand("moveverticalidx", std::make_shared<MoveVertical>());
-    comandFactory.registorComand("movehorizontalidx", std::make_shared<MoveHorizontal>());
-    comandFactory.registorComand("changeithemlengthidlength", std::make_shared<ChangeIthemLenghth>());
-    comandFactory.registorComand("changeithemheightidheight", std::make_shared<ChangeIthemHeight>());
-    comandFactory.registorComand("removeithrmid", std::make_shared<RemoveIthem>());
+    comandFactory.registorComand("new", std::make_shared<New>());                                       //new
+    comandFactory.registorComand("addpagepos", std::make_shared<AddPage>());                            //add page -pos
+    comandFactory.registorComand("removepagepos", std::make_shared<RemovePage>());                      //remove page -pos
+    comandFactory.registorComand("openpagepos", std::make_shared<OpenPage>());                          //open page -pos
+    comandFactory.registorComand("addtxylengthhight", std::make_shared<AddShape>());                    //add -t -x -y -length -hight
+    comandFactory.registorComand("addtxylh", std::make_shared<AddShape>());                             //add -t -x -y -l -h
+    comandFactory.registorComand("moveverticalidx", std::make_shared<MoveVertical>());                  //move verticalid -x
+    comandFactory.registorComand("movehorizontalidx", std::make_shared<MoveHorizontal>());              //move horizontalid -x
+    comandFactory.registorComand("changeithemlengthidlength", std::make_shared<ChangeIthemLenghth>());  //change ithem length -id -length
+    comandFactory.registorComand("changeithemheightidheight", std::make_shared<ChangeIthemHeight>());   //change ithem height -id -height
+    comandFactory.registorComand("removeithrmid", std::make_shared<RemoveIthem>());                     //remove ithrm -id
 }

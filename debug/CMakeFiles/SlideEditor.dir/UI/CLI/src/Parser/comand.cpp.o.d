@@ -163,6 +163,8 @@ CMakeFiles/SlideEditor.dir/UI/CLI/src/Parser/comand.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
+ /usr/include/c++/11/unordered_set \
+ /usr/include/c++/11/bits/unordered_set.h \
  /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/slideMeneger.h \
  /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/editor.h \
  /home/vts/repos/Slide_Editor/UI/CLI/src/Parser/../../../../Dacument/slideMeneger/./Editor/../../inc/Slide/slide.h \
