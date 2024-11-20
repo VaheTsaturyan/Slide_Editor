@@ -1,19 +1,29 @@
 #include "controler.h"
 
+void Controler::setEditor(std::shared_ptr<Editor> editor){
+    this->editor = editor;
+}
 
-void Controler::startProces(){
+void Controler::setSterilizer(std::shared_ptr<Sterilizer> sterilizer){
+    this->sterilizer = sterilizer;
+}
+
+void Controler::startProces()
+{
     registrComand();
     while(true){
         try{
             Parser parser;
             parser.input(std::cin);
-            parser.startProces();
-            AComand& comand = comandFactory.createComand(parser.getTokensList());
+            parser.parsing();
+            IComand comand = comandFactory.createComand(parser.getComand());
+            comand.setParams(parser.getParams());
+            comand.setOptions(parser.getOptions());
+            comand.setEditor(editor);
             comand.execute();
         }
         catch(const std::exception& e){
-            std::cout << e.what();
-            //parser.zeroState();    
+            std::cout << e.what();  
         }
     }
 }

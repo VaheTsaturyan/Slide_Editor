@@ -9,8 +9,12 @@
 class Parser{
 public:
     void input(std::istream& is);
-    void startProces();
-    const std::vector<sToken>& getTokensList();
+    void parsing();
+
+    NameComand getComand();
+    std::shared_ptr<Params> getParams();
+    std::shared_ptr<Options> getOptions();
+
     
     //void registrComand(const NameComand& comand, std::shared_ptr<AComand> iCmd);
     //void zeroState();

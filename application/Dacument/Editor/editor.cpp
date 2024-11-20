@@ -1,17 +1,58 @@
 #include "editor.h"
 
-/*
 
-void Editor::addSquare(pos x, pos y, length len){
-
+void Editor::setSlide(std::shared_ptr<Slide> slide){
+    this->slide_ = slide_;
 }
 
-void Editor::addElips(pos x, pos y, length len, lenght high){
-    page_->push(std::make_shared<> )
+
+void Editor::newSlide()
+{
+    slide_.newSlide();
 }
 
-*/
-void Editor::addShape(std::string type, Pos x, Pos y, length len, length high){
+void Editor::addPage(Pos pos)
+{
+    if(pos > slide_.getPageCount()){
+        std::runtime_error("CLI: Unable to add page with specified index");
+    }
+    auto sld = slide_.getPages();
+    auto it = sld.begin();
+    for(int i = 0; i < pos; ++i){ ++it; }
+    sld.emplace(it, std::make_shared<Page>());
+}
+
+
+void Editor::removePage(Pos pos)
+{
+    auto sld = slide_.getPages();
+    auto it = sld_.begin();
+    for(int i = 0; i < pos; ++i){ ++it; }
+    sld.erase(it);
+}
+
+
+
+void Editor::swopPages(Pos first, Pos second)
+{
+    if(first > slide_.getPageCount() || second > slide_.getPageCount()){
+        std::runtime_error("CLI: The specified pages or one of them does not exist");
+    }
+}
+
+
+void Editor::openPage(Pos pos)
+{
+    if(pos > slide_.getPageCount()){
+        std::runtime_error("CLI: Unable to add page with specified index");
+    }
+    editor.setPage(slide_.getPages()[pos]);
+}
+
+
+
+void Editor::addShape(std::string type, Pos x, Pos y, length len, length high)
+{
     std::shared_ptr<AItem> ithem = std::make_shared<AItem>(genereytId());
     sAtributs temp;
     temp.map.emplace(atr::Type, type);
@@ -22,6 +63,7 @@ void Editor::addShape(std::string type, Pos x, Pos y, length len, length high){
 }
 
 
+
 void Editor::moveVertical(ID id, Pos y){
     auto result = page_->find(id);
     auto geometry = result->getGeometry();
@@ -29,12 +71,15 @@ void Editor::moveVertical(ID id, Pos y){
     result->setGeometry(geometry);
 }
 
+
 void Editor::moveHorizontal(ID id, Pos x){
     auto result = page_->find(id);
     auto geometry = result->getGeometry();
     geometry.x += x;
     result->setGeometry(geometry);
 }
+
+
 
 void Editor::changeIthemColor(ID id, color::sColor color){
 

@@ -12,6 +12,10 @@ void AComand::setOptions(std::shared_ptr<Options> options){
     this->options = options;
 }
 
+void AComand::setEditor(std::shared_ptr<Editor> editor){
+    this->editor = editor; 
+}
+
 const Options& AComand::getOptions() const{
     return *options;
 }
@@ -24,7 +28,7 @@ const Params &AComand::getParams() const{
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void New::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        SlideMeneger::newSlide();
+        editor->newSlide();
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -44,7 +48,7 @@ bool New::optionsIsValid()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AddPage::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        SlideMeneger::addPage(getParams().integerArguments.front());
+        editor->addPage(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -63,7 +67,7 @@ bool AddPage::optionsIsValid(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemovePage::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        SlideMeneger::removePage(getParams().integerArguments.front());
+        editor->removePage(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -87,7 +91,7 @@ bool RemovePage::optionsIsValid(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void OpenPage::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        SlideMeneger::openPage(getParams().integerArguments.front());
+        editor->openPage(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -117,7 +121,7 @@ AddShape::AddShape(){
 void AddShape::execute()
 {
     if(optionsIsValid() && paramsIsValid()){
-        SlideMeneger::addShape( getParams().stringArguments.front(),
+        editor->addShape( getParams().stringArguments.front(),
                                 getParams().integerArguments[0], 
                                 getParams().integerArguments[1], 
                                 getParams().integerArguments[2], 
@@ -171,7 +175,7 @@ void AddShape::initTypeMap(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemoveIthem::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        SlideMeneger::removeIthem(getParams().integerArguments.front());
+        editor->removeIthem(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -220,7 +224,7 @@ MoveVertical::MoveVertical(){
 void MoveVertical::execute()
 {
     if(optionsIsValid()&&paramsIsValid()){
-        SlideMeneger::moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
+        editor->moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -246,7 +250,7 @@ MoveHorizontal::MoveHorizontal(){
 
 void MoveHorizontal::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        SlideMeneger::moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
+        editor->moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -269,7 +273,7 @@ ChangeIthemLenghth::ChangeIthemLenghth(){
 
 void ChangeIthemLenghth::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        SlideMeneger::changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
+        editor->changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -293,7 +297,7 @@ ChangeIthemHeight::ChangeIthemHeight(){
 
 void ChangeIthemHeight::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        SlideMeneger::changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
+        editor->changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
