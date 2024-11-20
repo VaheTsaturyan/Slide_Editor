@@ -10,7 +10,6 @@
 
 class Lexer{
 public:
-
     void setString(std::istream& is);
     void lexerAnaliz();
     sToken getToken();
@@ -18,7 +17,6 @@ public:
     void zeroState();
 
 private:
-
     void convert_String_to_Token();
     eTokenType returnTokenType();
     void conversInputStringToStringVector();
@@ -28,7 +26,6 @@ private:
     bool isArgument();
 
 private:
-
     std::string inputStr;
     std::string str;
     std::vector<std::string> strings;

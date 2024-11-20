@@ -14,6 +14,7 @@ using Options = std::vector<std::string>;
 struct Params{
     std::vector<number> integerArguments;
     std::vector<word> stringArguments;
+    
 }; 
 
 
@@ -27,6 +28,7 @@ public:
     virtual void setOptions(std::shared_ptr<Options> options) = 0;
     virtual const Params& getParams() const = 0;
     virtual const Options& getOptions() const = 0;
+
 };
 
 
@@ -40,12 +42,15 @@ public:
     void setOptions(std::shared_ptr<Options> options) override;
     const Params& getParams() const override;
     const Options& getOptions() const override;
+
 protected:
     virtual bool paramsIsValid() = 0;
     virtual bool optionsIsValid() = 0;
+
 private:
     std::shared_ptr<Params> params;
     std::shared_ptr<Options> options;
+
 };
 
 
@@ -55,9 +60,11 @@ private:
 class New : public AComand{
 public:
     void execute() override;
+
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
+
 };
 
 
@@ -67,9 +74,11 @@ protected:
 class AddPage : public AComand{
 public:
     void execute() override;
+
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
+
 };
 
 
@@ -79,9 +88,11 @@ protected:
 class RemovePage : public AComand{
 public:
     void execute() override;
+
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
+
 };
 
 
@@ -91,9 +102,11 @@ protected:
 class OpenPage : public AComand{
 public:
     void execute() override;
+
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
+
 };
 
 
@@ -104,15 +117,19 @@ class AddShape : public AComand{
 public:
     AddShape();
     void execute() override;
+
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
+
 private:
     void initOptionsMap();
     void initTypeMap();
+
 private:
     std::unordered_set<std::string> optionsMap;
     std::unordered_set<std::string> typeMap;
+
 };
 
 
@@ -121,9 +138,11 @@ private:
 class RemoveIthem : public AComand{
 public:
     void execute() override;
+
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
+
 };
 
 
@@ -137,10 +156,10 @@ class AChangeIthemGeometry : public AComand{
 protected:
     bool paramsIsValid() override;
     bool optionsIsValid() override;
-private:
-    virtual void initOptionMap() = 0;
+
 protected:
-    std::unordered_set<std::string> optionsMap;    
+    std::unordered_set<std::string> optionsMap;   
+
 };
 
 
@@ -149,8 +168,10 @@ class MoveVertical : public AChangeIthemGeometry{
 public:
     MoveVertical();
     void execute() override;
+
 private:
     void initOptionMap();
+
 };
 
 
@@ -159,8 +180,10 @@ class MoveHorizontal : public AChangeIthemGeometry{
 public:
     MoveHorizontal();
     void execute() override;
+
 private:
     void initOptionMap();
+
 };
 
 
@@ -169,8 +192,10 @@ class ChangeIthemLenghth : public AChangeIthemGeometry{
 public:
     ChangeIthemLenghth();
     void execute() override;
+
 private:
     void initOptionMap();
+
 };
 
 
@@ -179,7 +204,9 @@ class ChangeIthemHeight : public AChangeIthemGeometry{
 public:
     ChangeIthemHeight();
     void execute() override;
+
 private:
     void initOptionMap();
+
 };
 

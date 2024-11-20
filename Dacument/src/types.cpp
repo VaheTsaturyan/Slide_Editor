@@ -20,4 +20,5 @@ sGeometry &sGeometry::operator=(const sGeometry &other)
 
 sAtributs &sAtributs::operator=(sAtributs && other){
     this->map = std::move(other.map);
+    return *this;
 }

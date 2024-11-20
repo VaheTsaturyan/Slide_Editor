@@ -21,11 +21,11 @@ namespace color
         char green;
         char blue;
     };
+    
     inline const sColor BLACK = sColor(0,0,0);
     inline const sColor RED = sColor(255,0,0);
     inline const sColor GREEN = sColor(0,255,0);
     inline const sColor BLUE = sColor(0,0,255);
-
 } // namespace color
 
 

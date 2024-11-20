@@ -3,7 +3,6 @@
 
 class AItem{
 public:
-
     explicit AItem(ID id);
     
     void setGeometry(const sGeometry& geometry);
@@ -15,7 +14,6 @@ public:
     ~AItem() = default;
 
 private:
-
     const ID id_;
     sGeometry geometry_;
     sAtributs atributs_;

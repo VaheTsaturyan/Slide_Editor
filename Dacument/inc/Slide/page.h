@@ -10,7 +10,6 @@
 
 class Page{
 public:
-
     using Iterator = std::unordered_map<ID, std::shared_ptr<AItem>>::iterator;  
     using constIterator = std::unordered_map<ID, std::shared_ptr<AItem>>::const_iterator;
 
@@ -26,7 +25,6 @@ public:
     std::shared_ptr<AItem> find(ID id);
 
 private:
-
     std::unordered_map<ID, std::shared_ptr<AItem>> items;
 
 };

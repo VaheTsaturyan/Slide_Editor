@@ -123,7 +123,7 @@ void AddShape::execute()
                                 getParams().integerArguments[2], 
                                 getParams().integerArguments[3]);
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -136,7 +136,7 @@ bool AddShape ::paramsIsValid(){
 
 bool AddShape::optionsIsValid(){
     auto opt = this->getOptions();
-    if(opt.size() != 4){
+    if(opt.size() != 5){
         return false;
     }
     for(auto el : opt){
@@ -152,6 +152,7 @@ void AddShape::initOptionsMap(){
     this->optionsMap.emplace("y");
     this->optionsMap.emplace("l");
     this->optionsMap.emplace("h");
+    this->optionsMap.emplace("t");
 }
 
 void AddShape::initTypeMap(){
@@ -237,8 +238,8 @@ void MoveVertical::initOptionMap(){
 
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 MoveHorizontal::MoveHorizontal(){
     initOptionMap();
 }
