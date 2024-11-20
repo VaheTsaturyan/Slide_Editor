@@ -16,6 +16,11 @@ void AComand::setEditor(std::shared_ptr<Editor> editor){
     this->editor = editor; 
 }
 
+std::shared_ptr<Editor> AComand::getEditor()
+{
+    return this->editor;
+}
+
 const Options& AComand::getOptions() const{
     return *options;
 }
@@ -28,7 +33,7 @@ const Params &AComand::getParams() const{
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void New::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        editor->newSlide();
+        getEditor()->newSlide();
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -48,7 +53,7 @@ bool New::optionsIsValid()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AddPage::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        editor->addPage(getParams().integerArguments.front());
+        getEditor()->addPage(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -67,7 +72,7 @@ bool AddPage::optionsIsValid(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemovePage::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        editor->removePage(getParams().integerArguments.front());
+        getEditor()->removePage(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -91,7 +96,7 @@ bool RemovePage::optionsIsValid(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void OpenPage::execute(){
     if(optionsIsValid() && paramsIsValid()){
-        editor->openPage(getParams().integerArguments.front());
+        getEditor()->openPage(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -121,7 +126,7 @@ AddShape::AddShape(){
 void AddShape::execute()
 {
     if(optionsIsValid() && paramsIsValid()){
-        editor->addShape( getParams().stringArguments.front(),
+        getEditor()->addShape( getParams().stringArguments.front(),
                                 getParams().integerArguments[0], 
                                 getParams().integerArguments[1], 
                                 getParams().integerArguments[2], 
@@ -175,7 +180,7 @@ void AddShape::initTypeMap(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemoveIthem::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        editor->removeIthem(getParams().integerArguments.front());
+        getEditor()->removeIthem(getParams().integerArguments.front());
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -224,7 +229,7 @@ MoveVertical::MoveVertical(){
 void MoveVertical::execute()
 {
     if(optionsIsValid()&&paramsIsValid()){
-        editor->moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
+        getEditor()->moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -250,7 +255,7 @@ MoveHorizontal::MoveHorizontal(){
 
 void MoveHorizontal::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        editor->moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
+        getEditor()->moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -273,7 +278,7 @@ ChangeIthemLenghth::ChangeIthemLenghth(){
 
 void ChangeIthemLenghth::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        editor->changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
+        getEditor()->changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }
@@ -297,7 +302,7 @@ ChangeIthemHeight::ChangeIthemHeight(){
 
 void ChangeIthemHeight::execute(){
     if(optionsIsValid()&&paramsIsValid()){
-        editor->changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
+        getEditor()->changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
         throw std::runtime_error("CLI: parameters are invalid");
     }

@@ -1,3 +1,0 @@
-/home/vts/repos/Slide_Editor/build/CMakeFiles/SlideEditor.dir
-/home/vts/repos/Slide_Editor/build/CMakeFiles/edit_cache.dir
-/home/vts/repos/Slide_Editor/build/CMakeFiles/rebuild_cache.dir

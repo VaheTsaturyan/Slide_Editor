@@ -27,8 +27,9 @@ public:
     virtual void setParams(std::shared_ptr<Params> params) = 0;
     virtual void setOptions(std::shared_ptr<Options> options) = 0;
     virtual void setEditor(std::shared_ptr<Editor> editor) = 0;
-    virtual const Params& getParams() const = 0;
-    virtual const Options& getOptions() const = 0;
+    virtual const Params& getParams() = 0;
+    virtual const Options& getOptions() = 0;
+    virtual std::shared_ptr<Editor> getEditor() = 0;
 
 };
 
@@ -42,8 +43,9 @@ public:
     void setParams(std::shared_ptr<Params> params) override;
     void setOptions(std::shared_ptr<Options> options) override;
     void setEditor(std::shared_ptr<Editor> editor) override;
-    const Params& getParams() const override;
-    const Options& getOptions() const override;
+    const Params& getParams() override;
+    const Options& getOptions() override;
+    std::shared_ptr<Editor> getEditor()  override;
 
 protected:
     virtual bool paramsIsValid() = 0;

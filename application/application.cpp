@@ -14,4 +14,5 @@ int Application::exec()
     controler->setEditor(editor);
     controler->setSterilizer(sterilizer);
     controler->startProces();
+    return 0;
 }

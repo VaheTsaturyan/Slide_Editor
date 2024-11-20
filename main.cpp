@@ -1,11 +1,10 @@
-#include "./Cantroler/inc/controler.h"
+#include "./application/application.h"
 
 
 #include <iostream>
 
 int main(){
-    Controler controler;
-    controler.startProces();
+    Application application;
 
-    return 0;
+    return application.exec();
 }
