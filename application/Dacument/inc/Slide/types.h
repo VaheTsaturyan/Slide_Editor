@@ -5,7 +5,7 @@
 #include <string>
 #include  <variant>
 
-using Pos = int;
+using Pos = size_t;
 using ID = size_t;
 using textSize = size_t;
 using length = size_t;
@@ -16,7 +16,7 @@ using atrKey = std::string;
 namespace color
 {
     struct sColor{
-        sColor(char red, char green, char blue);
+        sColor(unsigned char red, unsigned char green, unsigned char blue);
         char red;
         char green;
         char blue;
@@ -33,19 +33,26 @@ namespace color
 struct sGeometry{
     sGeometry() = default;
     sGeometry(Pos x_, Pos y_, length len_, length hig_);
+    sGeometry(const sGeometry& other);
+    sGeometry(sGeometry&& other);
     ~sGeometry() = default;
     Pos x;
     Pos y;
     length len;
     length hig;
     sGeometry& operator=(const sGeometry& other);
+    sGeometry& operator=(sGeometry&& other);
 };
 
 
 
 struct sAtributs{
     std::unordered_map<std::string, std::string> map;
-    sAtributs& operator=(sAtributs&&);
+    sAtributs() = default;
+    sAtributs(sAtributs&& other);
+    sAtributs(const sAtributs& other);
+    sAtributs& operator=(sAtributs&& other);
+    sAtributs& operator=(const sAtributs& other);
 };
 
 namespace atr{

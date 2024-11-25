@@ -1,8 +1,9 @@
 #include "comand.h"
-#include "../../../../Dacument/slideMeneger/slideMeneger.h"
+
 
 
 #include <stdexcept>
+#include <algorithm>
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AComand::setParams(std::shared_ptr<Params> params){
     this->params = params;
@@ -16,16 +17,25 @@ void AComand::setEditor(std::shared_ptr<Editor> editor){
     this->editor = editor; 
 }
 
+void AComand::setVisualizer(std::shared_ptr<Visualizer> visual){
+    this->visualizer = visual;
+}
+
 std::shared_ptr<Editor> AComand::getEditor()
 {
     return this->editor;
 }
 
-const Options& AComand::getOptions() const{
+std::shared_ptr<Visualizer> AComand::getVisualizer()
+{
+    return this->visualizer;
+}
+
+Options& AComand::getOptions(){
     return *options;
 }
 
-const Params &AComand::getParams() const{
+Params &AComand::getParams(){
     return *params;
 }
 
@@ -35,7 +45,7 @@ void New::execute(){
     if(optionsIsValid() && paramsIsValid()){
         getEditor()->newSlide();
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -55,7 +65,7 @@ void AddPage::execute(){
     if(optionsIsValid() && paramsIsValid()){
         getEditor()->addPage(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -74,7 +84,7 @@ void RemovePage::execute(){
     if(optionsIsValid() && paramsIsValid()){
         getEditor()->removePage(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -98,7 +108,7 @@ void OpenPage::execute(){
     if(optionsIsValid() && paramsIsValid()){
         getEditor()->openPage(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -123,36 +133,36 @@ AddShape::AddShape(){
     this->initTypeMap();
 }
 
+
+#include <iostream>
 void AddShape::execute()
 {
     if(optionsIsValid() && paramsIsValid()){
-        getEditor()->addShape( getParams().stringArguments.front(),
-                                getParams().integerArguments[0], 
-                                getParams().integerArguments[1], 
-                                getParams().integerArguments[2], 
-                                getParams().integerArguments[3]);
+        getEditor()->addShape( getParams().stringArguments.front(), genereytMapOpsonValue());
     }else{
         throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
-bool AddShape ::paramsIsValid(){
+bool AddShape::paramsIsValid(){
     if( getParams().integerArguments.size() == 4 && getParams().stringArguments.size() == 1 ){
-        return typeMap.find(getParams().stringArguments.front()) != typeMap.end();
+        return (typeMap.find(getParams().stringArguments.front()) != typeMap.end());
     }
     return false;
 }
 
+
 bool AddShape::optionsIsValid(){
-    auto opt = this->getOptions();
+    auto& opt = this->getOptions();
     if(opt.size() != 5){
         return false;
     }
-    for(auto el : opt){
-        if(optionsMap.find(el) == optionsMap.end()){
+    for(auto it = opt.begin(); it != opt.end() ; ++it ){
+        if(optionsMap.find(*it) == optionsMap.end()){
             return false;
         }
     }
+    opt.erase(std::find(opt.begin(), opt.end() , "t"));
     return true;
 }
 
@@ -172,7 +182,19 @@ void AddShape::initTypeMap(){
 }
 
 
+std::unordered_map<std::string, int> AddShape::genereytMapOpsonValue(){
+    auto options = getOptions();
+    auto params = getParams();
+    std::unordered_map<std::string, int> map;
+    if(options.size() != params.integerArguments.size()){
+        throw std::runtime_error("CLI: parameters are invalid\n");
+    }
+    for(int i = 0 ; i < params.integerArguments.size(); ++i){
 
+        map.emplace(options[i], params.integerArguments[i]);
+    }
+    return map;
+}
 
 
 
@@ -182,7 +204,7 @@ void RemoveIthem::execute(){
     if(optionsIsValid()&&paramsIsValid()){
         getEditor()->removeIthem(getParams().integerArguments.front());
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -231,7 +253,7 @@ void MoveVertical::execute()
     if(optionsIsValid()&&paramsIsValid()){
         getEditor()->moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -257,7 +279,7 @@ void MoveHorizontal::execute(){
     if(optionsIsValid()&&paramsIsValid()){
         getEditor()->moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -280,7 +302,7 @@ void ChangeIthemLenghth::execute(){
     if(optionsIsValid()&&paramsIsValid()){
         getEditor()->changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 
@@ -304,7 +326,7 @@ void ChangeIthemHeight::execute(){
     if(optionsIsValid()&&paramsIsValid()){
         getEditor()->changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
     }else{
-        throw std::runtime_error("CLI: parameters are invalid");
+        throw std::runtime_error("CLI: parameters are invalid\n");
     }
 }
 void ChangeIthemHeight::initOptionMap(){
@@ -317,7 +339,87 @@ void ChangeIthemHeight::initOptionMap(){
 }
 
 
+/////////////////////////////////////////////////////////////
+void pushBackPage::execute(){
+    if(optionsIsValid() && paramsIsValid()){
+        getEditor()->pushBackPage();
+    }else{
+        throw std::runtime_error("CLI: parameters are invalid\n");
+    }
+}
+
+bool pushBackPage::paramsIsValid(){
+    return (getParams().integerArguments.empty()) && (getParams().stringArguments.empty());
+}
+
+bool pushBackPage::optionsIsValid(){
+    return  this->getOptions().empty();
+}
 
 
+/*
+    if(optionsIsValid() && paramsIsValid()){
+        getEditor()->addPage(getParams().integerArguments.front());
+    }else{
+        throw std::runtime_error("CLI: parameters are invalid\n");
+    }
+}
+
+bool AddPage::paramsIsValid(){
+    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
+}
+
+bool AddPage::optionsIsValid(){
+    return this->getOptions().size() == 1 && (this->getOptions().front() == "pos" || this->getOptions().front() == "p");
+}
+
+*/
+
+void popBackPage::execute(){
+    if(optionsIsValid() && paramsIsValid()){
+        getEditor()->popBackPage();
+    }else{
+        throw std::runtime_error("CLI: parameters are invalid\n");
+    }
+}
+
+bool popBackPage::paramsIsValid(){
+    return (getParams().integerArguments.empty()) && (getParams().stringArguments.empty());
+}
+
+bool popBackPage::optionsIsValid(){
+    return  this->getOptions().empty();
+}
+
+void printSlide::execute(){   
+    if(optionsIsValid() && paramsIsValid()){
+        getVisualizer()->printSlide();
+    }else{
+        throw std::runtime_error("CLI: parameters are invalid\n");
+    }
+}
+
+bool printSlide::paramsIsValid(){
+    return this->getParams().integerArguments.empty() && this->getParams().stringArguments.empty();
+}
+
+bool printSlide::optionsIsValid(){
+    return this->getOptions().empty();
+}
 
 
+void printPage::execute(){   
+    if(optionsIsValid() && paramsIsValid()){
+        getVisualizer()->printPage(getParams().integerArguments.front());
+    }else{
+        throw std::runtime_error("CLI: parameters are invalid\n");
+    }
+}
+
+bool printPage::paramsIsValid(){
+    return this->getParams().integerArguments.size() == 1 && this->getParams().stringArguments.empty();
+}
+
+bool printPage::optionsIsValid(){
+    return this->getOptions().size() == 1;
+}

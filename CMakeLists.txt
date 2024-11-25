@@ -13,6 +13,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Build types" FORCE)
 
 # Source files
 set(SOURCES
+    main.cpp
     application/application.cpp
     application/Dacument/Editor/editor.cpp
     application/Dacument/Sterializer/Sterializer.cpp
@@ -26,11 +27,13 @@ set(SOURCES
     application/UI/CLI/Parser/src/lexer.cpp
     application/UI/CLI/Parser/src/parser.cpp
     application/UI/CLI/Parser/src/syntaxsAnalizert.cpp
+    application/Visualizetion/visualizer.cpp
+    
 )
 
 # Header files (optional: for IDEs and clarity)
 set(HEADERS
-    application.h
+    application/application.h
     application/Dacument/Editor/editor.h
     application/Dacument/Sterializer/Sterializer.h
     application/Dacument/inc/Slide/item.h
@@ -46,6 +49,7 @@ set(HEADERS
     application/UI/CLI/Parser/inc/lexer.h
     application/UI/CLI/Parser/inc/parser.h
     application/UI/CLI/Parser/inc/syntaxsAnalizer.h
+    application/Visualizetion/visualizer.h
 )
 
 # Add the executable
@@ -54,6 +58,7 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 # Include directories
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/application
     ${CMAKE_SOURCE_DIR}/application/Dacument/inc
     ${CMAKE_SOURCE_DIR}/application/Dacument/Editor
     ${CMAKE_SOURCE_DIR}/application/Dacument/Sterializer
@@ -61,6 +66,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/Cantroler/inc
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/ComandFactory/inc
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/Parser/inc
+    ${CMAKE_SOURCE_DIR}/home/vts/repos/Slide_Editor/application/Visualizetion
 )
 
 # Compiler options for build types

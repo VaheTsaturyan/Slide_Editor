@@ -1,21 +1,13 @@
 #pragma once
 
 #include "types.h"
+#include "../../../../Dacument/Editor/editor.h"
+#include "../../../../Visualizetion/visualizer.h"
 
 
 #include <vector>
 #include <memory>
 #include <unordered_set>
-
-using NameComand = std::string;
-using Options = std::vector<std::string>;
-
-
-struct Params{
-    std::vector<number> integerArguments;
-    std::vector<word> stringArguments;
-    
-}; 
 
 
 
@@ -27,8 +19,10 @@ public:
     virtual void setParams(std::shared_ptr<Params> params) = 0;
     virtual void setOptions(std::shared_ptr<Options> options) = 0;
     virtual void setEditor(std::shared_ptr<Editor> editor) = 0;
-    virtual const Params& getParams() = 0;
-    virtual const Options& getOptions() = 0;
+    virtual void setVisualizer(std::shared_ptr<Visualizer> visual) = 0;
+    virtual Params& getParams() = 0;
+    virtual Options& getOptions() = 0;
+    virtual std::shared_ptr<Visualizer> getVisualizer() = 0;
     virtual std::shared_ptr<Editor> getEditor() = 0;
 
 };
@@ -43,9 +37,11 @@ public:
     void setParams(std::shared_ptr<Params> params) override;
     void setOptions(std::shared_ptr<Options> options) override;
     void setEditor(std::shared_ptr<Editor> editor) override;
-    const Params& getParams() override;
-    const Options& getOptions() override;
+    void setVisualizer(std::shared_ptr<Visualizer> visual) override;
+    Params& getParams() override;
+    Options& getOptions() override;
     std::shared_ptr<Editor> getEditor()  override;
+    std::shared_ptr<Visualizer> getVisualizer() override;
 
 protected:
     virtual bool paramsIsValid() = 0;
@@ -55,6 +51,7 @@ private:
     std::shared_ptr<Editor> editor;
     std::shared_ptr<Params> params;
     std::shared_ptr<Options> options;
+    std::shared_ptr<Visualizer> visualizer;
 
 };
 
@@ -86,6 +83,36 @@ protected:
 
 };
 
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class pushBackPage : public AComand{
+public:
+    void execute() override;
+
+protected:
+    bool paramsIsValid() override;
+    bool optionsIsValid() override;
+
+};
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class popBackPage : public AComand{
+public:
+    void execute() override;
+
+protected:
+    bool paramsIsValid() override;
+    bool optionsIsValid() override;
+
+};
 
 
 
@@ -130,6 +157,7 @@ protected:
 private:
     void initOptionsMap();
     void initTypeMap();
+    std::unordered_map<std::string, int> genereytMapOpsonValue();
 
 private:
     std::unordered_set<std::string> optionsMap;
@@ -215,3 +243,28 @@ private:
 
 };
 
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class printSlide : public AComand{
+public:
+    void execute() override;
+
+protected:
+    bool paramsIsValid() override;
+    bool optionsIsValid() override;
+};
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class printPage : public AComand{
+public:
+    void execute() override;
+
+protected:
+    bool paramsIsValid() override;
+    bool optionsIsValid() override;
+};

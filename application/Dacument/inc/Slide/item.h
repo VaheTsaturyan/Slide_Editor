@@ -1,10 +1,14 @@
 #pragma once
 #include "types.h"
 
+
+
 class AItem{
 public:
     explicit AItem(ID id);
     
+    AItem(const AItem& other);
+
     void setGeometry(const sGeometry& geometry);
     sGeometry& getGeometry();
     ID getID() const;
@@ -14,8 +18,8 @@ public:
     ~AItem() = default;
 
 private:
-    const ID id_;
     sGeometry geometry_;
     sAtributs atributs_;
+    const ID id_;
 
 };

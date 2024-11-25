@@ -1,9 +1,9 @@
-#progam once 
+#pragma once 
 
 
 
-namespace  doc{
+//namespace  doc{
 
-    #include "./slide.h"
+    #include "./Slide/slide.h"
 
-} // namespace  doc
+//} // namespace  doc

@@ -1,9 +1,13 @@
-#include "item.h"
+#include "../inc/Slide/item.h"
+
 
 AItem::AItem(ID id):id_(id){
 }
 
-
+AItem::AItem(const AItem &other):id_(other.id_){
+    this->geometry_ = other.geometry_;
+    this->atributs_ = other.atributs_;
+}
 void AItem::setGeometry(const sGeometry &geometry){
     geometry_ = geometry;
 }

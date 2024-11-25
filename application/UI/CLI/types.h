@@ -3,10 +3,23 @@
 #include <string>
 #include <variant>
 #include <unordered_map>
+#include <vector>
 
 using word = std::string;
 using number = int;
+using NameComand = std::string;
+using Options = std::vector<std::string>;
+
 //using argument = std::string; 
+
+
+
+struct Params{
+    std::vector<number> integerArguments;
+    std::vector<word> stringArguments;
+    
+}; 
+
 
 enum class eTokenType{
     WORD,

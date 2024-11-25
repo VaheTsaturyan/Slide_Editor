@@ -4,8 +4,18 @@ void Controler::setEditor(std::shared_ptr<Editor> editor){
     this->editor = editor;
 }
 
-void Controler::setSterilizer(std::shared_ptr<Sterilizer> sterilizer){
+void Controler::setSterilizer(std::shared_ptr<Sterializer> sterilizer){
     this->sterilizer = sterilizer;
+}
+
+/*
+void Controler::setIstream(std::istream &istrm){
+    this->inputStream = istrm;
+}
+*/
+
+void Controler::setVisualizer(std::shared_ptr<Visualizer> visual){
+    this->visualizer = visual;
 }
 
 void Controler::startProces()
@@ -16,10 +26,11 @@ void Controler::startProces()
             Parser parser;
             parser.input(std::cin);
             parser.parsing();
-            IComand comand = comandFactory.createComand(parser.getComand());
+            IComand& comand = comandFactory.createComand(parser.getComand());
             comand.setParams(parser.getParams());
             comand.setOptions(parser.getOptions());
             comand.setEditor(editor);
+            comand.setVisualizer(this->visualizer);
             comand.execute();
         }
         catch(const std::exception& e){
@@ -39,4 +50,8 @@ void Controler::registrComand(){
     comandFactory.registorComand("changeithemlength", std::make_shared<ChangeIthemLenghth>());          //change ithem length -id -length
     comandFactory.registorComand("changeithemheight", std::make_shared<ChangeIthemHeight>());           //change ithem height -id -height
     comandFactory.registorComand("removeithrm", std::make_shared<RemoveIthem>());                       //remove ithrm -id
+    comandFactory.registorComand("pushbackpage", std::make_shared<pushBackPage>());                     //push back page
+    comandFactory.registorComand("popbackpage", std::make_shared<popBackPage>());                       //pop back page
+    comandFactory.registorComand("printslide", std::make_shared<printSlide>());                         //print slide
+    comandFactory.registorComand("printpage", std::make_shared<printPage>());                           //printPage
 }

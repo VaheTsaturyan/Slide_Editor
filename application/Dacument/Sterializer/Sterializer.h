@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../inc/Slide/slide.h"
+#include "../inc/Slide/slide.h"
 
 
 class Sterializer{

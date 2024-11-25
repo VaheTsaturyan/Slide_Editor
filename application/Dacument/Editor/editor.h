@@ -1,6 +1,8 @@
 #pragma once
 
-#include "../../inc/Slide/slide.h"
+#include "../inc/Slide/slide.h"
+#include "../../UI/CLI/types.h"
+
 
 class Editor{
 public:
@@ -9,11 +11,13 @@ public:
     void newSlide();
     
     void addPage(Pos pos);
+    void pushBackPage();
+    void popBackPage();
     void removePage(Pos pos);
-    void swopPages(Pos first, Pos second);
+    void swapPages(Pos first, Pos second);
     void openPage(Pos pos);
     
-    void addShape(std::string type, Pos x, Pos y, length len, length high);
+    void addShape(std::string type, const std::unordered_map<std::string, int>& paramsMap);
     void removeIthem(ID id);
     
     void moveVertical(ID id, Pos y);
