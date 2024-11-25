@@ -14,8 +14,4 @@ public:
 private:
     std::shared_ptr<Slide> slide;
     std::shared_ptr<Controler> controler;
-    std::shared_ptr<Editor> editor;
-    std::shared_ptr<Sterializer> sterializer;
-    std::shared_ptr<Visualizer> visualizer;
-
 }; 

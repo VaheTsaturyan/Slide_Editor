@@ -6,6 +6,9 @@
 
 class Editor{
 public:
+    static Editor& getEditor();
+
+
     void setSlide(std::shared_ptr<Slide> slide);
 
     void newSlide();
@@ -30,6 +33,9 @@ public:
 
 
 private:
+    Editor() = default;
+
+
     ID genereytId();
     void setPage(std::shared_ptr<Page> page);
 

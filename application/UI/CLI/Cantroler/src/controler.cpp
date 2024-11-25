@@ -1,22 +1,6 @@
 #include "controler.h"
 
-void Controler::setEditor(std::shared_ptr<Editor> editor){
-    this->editor = editor;
-}
 
-void Controler::setSterilizer(std::shared_ptr<Sterializer> sterilizer){
-    this->sterilizer = sterilizer;
-}
-
-/*
-void Controler::setIstream(std::istream &istrm){
-    this->inputStream = istrm;
-}
-*/
-
-void Controler::setVisualizer(std::shared_ptr<Visualizer> visual){
-    this->visualizer = visual;
-}
 
 void Controler::startProces()
 {
@@ -29,8 +13,6 @@ void Controler::startProces()
             IComand& comand = comandFactory.createComand(parser.getComand());
             comand.setParams(parser.getParams());
             comand.setOptions(parser.getOptions());
-            comand.setEditor(editor);
-            comand.setVisualizer(this->visualizer);
             comand.execute();
         }
         catch(const std::exception& e){

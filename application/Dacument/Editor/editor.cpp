@@ -3,10 +3,16 @@
 #include <stdexcept>
 #include <iostream>
 
-void Editor::setSlide(std::shared_ptr<Slide> slide){
-    this->slide_ = slide;
+Editor &Editor::getEditor(){
+    static Editor editor;
+    return editor;
+
 }
 
+void Editor::setSlide(std::shared_ptr<Slide> slide)
+{
+    this->slide_ = slide;
+}
 
 void Editor::newSlide()
 {

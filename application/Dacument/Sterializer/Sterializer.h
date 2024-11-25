@@ -5,8 +5,8 @@
 
 class Sterializer{
 public:
-
+    static Sterializer& getSterilizer();
 private:
-
+    Sterializer() = default;
 
 };

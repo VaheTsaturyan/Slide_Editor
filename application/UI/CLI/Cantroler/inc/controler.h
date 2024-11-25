@@ -11,10 +11,6 @@
 
 class Controler{
 public:
-    void setEditor(std::shared_ptr<Editor> editor);
-    void setSterilizer(std::shared_ptr<Sterializer> sterilizer);
-    //void setIstream(std::istream& istrm);
-    void setVisualizer(std::shared_ptr<Visualizer> visual);
     void startProces();
 
 private:
@@ -22,8 +18,5 @@ private:
 
 private:
     ComandFactory comandFactory;
-    std::shared_ptr<Editor> editor;
-    std::shared_ptr<Sterializer> sterilizer;
-    std::shared_ptr<Visualizer> visualizer;
-    //std::istream inputStream;
+    
 };

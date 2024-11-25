@@ -3,8 +3,13 @@
 #include <iostream>
 #include <iterator>
 
+Visualizer &Visualizer::getVisualizer(){
+    static Visualizer visualizer;
+    return visualizer;
+}
 
-void Visualizer::setSlide(std::shared_ptr<Slide> sld){
+void Visualizer::setSlide(std::shared_ptr<Slide> sld)
+{
     this->slide = sld;
 }
 

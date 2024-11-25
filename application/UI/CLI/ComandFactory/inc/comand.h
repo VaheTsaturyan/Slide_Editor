@@ -18,12 +18,8 @@ public:
     virtual void execute() = 0;
     virtual void setParams(std::shared_ptr<Params> params) = 0;
     virtual void setOptions(std::shared_ptr<Options> options) = 0;
-    virtual void setEditor(std::shared_ptr<Editor> editor) = 0;
-    virtual void setVisualizer(std::shared_ptr<Visualizer> visual) = 0;
     virtual Params& getParams() = 0;
     virtual Options& getOptions() = 0;
-    virtual std::shared_ptr<Visualizer> getVisualizer() = 0;
-    virtual std::shared_ptr<Editor> getEditor() = 0;
 
 };
 
@@ -36,22 +32,16 @@ public:
     virtual ~AComand() override = default;
     void setParams(std::shared_ptr<Params> params) override;
     void setOptions(std::shared_ptr<Options> options) override;
-    void setEditor(std::shared_ptr<Editor> editor) override;
-    void setVisualizer(std::shared_ptr<Visualizer> visual) override;
     Params& getParams() override;
     Options& getOptions() override;
-    std::shared_ptr<Editor> getEditor()  override;
-    std::shared_ptr<Visualizer> getVisualizer() override;
 
 protected:
     virtual bool paramsIsValid() = 0;
     virtual bool optionsIsValid() = 0;
 
 private:
-    std::shared_ptr<Editor> editor;
     std::shared_ptr<Params> params;
     std::shared_ptr<Options> options;
-    std::shared_ptr<Visualizer> visualizer;
 
 };
 
