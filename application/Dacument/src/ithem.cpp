@@ -1,29 +1,29 @@
 #include "../inc/Slide/item.h"
 
 
-AItem::AItem(ID id):id_(id){
+Ithem::Ithem(ID id):id_(id){
 }
 
-AItem::AItem(const AItem &other):id_(other.id_){
+Ithem::Ithem(const Ithem &other):id_(other.id_){
     this->geometry_ = other.geometry_;
     this->atributs_ = other.atributs_;
 }
-void AItem::setGeometry(const sGeometry &geometry){
+void Ithem::setGeometry(const sGeometry &geometry){
     geometry_ = geometry;
 }
 
-sGeometry& AItem::getGeometry(){
+sGeometry& Ithem::getGeometry(){
     return geometry_;
 }
 
-ID AItem::getID() const{
+ID Ithem::getID() const{
     return this->id_;
 }
 
-void AItem::setAtributs(sAtributs&& atributs){
+void Ithem::setAtributs(sAtributs&& atributs){
     atributs_ = std::move(atributs);
 }
 
-sAtributs &AItem::getAtributs(){
+sAtributs &Ithem::getAtributs(){
     return atributs_;
 }

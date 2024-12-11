@@ -7,15 +7,12 @@
 class Visualizer{
 public:
     static Visualizer& getVisualizer();
-    void setSlide(std::shared_ptr<Slide> sld);
-    void printSlide();
-    void printPage(size_t ind);
+    void printSlide(std::shared_ptr<Slide> slide);
+    void printPage(std::shared_ptr<Page> page);
 
 private:
     Visualizer() = default;
 
-private:
-    std::shared_ptr<Slide> slide;
 
 };
 

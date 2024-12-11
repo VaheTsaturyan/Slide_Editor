@@ -3,11 +3,11 @@
 
 
 
-class AItem{
+class Ithem{
 public:
-    explicit AItem(ID id);
+    explicit Ithem(ID id);
     
-    AItem(const AItem& other);
+    Ithem(const Ithem& other);
 
     void setGeometry(const sGeometry& geometry);
     sGeometry& getGeometry();
@@ -15,7 +15,7 @@ public:
     
     void setAtributs(sAtributs&& atributs);
     sAtributs& getAtributs();
-    ~AItem() = default;
+    ~Ithem() = default;
 
 private:
     sGeometry geometry_;

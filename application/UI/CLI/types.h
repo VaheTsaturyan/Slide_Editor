@@ -2,53 +2,60 @@
 
 #include <string>
 #include <variant>
-#include <unordered_map>
 #include <vector>
+#include <unordered_map>
+
 
 using word = std::string;
 using number = int;
 using NameComand = std::string;
-using Options = std::vector<std::string>;
-
-//using argument = std::string; 
-
+using Options = std::string;
+//using Params = std::variant<std::vector<int>, std::vector<string>>;
 
 
 struct Params{
-    std::vector<number> integerArguments;
-    std::vector<word> stringArguments;
-    
+    std::vector<number> vectorInteger;
+    std::vector<word> vectorString;
 }; 
+
+
 
 
 enum class eTokenType{
     WORD,
-    OPTION_NUMBER,
-    OPTION_WORD,
-    ARGUMENT,
-    BADTYPE
+    OPTION,
+    ARGUMENT_NUMBER,
+    ARGUMENT_WORD,
+    COMMA,
+    TEXT,
+    BAD_TYPE
 };
 
 enum class eTokenOrder{
     VALID,
-    //INVALID,
     NULL_TOKEN
 };
 
 enum class eState{
     START,
     CMAND,
-    ARGUMENT,
-    OPTION_WORD,
-    OPTION_NUMBER,
+    OPTION,
+    ARGUMENT_WORD,
+    ARGUMENT_NUMBER,
+    TEXT,
     DEAD_STATE
 };
 
 
+
+
+
 struct sToken{
     eTokenType tokenType;
-    std::variant<number, word> tokenContent;
+    std::variant<int, std::string> tokenContent;
 };
+
+
 
 
 

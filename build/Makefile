@@ -129,6 +129,30 @@ Application/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/build
 .PHONY : Application/fast
 
+application/Dacument/Editor/Action.o: application/Dacument/Editor/Action.cpp.o
+.PHONY : application/Dacument/Editor/Action.o
+
+# target to build an object file
+application/Dacument/Editor/Action.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o
+.PHONY : application/Dacument/Editor/Action.cpp.o
+
+application/Dacument/Editor/Action.i: application/Dacument/Editor/Action.cpp.i
+.PHONY : application/Dacument/Editor/Action.i
+
+# target to preprocess a source file
+application/Dacument/Editor/Action.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.i
+.PHONY : application/Dacument/Editor/Action.cpp.i
+
+application/Dacument/Editor/Action.s: application/Dacument/Editor/Action.cpp.s
+.PHONY : application/Dacument/Editor/Action.s
+
+# target to generate assembly for a file
+application/Dacument/Editor/Action.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.s
+.PHONY : application/Dacument/Editor/Action.cpp.s
+
 application/Dacument/Editor/editor.o: application/Dacument/Editor/editor.cpp.o
 .PHONY : application/Dacument/Editor/editor.o
 
@@ -498,6 +522,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Application"
+	@echo "... application/Dacument/Editor/Action.o"
+	@echo "... application/Dacument/Editor/Action.i"
+	@echo "... application/Dacument/Editor/Action.s"
 	@echo "... application/Dacument/Editor/editor.o"
 	@echo "... application/Dacument/Editor/editor.i"
 	@echo "... application/Dacument/Editor/editor.s"

@@ -1,394 +1,482 @@
 #include "comand.h"
 
-
+#include "../../../../Dacument/Editor/editor.h"
 
 #include <stdexcept>
 #include <algorithm>
+#include <../../../../application.h>
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void AComand::setParams(std::shared_ptr<Params> params){
-    this->params = params;
+void AComand::setOptionValue(std::shared_ptr<std::unordered_map<Options, Params>> optionsValue){
+    this->optionMap = optionsValue;
 }
 
-void AComand::setOptions(std::shared_ptr<Options> options){
-    this->options = options;
+std::unordered_map<Options, Params> &AComand::getOptionValue(){
+    return *optionMap;
 }
 
 
-Options& AComand::getOptions(){
-    return *options;
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Undo::execute(){
+    if(isOptionsValid()){
+        Editor::getEditor().undo();
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
 }
 
-Params &AComand::getParams(){
-    return *params;
+std::shared_ptr<IComand> Undo::returnCopy(){
+    return std::make_shared<Undo>();
 }
+
+bool Undo::isOptionsValid(){
+    return getOptionValue().empty();
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Redo::execute(){
+    if(isOptionsValid()){
+        Editor::getEditor().redo();
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> Redo::returnCopy(){
+    return std::make_shared<Redo>();
+}
+
+bool Redo::isOptionsValid(){
+    return getOptionValue().empty();
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void New::execute(){
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().newSlide();
+    if(isOptionsValid()){
+        std::shared_ptr<Page> newPage = std::make_shared<Page>();
+        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        Editor::getEditor().proces(std::make_shared<act::PushBack>(slide, newPage));        
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-bool New::paramsIsValid(){
-    return getParams().integerArguments.empty() && getParams().stringArguments.empty();
+std::shared_ptr<IComand> New::returnCopy(){
+    return std::make_shared<New>();
 }
 
-bool New::optionsIsValid()
-{
-    return this->getOptions().empty();
+bool New::isOptionsValid(){
+    return getOptionValue().empty();
 }
 
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AddPage::execute(){
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().addPage(getParams().integerArguments.front());
+    if(isOptionsValid()){
+        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Page> newPage = std::make_shared<Page>();
+        Editor::getEditor().proces(std::make_shared<act::AddPage>(slide, pos, newPage));
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-bool AddPage::paramsIsValid(){
-    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
+std::shared_ptr<IComand> AddPage::returnCopy(){
+    return std::make_shared<AddPage>();
 }
 
-bool AddPage::optionsIsValid(){
-    return this->getOptions().size() == 1 && (this->getOptions().front() == "pos" || this->getOptions().front() == "p");
-}
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void RemovePage::execute(){
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().removePage(getParams().integerArguments.front());
-    }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
-    }
-}
-
-bool RemovePage::paramsIsValid()
-{
-    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
-}
-
-
-bool RemovePage::optionsIsValid(){
-    return this->getOptions().size() == 1 && (this->getOptions().front() == "pos" || this->getOptions().front() == "p");
-}
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void OpenPage::execute(){
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().openPage(getParams().integerArguments.front());
-    }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
-    }
-}
-
-bool OpenPage::paramsIsValid()
-{
-    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
-}
-
-bool OpenPage::optionsIsValid(){
-    return this->getOptions().size() == 1 && (this->getOptions().front() == "pos" || this->getOptions().front() == "p");
-}
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-AddShape::AddShape(){
-    this->initOptionsMap();
-    this->initTypeMap();
-}
-
-
-#include <iostream>
-void AddShape::execute()
-{
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().addShape( getParams().stringArguments.front(), genereytMapOpsonValue());
-    }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
-    }
-}
-
-bool AddShape::paramsIsValid(){
-    if( getParams().integerArguments.size() == 4 && getParams().stringArguments.size() == 1 ){
-        return (typeMap.find(getParams().stringArguments.front()) != typeMap.end());
-    }
-    return false;
-}
-
-
-bool AddShape::optionsIsValid(){
-    auto& opt = this->getOptions();
-    if(opt.size() != 5){
+bool AddPage::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
         return false;
     }
-    for(auto it = opt.begin(); it != opt.end() ; ++it ){
-        if(optionsMap.find(*it) == optionsMap.end()){
-            return false;
+    auto option = this->getOptionValue().find(std::string("pos"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
         }
     }
-    opt.erase(std::find(opt.begin(), opt.end() , "t"));
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->pos = option->second.vectorInteger.front();
     return true;
 }
 
-void AddShape::initOptionsMap(){
-    this->optionsMap.emplace("x");
-    this->optionsMap.emplace("y");
-    this->optionsMap.emplace("l");
-    this->optionsMap.emplace("h");
-    this->optionsMap.emplace("t");
-}
-
-void AddShape::initTypeMap(){
-    this->typeMap.emplace("rectangle");
-    this->typeMap.emplace("ellipse");
-    this->typeMap.emplace("r");
-    this->typeMap.emplace("e");
-}
-
-
-std::unordered_map<std::string, int> AddShape::genereytMapOpsonValue(){
-    auto options = getOptions();
-    auto params = getParams();
-    std::unordered_map<std::string, int> map;
-    if(options.size() != params.integerArguments.size()){
-        throw std::runtime_error("CLI: parameters are invalid\n");
-    }
-    for(int i = 0 ; i < params.integerArguments.size(); ++i){
-
-        map.emplace(options[i], params.integerArguments[i]);
-    }
-    return map;
-}
 
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void RemoveIthem::execute(){
-    if(optionsIsValid()&&paramsIsValid()){
-        Editor::getEditor().removeIthem(getParams().integerArguments.front());
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void PushBackPage::execute(){
+    if(isOptionsValid()){
+        std::shared_ptr<Page> newPage = std::make_shared<Page>();
+        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        Editor::getEditor().proces(std::make_shared<act::PushBack>(slide, newPage)); 
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-bool RemoveIthem::optionsIsValid(){
-    return this->getOptions().size() == 1 && (this->getOptions().front() == "id" || this->getOptions().front() == "i");
-}
-bool RemoveIthem::paramsIsValid()
-{
-    return (getParams().integerArguments.size() == 1) && (getParams().stringArguments.empty());
+std::shared_ptr<IComand> PushBackPage::returnCopy(){
+    return std::make_shared<PushBackPage>();
 }
 
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool AChangeIthemGeometry::paramsIsValid(){
-    return (getParams().integerArguments.size() == 2) && (getParams().stringArguments.empty());
+bool PushBackPage::isOptionsValid(){    
+    return getOptionValue().empty();
 }
 
-bool AChangeIthemGeometry::optionsIsValid(){
-    auto options = getOptions();
-    if(options.size() == 2){
-        for(auto el : options){
-            if(optionsMap.find(el) == optionsMap.end()){
-                return false;
-            }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void PopBackPage::execute(){
+    if(isOptionsValid()){
+        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        Editor::getEditor().proces(std::make_shared<act::PoPBack>(slide)); 
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> PopBackPage::returnCopy(){
+    return std::make_shared<PopBackPage>();
+}
+
+bool PopBackPage::isOptionsValid(){
+    return getOptionValue().empty();
+}
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void RemovePage::execute(){
+    if(isOptionsValid()){
+        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Page> newPage = std::make_shared<Page>();
+
+        Editor::getEditor().proces(std::make_shared<act::RemovePage>(slide, pos));
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> RemovePage::returnCopy(){
+    return std::make_shared<RemovePage>();
+}
+
+bool RemovePage::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("pos"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
         }
-        return true;
     }
-    return false;
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->pos = option->second.vectorInteger.front();
+    return true;
 }
 
 
 
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MoveVertical::MoveVertical(){
-    initOptionMap();
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void OpenPage::execute(){
+    if(isOptionsValid()){
+        Application::getAplication().openPage(pos);
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
 }
 
-void MoveVertical::execute()
+std::shared_ptr<IComand> OpenPage::returnCopy()
 {
-    if(optionsIsValid()&&paramsIsValid()){
-        Editor::getEditor().moveVertical(getParams().integerArguments[0], getParams().integerArguments[1]);
+    return std::make_shared<OpenPage>();
+}
+
+bool OpenPage::isOptionsValid(){    
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("pos"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->pos = option->second.vectorInteger.front();
+    return true;
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void SwapPage::execute(){
+    if(isOptionsValid()){
+        
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
+std::shared_ptr<IComand> SwapPage::returnCopy(){
+    return std::make_shared<SwapPage>();
+}
 
-void MoveVertical::initOptionMap(){
- 
-    optionsMap.emplace("down");
-    optionsMap.emplace("up");
-    optionsMap.emplace("id");
-    optionsMap.emplace("d");
-    optionsMap.emplace("u");
-    optionsMap.emplace("i");
-
+bool SwapPage::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("pos"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorInteger.size() != 2){
+        return false;
+    }
+    this->vecInt = std::move(option->second.vectorInteger);
+    return true;
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-MoveHorizontal::MoveHorizontal(){
-    initOptionMap();
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void AddShape::execute(){
+    if(isOptionsValid()){
+        //...
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
 }
 
+std::shared_ptr<IComand> AddShape::returnCopy(){
+    return std::make_shared<AddShape>();
+}
+
+bool AddShape::isOptionsValid(){
+    std::unordered_map<Options, Params>& optionValuMap = getOptionValue();
+    auto option = optionValuMap.find("g");
+    if(option == optionValuMap.end()){
+        option = optionValuMap.fin("gemetry")
+        if(option == optionValuMap.end()){
+
+            
+        }
+    }
+}
+
+bool AddShape::ifIsOptionGeometry(){
+    
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void RemoveIthem::execute(){
+    if(isOptionsValid()){
+        std::shared_ptr<Page> page = Application::getAplication().getPage();
+        Editor::getEditor().proces(std::make_shared<act::RemoveIthem>(page, id));
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> RemoveIthem::returnCopy(){
+    return std::make_shared<RemoveIthem>();
+}
+
+bool RemoveIthem::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("id"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("i"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->id = option->second.vectorInteger.front();
+    return true;
+}
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool AChangeIthemGeometry::isOptionsValid(){
+    if(getOptionValue().size()!= 2){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("id"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("i"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->id = option->second.vectorInteger.front();
+    option = this->getOptionValue().find(std::string("d"));
+    if(option == this->getOptionValue().end()){
+        return false;    
+    }
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->changeSize = option->second.vectorInteger.front();
+    return true;
+}
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void MoveVertical::execute(){
+    if(isOptionsValid()){
+        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        sGeometry geometry = ithem.getGeometry(); 
+        geometry.y = geometry.y + changeSize;
+        Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> MoveVertical::returnCopy(){
+    return std::make_shared<MoveVertical>();
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void MoveHorizontal::execute(){
-    if(optionsIsValid()&&paramsIsValid()){
-        Editor::getEditor().moveHorizontal(getParams().integerArguments[0], getParams().integerArguments[1]);
+    if(isOptionsValid()){
+        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        sGeometry geometry = ithem.getGeometry(); 
+        geometry.x = geometry.x + changeSize;
+        Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-void MoveHorizontal::initOptionMap(){
-    optionsMap.emplace("right");
-    optionsMap.emplace("left");
-    optionsMap.emplace("id");
-    optionsMap.emplace("r");
-    optionsMap.emplace("l");
-    optionsMap.emplace("i");
+std::shared_ptr<IComand> MoveHorizontal::returnCopy(){
+    return std::make_shared<MoveHorizontal>();
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ChangeIthemLenghth::ChangeIthemLenghth(){
-    initOptionMap();
-}
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ChangeIthemLenghth::execute(){
-    if(optionsIsValid()&&paramsIsValid()){
-        Editor::getEditor().changeIthemLength(getParams().integerArguments[0], getParams().integerArguments[1]);
+    if(isOptionsValid()){
+        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        sGeometry geometry = ithem.getGeometry(); 
+        geometry.len = geometry.len + changeSize;
+        Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-void ChangeIthemLenghth::initOptionMap(){
-    optionsMap.emplace("add");
-    optionsMap.emplace("left");
-    optionsMap.emplace("id");
-    optionsMap.emplace("r");
-    optionsMap.emplace("l");
-    optionsMap.emplace("i");    
+std::shared_ptr<IComand> ChangeIthemLenghth::returnCopy(){
+    return std::make_shared<ChangeIthemLenghth>();
 }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ChangeIthemHeight::ChangeIthemHeight(){
-    initOptionMap();
-}
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ChangeIthemHeight::execute(){
-    if(optionsIsValid()&&paramsIsValid()){
-        Editor::getEditor().changeIthemHeight(getParams().integerArguments[0], getParams().integerArguments[1]);
+    if(isOptionsValid()){
+        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        sGeometry geometry = ithem.getGeometry(); 
+        geometry.hig = geometry.hig + changeSize;
+        Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
-    }
-}
-void ChangeIthemHeight::initOptionMap(){
-    optionsMap.emplace("right");
-    optionsMap.emplace("left");
-    optionsMap.emplace("id");
-    optionsMap.emplace("r");
-    optionsMap.emplace("l");
-    optionsMap.emplace("i");
-}
-
-
-/////////////////////////////////////////////////////////////
-void pushBackPage::execute(){
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().pushBackPage();
-    }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-bool pushBackPage::paramsIsValid(){
-    return (getParams().integerArguments.empty()) && (getParams().stringArguments.empty());
-}
-
-bool pushBackPage::optionsIsValid(){
-    return  this->getOptions().empty();
+std::shared_ptr<IComand> ChangeIthemHeight::returnCopy(){
+    return std::make_shared<ChangeIthemHeight>();
 }
 
 
-////////////////////////////////////////////////////////////////////
-void popBackPage::execute(){
-    if(optionsIsValid() && paramsIsValid()){
-        Editor::getEditor().popBackPage();
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void PrintSlide::execute(){
+    Visualizer::getVisualizer().printSlide(Application::getAplication().getSlide());
+}
+
+std::shared_ptr<IComand> PrintSlide::returnCopy(){
+    return std::make_shared<PrintSlide>();
+}
+
+bool PrintSlide::isOptionsValid()
+{
+    return getOptionValue().empty();
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void PrintPage::execute(){
+    if(isOptionsValid()){
+        Visualizer::getVisualizer().printPage(Application::getAplication().getPage());
     }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+        throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
-bool popBackPage::paramsIsValid(){
-    return (getParams().integerArguments.empty()) && (getParams().stringArguments.empty());
+std::shared_ptr<IComand> PrintPage::returnCopy(){
+    return std::make_shared<PrintPage>();
 }
 
-bool popBackPage::optionsIsValid(){
-    return  this->getOptions().empty();
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
-void printSlide::execute(){   
-    if(optionsIsValid() && paramsIsValid()){
-        Visualizer::getVisualizer().printSlide();
-    }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+bool PrintPage::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
     }
-}
-
-bool printSlide::paramsIsValid(){
-    return this->getParams().integerArguments.empty() && this->getParams().stringArguments.empty();
-}
-
-bool printSlide::optionsIsValid(){
-    return this->getOptions().empty();
-}
-
-
-void printPage::execute(){   
-    if(optionsIsValid() && paramsIsValid()){
-        Visualizer::getVisualizer().printPage(getParams().integerArguments.front());
-    }else{
-        throw std::runtime_error("CLI: parameters are invalid\n");
+    auto option = this->getOptionValue().find(std::string("pos"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
     }
-}
-
-bool printPage::paramsIsValid(){
-    return this->getParams().integerArguments.size() == 1 && this->getParams().stringArguments.empty();
-}
-
-bool printPage::optionsIsValid(){
-    return this->getOptions().size() == 1;
+    if(option->second.vectorInteger.size() != 1){
+        return false;
+    }
+    this->pos = option->second.vectorInteger.front();
+    return true;
 }

@@ -7,9 +7,28 @@ Application::Application(){
 
 }
 
+Application &Application::getAplication(){
+    static Application aplication;
+    return aplication;
+}
+
 int Application::exec(){
-    Editor::getEditor().setSlide(slide);
-    Visualizer::getVisualizer().setSlide(slide);
     controler->startProces();
     return 0;
 }
+
+std::shared_ptr<Slide> Application::getSlide(){
+    return this->slide;
+}
+
+std::shared_ptr<Page> Application::getPage(){
+    return this->page;
+}
+
+void Application::openPage(Pos pos){
+    if(pos > slide->getPageCount()){
+        throw std::runtime_error("CLI: Unable to add page with specified index");
+    }
+    this->page = *(std::next(slide->begin(), pos));
+}
+

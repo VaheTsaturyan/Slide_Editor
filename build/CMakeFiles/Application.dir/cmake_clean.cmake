@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "Application"
   "Application.pdb"
+  "CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o"
+  "CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o.d"
   "CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.o"
   "CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.o.d"
   "CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o"

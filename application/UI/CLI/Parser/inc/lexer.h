@@ -5,7 +5,7 @@
 #include <istream>
 #include <string>
 #include <vector>
-
+#include <sstream>
 
 
 class Lexer{
@@ -14,21 +14,23 @@ public:
     void lexerAnaliz();
     sToken getToken();
     eTokenOrder getTokenOrder();
-    void zeroState();
 
 private:
     void convert_String_to_Token();
     eTokenType returnTokenType();
     void conversInputStringToStringVector();
+    void margeStringVector();
     bool isWord();
-    bool isOptionNumber();
-    bool isOptionWord();
-    bool isArgument();
+    bool isText();
+    bool isArgumentNumber();
+    bool isArgumentWord();
+    bool isOption();
+    bool isComma();
 
 private:
+    std::vector<std::string> strings;
     std::string inputStr;
     std::string str;
-    std::vector<std::string> strings;
     sToken token;
     eTokenOrder tokeValidFactor;
 

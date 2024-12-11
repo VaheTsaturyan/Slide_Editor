@@ -4,7 +4,7 @@
 #include <iostream>
 
 int main(){
-    Application application;
+    Application& application = Application::getAplication();
 
     return application.exec();
 }

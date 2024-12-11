@@ -2,38 +2,32 @@
 
 #include <stdexcept>
 
-#include <iostream>
-Page::Iterator Page::begin()
-{
+Page::Iterator Page::begin(){
     return items.begin();
 }
 
-Page::Iterator Page::end()
-{
+Page::Iterator Page::end(){
     return items.end();
 }
 
-Page::constIterator Page::cBegin()
-{
+Page::constIterator Page::cBegin(){
     return items.cbegin();
 }
 
-Page::constIterator Page::cEnd()
-{
+Page::constIterator Page::cEnd(){
     return items.cend();
 }
 
-void Page::addIthem(AItem& ithem){
+void Page::addIthem(Ithem& ithem){
     items.emplace(ithem.getID(), ithem);
 }
 
 
-void Page::removeIthem(ID id)
-{
+void Page::removeIthem(ID id){
     items.erase(id);
 }
 
-AItem& Page::find(ID id){
+Ithem& Page::find(ID id){
     auto findResult = items.find(id);
     if(findResult == items.end()){
         throw std::runtime_error("CLI: No element with this ID found on this page\n");

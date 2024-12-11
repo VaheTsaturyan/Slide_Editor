@@ -111,10 +111,24 @@ CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vts/repos/Slide_Editor/application/Dacument/Editor/editor.cpp -o CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.s
 
+CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o: CMakeFiles/Application.dir/flags.make
+CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o: ../application/Dacument/Editor/Action.cpp
+CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o -MF CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o.d -o CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o -c /home/vts/repos/Slide_Editor/application/Dacument/Editor/Action.cpp
+
+CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vts/repos/Slide_Editor/application/Dacument/Editor/Action.cpp > CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.i
+
+CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vts/repos/Slide_Editor/application/Dacument/Editor/Action.cpp -o CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.s
+
 CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o: ../application/Dacument/Sterializer/Sterializer.cpp
 CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o -MF CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o.d -o CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o -c /home/vts/repos/Slide_Editor/application/Dacument/Sterializer/Sterializer.cpp
 
 CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.s: c
 CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o: ../application/Dacument/src/ithem.cpp
 CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o -MF CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o.d -o CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o -c /home/vts/repos/Slide_Editor/application/Dacument/src/ithem.cpp
 
 CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.s: cmake_force
 CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o: ../application/Dacument/src/page.cpp
 CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o -MF CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o.d -o CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o -c /home/vts/repos/Slide_Editor/application/Dacument/src/page.cpp
 
 CMakeFiles/Application.dir/application/Dacument/src/page.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/Application.dir/application/Dacument/src/page.cpp.s: cmake_force
 CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o: ../application/Dacument/src/slide.cpp
 CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o -MF CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o.d -o CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o -c /home/vts/repos/Slide_Editor/application/Dacument/src/slide.cpp
 
 CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.s: cmake_force
 CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o: ../application/Dacument/src/types.cpp
 CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o -MF CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o.d -o CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o -c /home/vts/repos/Slide_Editor/application/Dacument/src/types.cpp
 
 CMakeFiles/Application.dir/application/Dacument/src/types.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/Application.dir/application/Dacument/src/types.cpp.s: cmake_force
 CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o: ../application/UI/CLI/Cantroler/src/controler.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/src/controler.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.s: cma
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o: ../application/UI/CLI/ComandFactory/src/ComandCreate.cpp
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/src/ComandCreate.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: ../application/UI/CLI/ComandFactory/src/comand.cpp
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/src/comand.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.s: cm
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: ../application/UI/CLI/Parser/src/lexer.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Parser/src/lexer.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.s: cmake_forc
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: ../application/UI/CLI/Parser/src/parser.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Parser/src/parser.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.i: cmake_force
@@ -254,7 +268,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.s: cmake_for
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: ../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.i: cmake_force
@@ -268,7 +282,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.s:
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o: ../application/Visualizetion/visualizer.cpp
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o -MF CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o.d -o CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o -c /home/vts/repos/Slide_Editor/application/Visualizetion/visualizer.cpp
 
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.i: cmake_force
@@ -284,6 +298,7 @@ Application_OBJECTS = \
 "CMakeFiles/Application.dir/main.cpp.o" \
 "CMakeFiles/Application.dir/application/application.cpp.o" \
 "CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.o" \
+"CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o" \
 "CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o" \
 "CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o" \
 "CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o" \
@@ -303,6 +318,7 @@ Application_EXTERNAL_OBJECTS =
 Application: CMakeFiles/Application.dir/main.cpp.o
 Application: CMakeFiles/Application.dir/application/application.cpp.o
 Application: CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.o
+Application: CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o
 Application: CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o
 Application: CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o
 Application: CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o
@@ -317,7 +333,7 @@ Application: CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAna
 Application: CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o
 Application: CMakeFiles/Application.dir/build.make
 Application: CMakeFiles/Application.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable Application"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable Application"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Application.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

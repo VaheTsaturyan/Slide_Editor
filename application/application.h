@@ -8,10 +8,22 @@
 
 class Application{
 public:
-    Application();
+    static Application& getAplication();    
     int exec();
-    
+    std::shared_ptr<Slide> getSlide();
+    std::shared_ptr<Page> getPage();
+
+    void openPage(Pos pos);
+
+private:    
+    Application();
+    Application(const Application&) = delete;
+    Application(Application&&) = delete;
+    Application& operator=(const Application&) = delete;
+    Application& operator=(Application&&) = delete;
+
 private:
     std::shared_ptr<Slide> slide;
+    std::shared_ptr<Page> page;
     std::shared_ptr<Controler> controler;
 }; 

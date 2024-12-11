@@ -2,14 +2,34 @@
 
 #include "../inc/Slide/slide.h"
 #include "../../UI/CLI/types.h"
+#include "Action.h"
 
+#include <stack>
 
 class Editor{
 public:
     static Editor& getEditor();
+    
+    void proces(std::shared_ptr<act::IAction> action);
+    void undo();
+    void redo();
+
+private:
+    Editor() = default;
+
+    ID genereytId();
+
+private:
+    std::stack<std::shared_ptr<act::IAction>> undo_;
+    std::stack<std::shared_ptr<act::IAction>> redo_;
+    ID ithemCaont = 0;
+
+};
+
+/*
 
 
-    void setSlide(std::shared_ptr<Slide> slide);
+
 
     void newSlide();
     
@@ -31,17 +51,4 @@ public:
     void changeIthemColor(ID id, color::sColor color);
     
 
-
-private:
-    Editor() = default;
-
-
-    ID genereytId();
-    void setPage(std::shared_ptr<Page> page);
-
-private:    
-    std::shared_ptr<Slide> slide_;
-    std::shared_ptr<Page> page_;
-    ID ithemCaont = 0;
-
-};
+*/

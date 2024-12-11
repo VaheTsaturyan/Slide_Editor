@@ -1,8 +1,9 @@
-CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o: \
- /home/vts/repos/Slide_Editor/application/Dacument/src/slide.cpp \
+CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o: \
+ /home/vts/repos/Slide_Editor/application/Dacument/Editor/Action.cpp \
  /usr/include/stdc-predef.h \
- /home/vts/repos/Slide_Editor/application/Dacument/src/../inc/Slide/slide.h \
- /home/vts/repos/Slide_Editor/application/Dacument/src/../inc/Slide/types.h \
+ /home/vts/repos/Slide_Editor/application/Dacument/Editor/Action.h \
+ /home/vts/repos/Slide_Editor/application/Dacument/Editor/../inc/Slide/slide.h \
+ /home/vts/repos/Slide_Editor/application/Dacument/Editor/../inc/Slide/types.h \
  /usr/include/c++/11/cstddef \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -143,8 +144,8 @@ CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o: \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc /usr/include/c++/11/variant \
  /usr/include/c++/11/bits/parse_numbers.h \
- /home/vts/repos/Slide_Editor/application/Dacument/src/../inc/Slide/page.h \
- /home/vts/repos/Slide_Editor/application/Dacument/src/../inc/Slide/item.h \
+ /home/vts/repos/Slide_Editor/application/Dacument/Editor/../inc/Slide/page.h \
+ /home/vts/repos/Slide_Editor/application/Dacument/Editor/../inc/Slide/item.h \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
@@ -163,22 +164,4 @@ CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/list \
- /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
- /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
- /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
- /usr/include/c++/11/bits/locale_classes.h \
- /usr/include/c++/11/bits/locale_classes.tcc \
- /usr/include/c++/11/system_error \
- /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
- /usr/include/c++/11/stdexcept /usr/include/c++/11/streambuf \
- /usr/include/c++/11/bits/streambuf.tcc \
- /usr/include/c++/11/bits/basic_ios.h \
- /usr/include/c++/11/bits/locale_facets.h /usr/include/c++/11/cwctype \
- /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
- /usr/include/c++/11/bits/streambuf_iterator.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
- /usr/include/c++/11/bits/locale_facets.tcc \
- /usr/include/c++/11/bits/basic_ios.tcc \
- /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc
+ /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc

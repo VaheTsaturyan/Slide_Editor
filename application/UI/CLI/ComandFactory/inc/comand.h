@@ -16,10 +16,9 @@ class IComand{
 public:
     virtual ~IComand() = default;
     virtual void execute() = 0;
-    virtual void setParams(std::shared_ptr<Params> params) = 0;
-    virtual void setOptions(std::shared_ptr<Options> options) = 0;
-    virtual Params& getParams() = 0;
-    virtual Options& getOptions() = 0;
+    virtual void setOptionValue(std::shared_ptr<std::unordered_map<Options, Params>> optionsValue) = 0;
+    virtual std::shared_ptr<IComand> returnCopy() = 0;
+    virtual std::unordered_map<Options, Params>& getOptionValue() = 0;
 
 };
 
@@ -29,34 +28,50 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class AComand : public IComand{
 public:
-    virtual ~AComand() override = default;
-    void setParams(std::shared_ptr<Params> params) override;
-    void setOptions(std::shared_ptr<Options> options) override;
-    Params& getParams() override;
-    Options& getOptions() override;
+    void setOptionValue(std::shared_ptr<std::unordered_map<Options, Params>> optionsValue) override;
+    std::unordered_map<Options, Params>& getOptionValue() override;
 
 protected:
-    virtual bool paramsIsValid() = 0;
-    virtual bool optionsIsValid() = 0;
+    virtual bool isOptionsValid() = 0;
 
 private:
-    std::shared_ptr<Params> params;
-    std::shared_ptr<Options> options;
+    std::shared_ptr<std::unordered_map<Options, Params>> optionMap;
 
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Undo : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
+protected:
+    bool isOptionsValid() override;
+ 
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Redo : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
+ 
+};
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class New : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
-protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
-
+protected:  
+    bool isOptionsValid() override;
+ 
 };
 
 
@@ -66,10 +81,13 @@ protected:
 class AddPage : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid() override;
+
+private:
+    Pos pos;
 
 };
 
@@ -78,13 +96,13 @@ protected:
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class pushBackPage : public AComand{
+class PushBackPage : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid() override;
 
 };
 
@@ -94,13 +112,13 @@ protected:
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class popBackPage : public AComand{
+class PopBackPage : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid() override;
 
 };
 
@@ -110,10 +128,13 @@ protected:
 class RemovePage : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid() override;
+
+private:
+    Pos pos;
 
 };
 
@@ -124,10 +145,29 @@ protected:
 class OpenPage : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid() override;
+
+private:
+    Pos pos;
+};
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class SwapPage : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
+
+private:
+    std::vector<int> vecInt;
 
 };
 
@@ -137,21 +177,13 @@ protected:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class AddShape : public AComand{
 public:
-    AddShape();
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
-
+    bool isOptionsValid() override;
+    bool ifIsOptionGeometry();
 private:
-    void initOptionsMap();
-    void initTypeMap();
-    std::unordered_map<std::string, int> genereytMapOpsonValue();
-
-private:
-    std::unordered_set<std::string> optionsMap;
-    std::unordered_set<std::string> typeMap;
 
 };
 
@@ -161,10 +193,13 @@ private:
 class RemoveIthem : public AComand{
 public:
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
 
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid() override;
+
+private:
+    ID id;
 
 };
 
@@ -177,11 +212,11 @@ protected:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class AChangeIthemGeometry : public AComand{
 protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
+    bool isOptionsValid();
 
 protected:
-    std::unordered_set<std::string> optionsMap;   
+    ID id;
+    int changeSize;
 
 };
 
@@ -189,11 +224,8 @@ protected:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MoveVertical : public AChangeIthemGeometry{
 public:
-    MoveVertical();
     void execute() override;
-
-private:
-    void initOptionMap();
+    std::shared_ptr<IComand> returnCopy() override;
 
 };
 
@@ -201,11 +233,8 @@ private:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MoveHorizontal : public AChangeIthemGeometry{
 public:
-    MoveHorizontal();
     void execute() override;
-
-private:
-    void initOptionMap();
+    std::shared_ptr<IComand> returnCopy() override;
 
 };
 
@@ -213,11 +242,8 @@ private:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class ChangeIthemLenghth : public AChangeIthemGeometry{
 public:
-    ChangeIthemLenghth();
     void execute() override;
-
-private:
-    void initOptionMap();
+    std::shared_ptr<IComand> returnCopy() override;
 
 };
 
@@ -225,36 +251,38 @@ private:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class ChangeIthemHeight : public AChangeIthemGeometry{
 public:
-    ChangeIthemHeight();
     void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+};
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class PrintSlide : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
+
+};
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class PrintPage : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
 
 private:
-    void initOptionMap();
+    Pos pos;
 
-};
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class printSlide : public AComand{
-public:
-    void execute() override;
-
-protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
-};
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class printPage : public AComand{
-public:
-    void execute() override;
-
-protected:
-    bool paramsIsValid() override;
-    bool optionsIsValid() override;
 };

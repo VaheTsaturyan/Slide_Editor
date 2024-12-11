@@ -36,13 +36,14 @@ size_t Slide::getPageCount(){
 
 
 std::shared_ptr<Page>& Slide::getPage(Pos ind){
-    return pages.at(ind);
+    
+    return *(std::next(pages.begin(), ind));
 }
 
 
 #include <iostream>
-void Slide::pushBackPage(){
-    this->pages.emplace_back(std::make_shared<Page>());
+void Slide::pushBackPage(std::shared_ptr<Page> page){
+    this->pages.push_back(page);
     //std::cout<<this->pages.front()->i<<"bachwdkabdkjabwdj\n";
 }
 
@@ -50,14 +51,14 @@ void Slide::popBackPage(){
     pages.pop_back();
 }
 
-void Slide::insertPage(Iterator it){
-    pages.emplace(it, std::make_shared<Page>());
+void Slide::insertPage(Iterator it, std::shared_ptr<Page> page){
+    pages.insert(it, page);
 }
 
 void Slide::removePage(Iterator it){
     pages.erase(it);
 }
 
-void Slide::swapPage(Pos pos1, Pos pos2){
-    std::swap(pages[pos1], pages[pos2]);
+void Slide::swapPage(std::shared_ptr<Page> page1, std::shared_ptr<Page> page2){
+    std::swap(page1, page2);
 }

@@ -10,8 +10,8 @@
 
 class Page{
 public:
-    using Iterator = std::unordered_map<ID, AItem>::iterator;  
-    using constIterator = std::unordered_map<ID, AItem>::const_iterator;
+    using Iterator = std::unordered_map<ID, Ithem>::iterator;  
+    using constIterator = std::unordered_map<ID, Ithem>::const_iterator;
 
     Iterator begin();
     Iterator end();
@@ -19,14 +19,14 @@ public:
     constIterator cBegin();
     constIterator cEnd();
 
-    void addIthem(AItem& ithem);
+    void addIthem(Ithem& ithem);
     void removeIthem(ID id);
 
-    AItem& find(ID id);
+    Ithem& find(ID id);
     
 
 private:
-    std::unordered_map<ID, AItem> items;
+    std::unordered_map<ID, Ithem> items;
 
 };
 

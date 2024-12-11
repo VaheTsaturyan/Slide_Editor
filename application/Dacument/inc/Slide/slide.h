@@ -3,14 +3,14 @@
 #include "types.h"
 #include "page.h"
 
-#include <vector>    
+#include <list>    
 #include <memory>
 
 
 class Slide{  
 public:
-    using Iterator = std::vector<std::shared_ptr<Page>>::iterator;
-    using constIterator = std::vector<std::shared_ptr<Page>>::const_iterator;
+    using Iterator = std::list<std::shared_ptr<Page>>::iterator;
+    using constIterator = std::list<std::shared_ptr<Page>>::const_iterator;
 
     Iterator begin();
     Iterator end();
@@ -21,15 +21,13 @@ public:
     size_t getPageCount();
     std::shared_ptr<Page>& getPage(Pos ind);
 
-    void pushBackPage();
+    void pushBackPage(std::shared_ptr<Page> page);
     void popBackPage();
-    void insertPage(Iterator page);
+    void insertPage(Iterator it, std::shared_ptr<Page> page);
     void removePage(Iterator page);
-    void swapPage(Pos pos1, Pos pos2);
+    void swapPage(std::shared_ptr<Page> page1, std::shared_ptr<Page> page2);
 
 private:
-    std::vector<std::shared_ptr<Page>> pages;
-    
-    //std::list<std::shared_ptr<Page>>& getPages();
+    std::list<std::shared_ptr<Page>> pages;
     
 };

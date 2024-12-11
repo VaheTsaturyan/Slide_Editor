@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/vts/repos/Slide_Editor/application/Dacument/Editor/Action.cpp" "CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o" "gcc" "CMakeFiles/Application.dir/application/Dacument/Editor/Action.cpp.o.d"
   "/home/vts/repos/Slide_Editor/application/Dacument/Editor/editor.cpp" "CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.o" "gcc" "CMakeFiles/Application.dir/application/Dacument/Editor/editor.cpp.o.d"
   "/home/vts/repos/Slide_Editor/application/Dacument/Sterializer/Sterializer.cpp" "CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o" "gcc" "CMakeFiles/Application.dir/application/Dacument/Sterializer/Sterializer.cpp.o.d"
   "/home/vts/repos/Slide_Editor/application/Dacument/src/ithem.cpp" "CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o" "gcc" "CMakeFiles/Application.dir/application/Dacument/src/ithem.cpp.o.d"

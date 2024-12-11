@@ -16,6 +16,7 @@ set(SOURCES
     main.cpp
     application/application.cpp
     application/Dacument/Editor/editor.cpp
+    application/Dacument/Editor/Action.cpp
     application/Dacument/Sterializer/Sterializer.cpp
     application/Dacument/src/ithem.cpp
     application/Dacument/src/page.cpp
@@ -35,6 +36,7 @@ set(SOURCES
 set(HEADERS
     application/application.h
     application/Dacument/Editor/editor.h
+    application/Dacument/Editor/Action.h
     application/Dacument/Sterializer/Sterializer.h
     application/Dacument/inc/Slide/item.h
     application/Dacument/inc/Slide/page.h

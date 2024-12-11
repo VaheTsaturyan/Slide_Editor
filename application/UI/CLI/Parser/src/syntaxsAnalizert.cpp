@@ -14,33 +14,52 @@ void StateMeneger::cangeState(const sToken& token){
         break;
     case eState::CMAND:
         if(token.tokenType == eTokenType::WORD){return;}
-        if(token.tokenType == eTokenType::ARGUMENT){
-            activState = eState::ARGUMENT;
+        if(token.tokenType == eTokenType::OPTION){
+            activState = eState::OPTION;
             return;
         }
         activState = eState::DEAD_STATE;
         break;
-    case eState::ARGUMENT:
-        if(token.tokenType == eTokenType::OPTION_NUMBER){
-            activState = eState::OPTION_NUMBER;
+    case eState::OPTION :
+        if(token.tokenType == eTokenType::ARGUMENT_NUMBER){
+            activState = eState::ARGUMENT_NUMBER;
             return;
         }
-        if(token.tokenType == eTokenType::OPTION_WORD){
-            activState = eState::OPTION_WORD;
+        if(token.tokenType == eTokenType::ARGUMENT_WORD){
+            activState = eState::ARGUMENT_WORD;
             return;
         }
-        activState = eState::DEAD_STATE;
-        break;
-    case eState::OPTION_WORD:
-        if(token.tokenType == eTokenType::ARGUMENT){
-            activState = eState::ARGUMENT;
+        if(token.tokenType == eTokenType::TEXT){
+            activState = eState::TEXT;
             return;
         }
         activState = eState::DEAD_STATE;
         break;
-    case eState::OPTION_NUMBER:
-        if(token.tokenType == eTokenType::ARGUMENT){
-            activState = eState::ARGUMENT;
+    case eState::ARGUMENT_NUMBER :
+        if(token.tokenType == eTokenType::OPTION){
+            activState = eState::OPTION;
+            return;
+        }
+        if(token.tokenType == eTokenType::COMMA){
+            activState = eState::ARGUMENT_NUMBER;
+            return;
+        }
+        activState = eState::DEAD_STATE;
+        break;
+    case eState::ARGUMENT_WORD :
+        if(token.tokenType == eTokenType::OPTION){
+            activState = eState::OPTION;
+            return;
+        }
+        if(token.tokenType == eTokenType::COMMA){
+            activState = eState::ARGUMENT_WORD;
+            return;
+        }
+        activState = eState::DEAD_STATE;
+        break;
+    case eState::TEXT :
+        if(token.tokenType == eTokenType::OPTION){
+            activState = eState::OPTION;
             return;
         }
         activState = eState::DEAD_STATE;

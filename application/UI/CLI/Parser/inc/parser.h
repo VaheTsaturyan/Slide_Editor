@@ -5,6 +5,7 @@
 #include "comandCreate.h"
 
 #include <ostream>
+#include <unordered_map>
 
 class Parser{
 public:
@@ -12,8 +13,7 @@ public:
     void parsing();
 
     NameComand getComand();
-    std::shared_ptr<Params> getParams();
-    std::shared_ptr<Options> getOptions();
+    std::shared_ptr<std::unordered_map<Options, Params>> getOptionsValue();
 
     
     //void registrComand(const NameComand& comand, std::shared_ptr<AComand> iCmd);

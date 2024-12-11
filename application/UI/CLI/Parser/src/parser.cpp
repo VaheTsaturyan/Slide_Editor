@@ -37,34 +37,6 @@ void Parser::addInTokenList(const sToken& token){
 
 
 
-std::shared_ptr<Params> Parser::getParams()
-{
-    std::shared_ptr<Params> params = std::make_shared<Params>();
-    for(auto token : tokens){
-        if(token.tokenType == eTokenType::OPTION_NUMBER){
-            params->integerArguments.push_back(std::get<number>(token.tokenContent));
-        }
-        if(token.tokenType == eTokenType::OPTION_WORD){
-            params->stringArguments.push_back(std::get<word>(token.tokenContent));
-        }
-    }
-    return params;
-}
-
-
-std::shared_ptr<Options> Parser::getOptions()
-{
-    std::shared_ptr<Options> params = std::make_shared<Options>();
-    for(auto token : tokens){
-        if(token.tokenType == eTokenType::ARGUMENT){
-            params->push_back(std::get<word>(token.tokenContent));
-        }
-    }
-    return params;
-}
-
-
-
 NameComand Parser::getComand()
 {
     NameComand comand;
@@ -75,3 +47,38 @@ NameComand Parser::getComand()
     }
     return comand;
 }
+
+std::shared_ptr<std::unordered_map<Options, Params>> Parser::getOptionsValue()
+{
+    std::shared_ptr<std::unordered_map<Options, Params>> map = std::make_shared<std::unordered_map<Options, Params>>();
+    Options option;
+    Params params;
+    for(size_t i = 0; i < tokens.size(); ++i){
+        if(tokens[i].tokenType == eTokenType::OPTION){
+            option = std::get<std::string>(tokens[i].tokenContent);
+            ++i;
+            while(i < tokens.size() && tokens[i].tokenType != eTokenType::OPTION){
+                
+                if(tokens[i].tokenType == eTokenType::ARGUMENT_NUMBER){
+                    params.vectorInteger.push_back(std::get<int>(tokens[i].tokenContent));
+                }
+                if(tokens[i].tokenType == eTokenType::ARGUMENT_WORD){
+                    params.vectorString.push_back(std::get<std::string>(tokens[i].tokenContent));
+                }
+
+                ++i;
+            }
+            map->emplace(option, params);
+        }
+    }
+
+    return map;
+    
+}
+
+
+
+
+
+
+
