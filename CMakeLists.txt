@@ -23,6 +23,8 @@ set(SOURCES
     application/Dacument/src/slide.cpp
     application/Dacument/src/types.cpp
     application/UI/CLI/Cantroler/src/controler.cpp
+    application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp
+    application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp
     application/UI/CLI/ComandFactory/src/ComandCreate.cpp
     application/UI/CLI/ComandFactory/src/comand.cpp
     application/UI/CLI/Parser/src/lexer.cpp
@@ -46,6 +48,8 @@ set(HEADERS
     application/UI/CLI/cli.h
     application/UI/CLI/types.h
     application/UI/CLI/Cantroler/inc/controler.h
+    application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h
+    application/UI/CLI/SemanticAnalizer/inc/semanticFactory.h
     application/UI/CLI/ComandFactory/inc/comand.h
     application/UI/CLI/ComandFactory/inc/comandCreate.h
     application/UI/CLI/Parser/inc/lexer.h
@@ -65,6 +69,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/application/Dacument/Editor
     ${CMAKE_SOURCE_DIR}/application/Dacument/Sterializer
     ${CMAKE_SOURCE_DIR}/application/UI/CLI
+    ${CMAKE_SOURCE_DIR}/application/UI/CLI/SemanticAnalizer/inc
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/Cantroler/inc
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/ComandFactory/inc
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/Parser/inc

@@ -267,15 +267,32 @@ bool SwapPage::isOptionsValid(){
     this->vecInt = std::move(option->second.vectorInteger);
     return true;
 }
+/*
+AddShape::initSemanticMap(){
+    AddShape::semanticMap.emplace("g", std::make_shared<sem::GeometryIsValid>());
+    AddShape::semanticMap.emplace("geometry", std::make_shared<sem::GeometryIsValid>());
+    AddShape::semanticMap.emplace("x", std::make_shared<sem::XIsValid>());
+    AddShape::semanticMap.emplace("y", std::make_shared<sem::YIsValid>());
+    AddShape::semanticMap.emplace("length", std::make_shared<sem::LengthIsValid>());
+    AddShape::semanticMap.emplace("height", std::make_shared<sem::HeightIsValid>());
+    AddShape::semanticMap.emplace("t", std::make_shared<sem::TypeIsValid>());
+    AddShape::semanticMap.emplace("type", std::make_shared<sem::TypeIsValid>());
+    AddShape::semanticMap.emplace("color", std::make_shared<sem::ColorIsValid>());
+    AddShape::semanticMap.emplace("c", std::make_shared<sem::ColorIsValid>());
+    AddShape::semanticMap.emplace("thic", std::make_shared<sem::ThicknessIsValid>());
+    AddShape::semanticMap.emplace("thickness", std::make_shared<sem::ThicknessIsValid>());
 
+}
 
-
-
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AddShape::execute(){
     if(isOptionsValid()){
-        //...
+        std::shared_ptr<Ithem> ithem = std::make_shared<Ithem>(Editor::getEditor().genereytId());
+        ithem->setGeometry(shpInit.getGeometry());
+        ithem->setAtributs(std::move(shpInit.getAtributs()));
+        Editor::getEditor().proces(std::make_shared<act::AddShape>(Application::getAplication().getPage(), ithem));
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
@@ -287,19 +304,11 @@ std::shared_ptr<IComand> AddShape::returnCopy(){
 
 bool AddShape::isOptionsValid(){
     std::unordered_map<Options, Params>& optionValuMap = getOptionValue();
-    auto option = optionValuMap.find("g");
-    if(option == optionValuMap.end()){
-        option = optionValuMap.fin("gemetry")
-        if(option == optionValuMap.end()){
-
-            
-        }
-    }
+    std::shared_ptr<std::unordered_map<std::string, Params>> ptrOptionValuMap = std::make_shared<std::unordered_map<std::string, Params>>(optionValuMap);
+    this->shpInit.setOptionValueMap(ptrOptionValuMap);
+    return shpInit.initiliz();
 }
 
-bool AddShape::ifIsOptionGeometry(){
-    
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemoveIthem::execute(){

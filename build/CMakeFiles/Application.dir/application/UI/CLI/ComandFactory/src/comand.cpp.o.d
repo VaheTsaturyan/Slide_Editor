@@ -175,6 +175,8 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_stack.h \
  /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../../../Visualizetion/visualizer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../SemanticAnalizer/inc/semanticFactory.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../SemanticAnalizer/inc/semanticAnaliz.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h /usr/include/c++/11/stdexcept \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
@@ -182,4 +184,32 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../../application.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../../Dacument/inc/dacument.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/cli.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Parser/inc/parser.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Parser/inc/lexer.h \
+ /usr/include/c++/11/istream /usr/include/c++/11/ios \
+ /usr/include/c++/11/bits/ios_base.h \
+ /usr/include/c++/11/bits/locale_classes.h \
+ /usr/include/c++/11/bits/locale_classes.tcc \
+ /usr/include/c++/11/system_error \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
+ /usr/include/c++/11/streambuf /usr/include/c++/11/bits/streambuf.tcc \
+ /usr/include/c++/11/bits/basic_ios.h \
+ /usr/include/c++/11/bits/locale_facets.h /usr/include/c++/11/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+ /usr/include/c++/11/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+ /usr/include/c++/11/bits/locale_facets.tcc \
+ /usr/include/c++/11/bits/basic_ios.tcc /usr/include/c++/11/ostream \
+ /usr/include/c++/11/bits/ostream.tcc \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/sstream.tcc \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Parser/inc/syntaxsAnalizer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/comandCreate.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Cantroler/inc/controler.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Cantroler/inc/../../../../Dacument/Sterializer/Sterializer.h \
+ /usr/include/c++/11/iostream

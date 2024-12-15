@@ -112,7 +112,7 @@ void Lexer::conversInputStringToStringVector(){
 
 }
 
-
+#include <iostream>
 void Lexer::margeStringVector(){
     for(size_t i = 0; i < strings.size(); ++i){
         if(strings[i].front() == '"'&& strings[i].back() == '"'){
@@ -132,6 +132,12 @@ void Lexer::margeStringVector(){
             strings.insert(std::next(strings.begin(), i+1), ",");
         }
     }
+    /*
+    for(auto el : strings){
+        std::cout<<el<<"\t";
+    }
+    std::cout<<std::endl;
+    */
 
 }
 

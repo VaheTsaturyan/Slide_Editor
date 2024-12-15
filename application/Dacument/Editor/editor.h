@@ -13,11 +13,11 @@ public:
     void proces(std::shared_ptr<act::IAction> action);
     void undo();
     void redo();
+    ID genereytId();
 
 private:
     Editor() = default;
 
-    ID genereytId();
 
 private:
     std::stack<std::shared_ptr<act::IAction>> undo_;

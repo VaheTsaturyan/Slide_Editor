@@ -175,6 +175,8 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_stack.h \
  /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../../../Visualizetion/visualizer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../SemanticAnalizer/inc/semanticFactory.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../SemanticAnalizer/inc/semanticAnaliz.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h /usr/include/c++/11/stdexcept \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
@@ -183,11 +185,11 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: \
  /usr/include/c++/11/bits/uniform_int_dist.h \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
  /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../../application.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../../Dacument/inc/dacument.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../.././UI/CLI/cli.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../.././UI/CLI/./Parser/inc/parser.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../.././UI/CLI/./Parser/inc/lexer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../../application.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../../Dacument/inc/dacument.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/cli.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Parser/inc/parser.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Parser/inc/lexer.h \
  /usr/include/c++/11/istream /usr/include/c++/11/ios \
  /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -206,8 +208,8 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../.././UI/CLI/./Parser/inc/syntaxsAnalizer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Parser/inc/syntaxsAnalizer.h \
  /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/comandCreate.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../.././UI/CLI/./Cantroler/inc/controler.h \
- /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/inc/../../../.././UI/CLI/./Cantroler/inc/../../../../Dacument/Sterializer/Sterializer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Cantroler/inc/controler.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/inc/../../../.././UI/CLI/./Cantroler/inc/../../../../Dacument/Sterializer/Sterializer.h \
  /usr/include/c++/11/iostream

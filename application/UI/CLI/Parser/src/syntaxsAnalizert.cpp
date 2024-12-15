@@ -44,6 +44,10 @@ void StateMeneger::cangeState(const sToken& token){
             activState = eState::ARGUMENT_NUMBER;
             return;
         }
+        if(token.tokenType == eTokenType::ARGUMENT_NUMBER){
+            activState = eState::ARGUMENT_NUMBER;
+            return;
+        }
         activState = eState::DEAD_STATE;
         break;
     case eState::ARGUMENT_WORD :
@@ -55,6 +59,12 @@ void StateMeneger::cangeState(const sToken& token){
             activState = eState::ARGUMENT_WORD;
             return;
         }
+        if(token.tokenType == eTokenType::ARGUMENT_WORD){
+            activState = eState::ARGUMENT_WORD;
+            return;
+        }
+
+
         activState = eState::DEAD_STATE;
         break;
     case eState::TEXT :

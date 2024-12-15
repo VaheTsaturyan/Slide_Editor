@@ -8,18 +8,18 @@ public:
     explicit Ithem(ID id);
     
     Ithem(const Ithem& other);
+    ~Ithem() = default;
 
     void setGeometry(const sGeometry& geometry);
-    sGeometry& getGeometry();
-    ID getID() const;
-    
     void setAtributs(sAtributs&& atributs);
+
+    sGeometry& getGeometry();
     sAtributs& getAtributs();
-    ~Ithem() = default;
+    std::string& getType();
+    ID getID() const;
 
 private:
     sGeometry geometry_;
     sAtributs atributs_;
     const ID id_;
-
 };

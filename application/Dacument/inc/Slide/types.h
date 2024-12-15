@@ -17,9 +17,9 @@ namespace color
 {
     struct sColor{
         sColor(unsigned char red, unsigned char green, unsigned char blue);
-        char red;
-        char green;
-        char blue;
+        unsigned char red;
+        unsigned char green;
+        unsigned char blue;
     };
     
     inline const sColor BLACK = sColor(0,0,0);

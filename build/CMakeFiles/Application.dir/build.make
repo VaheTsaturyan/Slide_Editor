@@ -209,10 +209,38 @@ CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.s: cma
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vts/repos/Slide_Editor/application/UI/CLI/Cantroler/src/controler.cpp -o CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.s
 
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o: CMakeFiles/Application.dir/flags.make
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o: ../application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp
+
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp > CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i
+
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp -o CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s
+
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o: CMakeFiles/Application.dir/flags.make
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o: ../application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp
+
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp > CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i
+
+CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vts/repos/Slide_Editor/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp -o CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s
+
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o: ../application/UI/CLI/ComandFactory/src/ComandCreate.cpp
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/src/ComandCreate.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.i: cmake_force
@@ -226,7 +254,7 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: ../application/UI/CLI/ComandFactory/src/comand.cpp
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/src/comand.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.i: cmake_force
@@ -240,7 +268,7 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.s: cm
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: ../application/UI/CLI/Parser/src/lexer.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Parser/src/lexer.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.i: cmake_force
@@ -254,7 +282,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.s: cmake_forc
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: ../application/UI/CLI/Parser/src/parser.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Parser/src/parser.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.i: cmake_force
@@ -268,7 +296,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.s: cmake_for
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: ../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o -MF CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o.d -o CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o -c /home/vts/repos/Slide_Editor/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.i: cmake_force
@@ -282,7 +310,7 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.s:
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o: ../application/Visualizetion/visualizer.cpp
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o: CMakeFiles/Application.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o -MF CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o.d -o CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o -c /home/vts/repos/Slide_Editor/application/Visualizetion/visualizer.cpp
 
 CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.i: cmake_force
@@ -305,6 +333,8 @@ Application_OBJECTS = \
 "CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o" \
 "CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o" \
 "CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o" \
+"CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o" \
+"CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o" \
 "CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o" \
 "CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o" \
 "CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o" \
@@ -325,6 +355,8 @@ Application: CMakeFiles/Application.dir/application/Dacument/src/page.cpp.o
 Application: CMakeFiles/Application.dir/application/Dacument/src/slide.cpp.o
 Application: CMakeFiles/Application.dir/application/Dacument/src/types.cpp.o
 Application: CMakeFiles/Application.dir/application/UI/CLI/Cantroler/src/controler.cpp.o
+Application: CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o
+Application: CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o
 Application: CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp.o
 Application: CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/comand.cpp.o
 Application: CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o
@@ -333,7 +365,7 @@ Application: CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAna
 Application: CMakeFiles/Application.dir/application/Visualizetion/visualizer.cpp.o
 Application: CMakeFiles/Application.dir/build.make
 Application: CMakeFiles/Application.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable Application"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vts/repos/Slide_Editor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable Application"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Application.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -441,6 +441,54 @@ application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.s
 .PHONY : application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.s
 
+application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.o: application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.o
+
+# target to build an object file
+application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.o
+
+application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.i: application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.i
+
+# target to preprocess a source file
+application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.i
+
+application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.s: application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.s
+
+# target to generate assembly for a file
+application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp.s
+
+application/UI/CLI/SemanticAnalizer/src/semanticFactory.o: application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticFactory.o
+
+# target to build an object file
+application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.o
+
+application/UI/CLI/SemanticAnalizer/src/semanticFactory.i: application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticFactory.i
+
+# target to preprocess a source file
+application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.i
+
+application/UI/CLI/SemanticAnalizer/src/semanticFactory.s: application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticFactory.s
+
+# target to generate assembly for a file
+application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Application.dir/build.make CMakeFiles/Application.dir/application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s
+.PHONY : application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp.s
+
 application/Visualizetion/visualizer.o: application/Visualizetion/visualizer.cpp.o
 .PHONY : application/Visualizetion/visualizer.o
 
@@ -561,6 +609,12 @@ help:
 	@echo "... application/UI/CLI/Parser/src/syntaxsAnalizert.o"
 	@echo "... application/UI/CLI/Parser/src/syntaxsAnalizert.i"
 	@echo "... application/UI/CLI/Parser/src/syntaxsAnalizert.s"
+	@echo "... application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.o"
+	@echo "... application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.i"
+	@echo "... application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.s"
+	@echo "... application/UI/CLI/SemanticAnalizer/src/semanticFactory.o"
+	@echo "... application/UI/CLI/SemanticAnalizer/src/semanticFactory.i"
+	@echo "... application/UI/CLI/SemanticAnalizer/src/semanticFactory.s"
 	@echo "... application/Visualizetion/visualizer.o"
 	@echo "... application/Visualizetion/visualizer.i"
 	@echo "... application/Visualizetion/visualizer.s"

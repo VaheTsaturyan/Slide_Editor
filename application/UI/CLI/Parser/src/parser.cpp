@@ -1,5 +1,6 @@
 #include "parser.h"
 
+#include <iostream>
 
 void Parser::input(std::istream& is){
     this->lexsik_analizer.setString(is);
@@ -57,8 +58,7 @@ std::shared_ptr<std::unordered_map<Options, Params>> Parser::getOptionsValue()
         if(tokens[i].tokenType == eTokenType::OPTION){
             option = std::get<std::string>(tokens[i].tokenContent);
             ++i;
-            while(i < tokens.size() && tokens[i].tokenType != eTokenType::OPTION){
-                
+                while(i < tokens.size() && tokens[i].tokenType != eTokenType::OPTION){            
                 if(tokens[i].tokenType == eTokenType::ARGUMENT_NUMBER){
                     params.vectorInteger.push_back(std::get<int>(tokens[i].tokenContent));
                 }

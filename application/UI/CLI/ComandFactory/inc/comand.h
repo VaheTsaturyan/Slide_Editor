@@ -3,7 +3,7 @@
 #include "types.h"
 #include "../../../../Dacument/Editor/editor.h"
 #include "../../../../Visualizetion/visualizer.h"
-
+#include "../../SemanticAnalizer/inc/semanticFactory.h"
 
 #include <vector>
 #include <memory>
@@ -177,13 +177,17 @@ private:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class AddShape : public AComand{
 public:
+    //static initSemanticMap();
     void execute() override;
     std::shared_ptr<IComand> returnCopy() override;
-
+    
 protected:
     bool isOptionsValid() override;
-    bool ifIsOptionGeometry();
+
 private:
+    sem::ShapeInitilizer shpInit;
+    sGeometry geometry;
+    sAtributs atributs;
 
 };
 

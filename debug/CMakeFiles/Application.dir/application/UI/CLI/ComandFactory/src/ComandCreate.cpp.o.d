@@ -176,5 +176,7 @@ CMakeFiles/Application.dir/application/UI/CLI/ComandFactory/src/ComandCreate.cpp
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_stack.h \
  /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../../../Visualizetion/visualizer.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../SemanticAnalizer/inc/semanticFactory.h \
+ /home/vts/repos/Slide_Editor/application/UI/CLI/ComandFactory/inc/../../SemanticAnalizer/inc/semanticAnaliz.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h /usr/include/c++/11/stdexcept
