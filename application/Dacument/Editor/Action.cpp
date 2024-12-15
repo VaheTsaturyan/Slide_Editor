@@ -50,7 +50,8 @@ void AddPage::doo(){
 }
 
 std::shared_ptr<IAction> AddPage::returnUndoAction(){
-    return std::make_shared<RemovePage>(slide, std::distance(slide->begin(), iterator));
+    Pos pos = std::distance(slide->begin(), iterator) - 1;
+    return std::make_shared<RemovePage>(slide, pos);
 }
 
 
@@ -60,8 +61,8 @@ std::shared_ptr<IAction> AddPage::returnUndoAction(){
 RemovePage::RemovePage(std::shared_ptr<Slide> slide, Pos pos){
     this->slide = slide;
     this->iterator = std::next(slide->begin(), pos);
-    this->page = *iterator;
-    this->pos = std::distance(slide->begin(), iterator);
+    this->page = std::make_shared<Page>(*(*iterator));
+    this->pos = pos;
 }
 
 void RemovePage::doo(){

@@ -2,6 +2,11 @@
 
 #include <stdexcept>
 
+
+Page::Page(const Page &other){
+    this->items = other.items;
+}
+
 Page::Iterator Page::begin(){
     return items.begin();
 }

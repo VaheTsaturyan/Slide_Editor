@@ -12,6 +12,8 @@ class Page{
 public:
     using Iterator = std::unordered_map<ID, Ithem>::iterator;  
     using constIterator = std::unordered_map<ID, Ithem>::const_iterator;
+    Page() = default;
+    Page(const Page& other);
 
     Iterator begin();
     Iterator end();
