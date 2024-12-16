@@ -240,7 +240,10 @@ bool OpenPage::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void SwapPage::execute(){
     if(isOptionsValid()){
-        
+        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Page> page1 = *(std::next(slide->begin(), vecInt[0]));
+        std::shared_ptr<Page> page2 = *(std::next(slide->begin(), vecInt[1]));
+        Editor::getEditor().proces(std::make_shared<act::SwapPages>(slide, page1, page2));
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }

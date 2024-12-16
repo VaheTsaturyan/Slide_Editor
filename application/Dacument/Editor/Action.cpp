@@ -61,7 +61,7 @@ std::shared_ptr<IAction> AddPage::returnUndoAction(){
 RemovePage::RemovePage(std::shared_ptr<Slide> slide, Pos pos){
     this->slide = slide;
     this->iterator = std::next(slide->begin(), pos);
-    this->page = std::make_shared<Page>(*(*iterator));
+    this->page = (*iterator);
     this->pos = pos;
 }
 

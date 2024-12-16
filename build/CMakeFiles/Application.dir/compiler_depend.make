@@ -2340,7 +2340,8 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/lexer.cpp.o: ../applica
   /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   /usr/include/c++/11/iterator \
-  /usr/include/c++/11/bits/stream_iterator.h
+  /usr/include/c++/11/bits/stream_iterator.h \
+  /usr/include/c++/11/iostream
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: ../application/UI/CLI/Parser/src/parser.cpp \
   /usr/include/stdc-predef.h \
@@ -2586,7 +2587,8 @@ CMakeFiles/Application.dir/application/UI/CLI/Parser/src/parser.cpp.o: ../applic
   ../application/UI/CLI/SemanticAnalizer/inc/semanticFactory.h \
   ../application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h \
   /usr/include/c++/11/unordered_set \
-  /usr/include/c++/11/bits/unordered_set.h
+  /usr/include/c++/11/bits/unordered_set.h \
+  /usr/include/c++/11/iostream
 
 CMakeFiles/Application.dir/application/UI/CLI/Parser/src/syntaxsAnalizert.cpp.o: ../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp \
   /usr/include/stdc-predef.h \

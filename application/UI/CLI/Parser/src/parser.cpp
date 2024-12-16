@@ -54,8 +54,38 @@ std::shared_ptr<std::unordered_map<Options, Params>> Parser::getOptionsValue()
     std::shared_ptr<std::unordered_map<Options, Params>> map = std::make_shared<std::unordered_map<Options, Params>>();
     Options option;
     Params params;
+    bool bol = false;
     for(size_t i = 0; i < tokens.size(); ++i){
-        if(tokens[i].tokenType == eTokenType::OPTION){
+        if(tokens[i].tokenType == eTokenType::OPTION && !bol ){
+            option = std::get<std::string>(tokens[i].tokenContent);
+            bol = true;
+        }else if(tokens[i].tokenType == eTokenType::OPTION) {
+            map->emplace(option, params);
+            params.vectorInteger.clear();
+            params.vectorString.clear();
+            option = std::get<std::string>(tokens[i].tokenContent);
+        }else{
+            if(tokens[i].tokenType == eTokenType::ARGUMENT_NUMBER){
+                params.vectorInteger.push_back(std::get<int>(tokens[i].tokenContent));
+            }
+            if(tokens[i].tokenType == eTokenType::ARGUMENT_WORD){
+                params.vectorString.push_back(std::get<std::string>(tokens[i].tokenContent));
+            }
+        }
+    }
+    if(bol){
+        map->emplace(option, params);
+    }   
+
+    return map;
+    
+}
+
+
+
+
+/*
+        {
             option = std::get<std::string>(tokens[i].tokenContent);
             ++i;
                 while(i < tokens.size() && tokens[i].tokenType != eTokenType::OPTION){            
@@ -70,15 +100,6 @@ std::shared_ptr<std::unordered_map<Options, Params>> Parser::getOptionsValue()
             }
             map->emplace(option, params);
         }
-    }
 
-    return map;
-    
-}
-
-
-
-
-
-
+*/
 
