@@ -22,6 +22,7 @@ private:
 private:
     ShapeFactory shapeFactory;
     QPainter* painter;
+    std::ostream& out;
 
 };
 

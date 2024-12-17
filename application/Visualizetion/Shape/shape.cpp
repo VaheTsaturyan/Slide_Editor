@@ -27,21 +27,20 @@ void AShape::setBrash(QPainter *painter, const sAtributs &atributs){
         painter->setBrush(QBrush(color));
     }
 }
+void AShape::print(std::ostream &out, const Ithem &ithem){
+    const sAtributs& atributs = ithem.getAtributs();
+    const sGeometry&  geometry = ithem.getGeometry();
+    std::string type = atributs.map.at("type");
+    out<<"\tid: "<<ithem.getID()<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<< " len: "<< geometry.len<< " hig: "<< geometry.hig <<std::endl;
+}
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RectangleShape::draw(QPainter *painter, const Ithem &ithem){
     const sAtributs& atributs = ithem.getAtributs();
     const sGeometry&  geometry = ithem.getGeometry();
     setPen(painter, atributs);
     setBrash(painter, atributs);
     painter->drawRect(geometry.x, geometry.y, geometry.len, geometry.hig);
-}
-
-void RectangleShape::print(std::ostream &out, const Ithem &ithem){
-    const sAtributs& atributs = ithem.getAtributs();
-    const sGeometry&  geometry = ithem.getGeometry();
-    std::string type = atributs.map.at("type");
-    out<<"id: "<<ithem.getID()<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<< " len: "<< geometry.len<< " hig: "<< geometry.hig <<std::endl;
 }
 
 std::shared_ptr<IShape> RectangleShape::copy(){
@@ -59,14 +58,25 @@ void ElipsShape::draw(QPainter *painter, const Ithem &ithem){
     painter->drawEllipse(geometry.x, geometry.y, geometry.len, geometry.hig);
 }
 
-void ElipsShape::print(std::ostream &out, const Ithem &ithem){
-    const sAtributs& atributs = ithem.getAtributs();
-    const sGeometry&  geometry = ithem.getGeometry();
-    std::string type = atributs.map.at("type");
-    out<<"id: "<< ithem.getID()<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<< " len: "<< geometry.len<< " hig: "<< geometry.hig <<std::endl;
-}
 
 std::shared_ptr<IShape> ElipsShape::copy(){
     return std::make_shared<ElipsShape>();
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void LineShape::draw(QPainter *painter, const Ithem &ithem){
+    const sAtributs& atributs = ithem.getAtributs();
+    const sGeometry&  geometry = ithem.getGeometry();
+    setPen(painter, atributs);
+    setBrash(painter, atributs);
+    painter->drawLine(geometry.x, geometry.y, geometry.len, geometry.hig);
+}
+
+
+std::shared_ptr<IShape> LineShape::copy(){
+    return std::make_shared<LineShape>();
 }
 

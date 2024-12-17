@@ -8,7 +8,7 @@
 const int IMG_HIG = 600;
 const int IMG_LEN = 800;
 
-Visualizer::Visualizer(){
+Visualizer::Visualizer():out(std::cout){
     shapeFactory.registrMap();
 }
 
@@ -19,24 +19,20 @@ Visualizer &Visualizer::getVisualizer(){
 
 
 void Visualizer::printSlide(std::shared_ptr<Slide> slide){
-    for(auto it = slide->begin(); it != slide->end(); ++it){
-        std::cout<<"page : "<<std::distance(slide->begin() , it)<<std::endl; 
-        for(auto pIt = (*it)->begin(); pIt != (*it)->end(); ++pIt){
-            auto geometry = pIt->second.getGeometry();
-            auto atributs = pIt->second.getAtributs();
-            std::string type = atributs.map["type"];
-            std::cout<<"\tid: "<<pIt->first<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<< " len: "<< geometry.len<< " hig: "<< geometry.hig <<std::endl;
+    for(auto it = slide->cBegin(); it != slide->cEnd(); ++it){
+        std::cout<<"page : "<<std::distance(slide->cBegin() , it)<<std::endl; 
+        for(auto pIt = (*it)->cBegin(); pIt != (*it)->cEnd(); ++pIt){
+            std::shared_ptr<IShape> shape = shapeFactory.getShape(pIt->second.getType());
+            shape->print( out, pIt->second );
         }   
     }
 }
 
 void Visualizer::printPage(std::shared_ptr<Page> page){
-        for(auto pIt = page->begin(); pIt != page->end(); ++pIt){
-            auto geometry = pIt->second.getGeometry();
-            auto atributs = pIt->second.getAtributs();
-            std::string type = atributs.map["type"];
-            std::cout<<"id: "<<pIt->first<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<< " len: "<< geometry.len<< " hig: "<< geometry.hig <<std::endl;
-        }   
+    for(auto pIt = page->begin(); pIt != page->end(); ++pIt){
+        std::shared_ptr<IShape> shape = shapeFactory.getShape(pIt->second.getType());
+        shape->print( out, pIt->second );
+    }   
 }
 
 
