@@ -13,9 +13,14 @@ public:
     void setGeometry(const sGeometry& geometry);
     void setAtributs(sAtributs&& atributs);
 
+    const sGeometry& getGeometry() const ;
+    const sAtributs& getAtributs() const ;
+    const std::string& getType() const;
+
     sGeometry& getGeometry();
     sAtributs& getAtributs();
     std::string& getType();
+
     ID getID() const;
 
 private:

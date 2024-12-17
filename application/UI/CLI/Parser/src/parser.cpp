@@ -71,6 +71,9 @@ std::shared_ptr<std::unordered_map<Options, Params>> Parser::getOptionsValue()
             if(tokens[i].tokenType == eTokenType::ARGUMENT_WORD){
                 params.vectorString.push_back(std::get<std::string>(tokens[i].tokenContent));
             }
+            if(tokens[i].tokenType == eTokenType::TEXT){
+                params.vectorString.push_back(std::get<std::string>(tokens[i].tokenContent));
+            }
         }
     }
     if(bol){

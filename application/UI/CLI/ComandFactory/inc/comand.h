@@ -290,3 +290,17 @@ private:
     Pos pos;
 
 };
+
+class DrawPage : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
+
+private:
+    std::string path;
+    Pos pos;
+
+};

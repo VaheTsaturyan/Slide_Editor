@@ -11,6 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Define build types
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Build types" FORCE)
 
+# Find the Qt libraries
+find_package(Qt5 COMPONENTS Widgets Core Gui REQUIRED)
+
 # Source files
 set(SOURCES
     main.cpp
@@ -31,7 +34,6 @@ set(SOURCES
     application/UI/CLI/Parser/src/parser.cpp
     application/UI/CLI/Parser/src/syntaxsAnalizert.cpp
     application/Visualizetion/visualizer.cpp
-    
 )
 
 # Header files (optional: for IDEs and clarity)
@@ -75,6 +77,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_SOURCE_DIR}/application/UI/CLI/Parser/inc
     ${CMAKE_SOURCE_DIR}/home/vts/repos/Slide_Editor/application/Visualizetion
 )
+
+# Link the Qt libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets Qt5::Core Qt5::Gui)
 
 # Compiler options for build types
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")

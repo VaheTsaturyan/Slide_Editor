@@ -64,7 +64,9 @@
         "semaphore": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "qpainter": "cpp",
+        "qimage": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

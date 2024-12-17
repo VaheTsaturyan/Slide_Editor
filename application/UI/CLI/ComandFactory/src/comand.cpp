@@ -492,3 +492,46 @@ bool PrintPage::isOptionsValid(){
     this->pos = option->second.vectorInteger.front();
     return true;
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void DrawPage::execute(){
+    if(isOptionsValid()){
+
+        Visualizer::getVisualizer().drowPage(Application::getAplication().getPage(), path);
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+
+bool DrawPage::isOptionsValid(){
+    if(getOptionValue().size()!= 2){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("pos"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorInteger.size() != 1 || !(option->second.vectorString.empty())){
+        return false;
+    }
+    this->pos = option->second.vectorInteger.front();
+    option = this->getOptionValue().find(std::string("path"));
+    if(option == this->getOptionValue().end()){
+        return false;    
+    }
+    if(option->second.vectorString.size() != 1 || !(option->second.vectorInteger.empty())){
+        return false;
+    }
+    this->path = option->second.vectorString.front();
+    return true;
+}
+
+std::shared_ptr<IComand> DrawPage::returnCopy()
+{
+    return std::make_shared<DrawPage>();
+}

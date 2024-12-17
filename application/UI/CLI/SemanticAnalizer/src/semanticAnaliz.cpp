@@ -59,7 +59,7 @@ void HeightIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const Par
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool ColorIsValid::analiz(const Params& param){
+bool ColorFillIsValid::analiz(const Params& param){
     if(param.vectorInteger.size() == 3 && param.vectorString.empty()){
         return true;
     } else if(param.vectorString.size() == 1 && param.vectorInteger.empty()){
@@ -68,14 +68,14 @@ bool ColorIsValid::analiz(const Params& param){
     return false;
 }
 
-void ColorIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const Params &param){
+void ColorFillIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const Params &param){
     if(param.vectorString.empty()){
         color::sColor color(param.vectorInteger[0], param.vectorInteger[1], param.vectorInteger[2]);
         std::string temp;
         temp.push_back(color.red);
         temp.push_back(color.green);
         temp.push_back(color.blue);
-        atributs.map.emplace(std::string("color"), temp);
+        atributs.map.emplace(std::string("colorfill"), temp);
     }else{
         std::unordered_map<std::string, color::sColor> colorMap;
         colorMap.emplace(std::string("black"), color::BLACK);
@@ -90,7 +90,42 @@ void ColorIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const Para
         temp.push_back(el->second.red);
         temp.push_back(el->second.green);
         temp.push_back(el->second.blue);
-        atributs.map.emplace(std::string("color"), temp);
+        atributs.map.emplace(std::string("colorfill"), temp);
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool ColorPenIsValid::analiz(const Params& param){
+    if(param.vectorInteger.size() == 3 && param.vectorString.empty()){
+        return true;
+    } else if(param.vectorString.size() == 1 && param.vectorInteger.empty()){
+        return true;
+    }
+    return false;
+}
+
+void ColorPenIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const Params &param){
+    if(param.vectorString.empty()){
+        color::sColor color(param.vectorInteger[0], param.vectorInteger[1], param.vectorInteger[2]);
+        std::string temp;
+        temp.push_back(color.red);
+        temp.push_back(color.green);
+        temp.push_back(color.blue);
+        atributs.map.emplace(std::string("colorpen"), temp);
+    }else{
+        std::unordered_map<std::string, color::sColor> colorMap;
+        colorMap.emplace(std::string("black"), color::BLACK);
+        colorMap.emplace(std::string("blue"), color::BLUE);
+        colorMap.emplace(std::string("green"), color::GREEN);
+        colorMap.emplace(std::string("red"), color::RED);
+        auto el = colorMap.find(param.vectorString.front());
+        if(el == colorMap.end()){
+            throw std::runtime_error("The color you specified is not among the built-in colors, please import it in RGB format\n");
+        }    
+        std::string temp;
+        temp.push_back(el->second.red);
+        temp.push_back(el->second.green);
+        temp.push_back(el->second.blue);
+        atributs.map.emplace(std::string("colorpen"), temp);
     }
 }
 

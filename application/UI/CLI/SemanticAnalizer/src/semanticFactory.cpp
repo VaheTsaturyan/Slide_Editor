@@ -24,8 +24,10 @@ void SemanticFactory::registrSemanticAnalizType(){
     anilizers.emplace("t", std::make_shared<TypeIsValid>());
     anilizers.emplace("thickness", std::make_shared<ThicknessIsValid>());
     anilizers.emplace("thc", std::make_shared<ThicknessIsValid>());
-    anilizers.emplace("color", std::make_shared<ColorIsValid>());
-    anilizers.emplace("c", std::make_shared<ColorIsValid>());
+    anilizers.emplace("colorfill", std::make_shared<ColorFillIsValid>());
+    anilizers.emplace("cf", std::make_shared<ColorFillIsValid>());
+    anilizers.emplace("colorpen", std::make_shared<ColorPenIsValid>());
+    anilizers.emplace("cp", std::make_shared<ColorPenIsValid>());
 
 }
 

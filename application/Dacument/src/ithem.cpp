@@ -1,6 +1,5 @@
 #include "../inc/Slide/item.h"
 
-
 Ithem::Ithem(ID id):id_(id){
 }
 
@@ -13,18 +12,13 @@ void Ithem::setGeometry(const sGeometry &geometry){
     geometry_ = geometry;
 }
 
-sGeometry& Ithem::getGeometry(){
-    return geometry_;
-}
-
-ID Ithem::getID() const{
-    return this->id_;
-}
-
 void Ithem::setAtributs(sAtributs&& atributs){
     atributs_ = std::move(atributs);
 }
 
+sGeometry& Ithem::getGeometry(){
+    return geometry_;
+}
 
 sAtributs &Ithem::getAtributs(){
     return atributs_;
@@ -33,3 +27,20 @@ sAtributs &Ithem::getAtributs(){
 std::string &Ithem::getType(){
     return atributs_.map[std::string("type")];
 }
+
+ID Ithem::getID() const{
+    return this->id_;
+}
+
+
+const sGeometry &Ithem::getGeometry() const{
+    return geometry_;
+}
+const sAtributs &Ithem::getAtributs() const{
+    return atributs_;
+}
+
+const std::string& Ithem::getType() const{
+    return atributs_.map.at(std::string("type"));
+}
+

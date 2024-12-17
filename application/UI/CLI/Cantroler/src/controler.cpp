@@ -38,5 +38,5 @@ void Controler::registrComand(){
     comandFactory.registorComand("removeithrm", std::make_shared<RemoveIthem>());                       //remove ithrm -id
     comandFactory.registorComand("printslide", std::make_shared<PrintSlide>());                         //print slide
     comandFactory.registorComand("printpage", std::make_shared<PrintPage>());                           //printPage
-
+    comandFactory.registorComand("drawpage", std::make_shared<DrawPage>());                           //printPage
 }

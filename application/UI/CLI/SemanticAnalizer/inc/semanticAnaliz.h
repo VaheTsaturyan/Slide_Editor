@@ -51,12 +51,20 @@ protected:
 };
 
 
-class ColorIsValid : public ISemanticAnalizer{
+class ColorFillIsValid : public ISemanticAnalizer{
 public:
     bool analiz(const Params& param) override;
     void initiliz(sGeometry& geometry, sAtributs& atributs, const Params& param) override;
 protected:
 };
+
+class ColorPenIsValid : public ISemanticAnalizer{
+public:
+    bool analiz(const Params& param) override;
+    void initiliz(sGeometry& geometry, sAtributs& atributs, const Params& param) override;
+protected:
+};
+
 
 class ThicknessIsValid : public ISemanticAnalizer{
 public:
