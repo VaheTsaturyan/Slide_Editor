@@ -146,7 +146,10 @@ void TypeIsValid::creatTypeMap(){
     typeMap.emplace(std::string("r"), std::string("rectangle"));
     typeMap.emplace(std::string("elips"), std::string("elips"));
     typeMap.emplace(std::string("e"), std::string("elips"));
+    typeMap.emplace(std::string("line"), std::string("line"));
+    typeMap.emplace(std::string("l"), std::string("line"));
 }
+
 
 bool TypeIsValid::analiz(const Params &param){
     creatTypeMap();

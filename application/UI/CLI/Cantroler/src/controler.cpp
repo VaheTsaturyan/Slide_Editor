@@ -1,5 +1,6 @@
 #include "controler.h"
 
+#include "../../../../Logger/inc/logger.h"
 
 
 void Controler::startProces(){
@@ -14,7 +15,7 @@ void Controler::startProces(){
             comand->execute();
         }
         catch(const std::exception& e){
-            std::cout << e.what();  
+            Loger::getLoger().print(e.what());  
         }
     }
 }
@@ -38,5 +39,7 @@ void Controler::registrComand(){
     comandFactory.registorComand("removeithrm", std::make_shared<RemoveIthem>());                       //remove ithrm -id
     comandFactory.registorComand("printslide", std::make_shared<PrintSlide>());                         //print slide
     comandFactory.registorComand("printpage", std::make_shared<PrintPage>());                           //printPage
-    comandFactory.registorComand("drawpage", std::make_shared<DrawPage>());                           //printPage
+    comandFactory.registorComand("drawpage", std::make_shared<DrawPage>());                             //printPage
+    comandFactory.registorComand("save", std::make_shared<Save>());                                     //save
+    comandFactory.registorComand("open", std::make_shared<Open>());                                     //open
 }

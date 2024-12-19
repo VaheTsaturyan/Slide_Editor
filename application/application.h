@@ -3,6 +3,7 @@
 #include "Dacument/inc/dacument.h"
 #include "./UI/CLI/cli.h"
 #include "./Visualizetion/visualizer.h"
+#include "./Logger/inc/logger.h"
 
 #include <memory>
 
@@ -15,6 +16,7 @@ public:
 
     void openPage(Pos pos);
 
+    void openSlide(std::shared_ptr<Slide> slide);
 private:    
     Application();
     Application(const Application&) = delete;

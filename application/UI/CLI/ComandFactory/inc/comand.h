@@ -304,3 +304,32 @@ private:
     Pos pos;
 
 };
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Open : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
+
+private:
+    std::string path;
+
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Save : public AComand{
+public:
+    void execute() override;
+    std::shared_ptr<IComand> returnCopy() override;
+
+protected:
+    bool isOptionsValid() override;
+
+private:
+    std::string path;
+
+};

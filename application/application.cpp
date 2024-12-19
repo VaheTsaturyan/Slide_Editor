@@ -4,7 +4,7 @@
 Application::Application(){
     slide = std::make_shared<Slide>();
     controler = std::make_shared<Controler>();
-
+    Loger::getLoger().addDivace(std::make_shared<OstreamDivace>(std::cout));
 }
 
 Application &Application::getAplication(){
@@ -32,3 +32,6 @@ void Application::openPage(Pos pos){
     this->page = *(std::next(slide->begin(), pos));
 }
 
+void Application::openSlide(std::shared_ptr<Slide> slide){
+    this->slide = slide;
+}

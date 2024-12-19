@@ -18,6 +18,10 @@ CONFIG(debug, debug|release) {
 # Включить предупреждения для компилятора
 QMAKE_CXXFLAGS += -Wall -Wextra -Wpedantic
 
+# Подключение Boost
+INCLUDEPATH += /usr/local/include
+INCLUDEPATH += /usr/local/include/boost/json  # Добавление пути к Boost JSON
+
 # Исходные файлы
 SOURCES += \
     main.cpp \
@@ -39,7 +43,10 @@ SOURCES += \
     application/UI/CLI/Parser/src/syntaxsAnalizert.cpp \
     application/Visualizetion/visualizer.cpp \
     application/Visualizetion/Shape/shape.cpp \
-    application/Visualizetion/ShapeFactory/shapefactory.cpp
+    application/Visualizetion/ShapeFactory/shapefactory.cpp \
+    application/Logger/src/logger.cpp \
+    application/Logger/src/outoutDivace.cpp
+
 # Заголовочные файлы
 HEADERS += \
     application/application.h \
@@ -63,7 +70,9 @@ HEADERS += \
     application/UI/CLI/Parser/inc/syntaxsAnalizer.h \
     application/Visualizetion/visualizer.h \
     application/Visualizetion/Shape/shape.h \
-    application/Visualizetion/ShapeFactory/shapefactory.h
+    application/Visualizetion/ShapeFactory/shapefactory.h \
+    application/Logger/inc/logger.h \
+    application/Logger/inc/outoutDivace.h
 
 # Включить директории
 INCLUDEPATH += \
@@ -79,4 +88,9 @@ INCLUDEPATH += \
     $$PWD/application/UI/CLI/Parser/inc \
     $$PWD/home/vts/repos/Slide_Editor/application/Visualizetion \
     $$PWD/home/vts/repos/Slide_Editor/application/Visualizetion/Shape \
-    $$PWD/home/vts/repos/Slide_Editor/application/Visualizetion/ShapeFactory
+    $$PWD/home/vts/repos/Slide_Editor/application/Visualizetion/ShapeFactory \
+    $$PWD/home/vts/repos/Slide_Editor/application/Logger/inc \
+    /usr/local/include/boost
+
+# Линковка с Boost JSON (если необходимо)
+LIBS += -lboost_json  # Линка с Boost JSON

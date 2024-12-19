@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DNDEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O3 -Wall -Wextra -Wpedantic -O2 -std=gnu++1z -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../Slide_Editor -I. -I../../Slide_Editor -I../application -I../application/Dacument/inc -I../application/Dacument/Editor -I../application/Dacument/Sterializer -I../application/UI/CLI -I../application/UI/CLI/SemanticAnalizer/inc -I../application/UI/CLI/Cantroler/inc -I../application/UI/CLI/ComandFactory/inc -I../application/UI/CLI/Parser/inc -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Visualizetion -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Visualizetion/Shape -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Visualizetion/ShapeFactory -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I../../Slide_Editor -I. -I/usr/local/include -I/usr/local/include/boost/json -I../../Slide_Editor -I../application -I../application/Dacument/inc -I../application/Dacument/Editor -I../application/Dacument/Sterializer -I../application/UI/CLI -I../application/UI/CLI/SemanticAnalizer/inc -I../application/UI/CLI/Cantroler/inc -I../application/UI/CLI/ComandFactory/inc -I../application/UI/CLI/Parser/inc -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Visualizetion -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Visualizetion/Shape -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Visualizetion/ShapeFactory -I/home/vts/repos/Slide_Editor/home/vts/repos/Slide_Editor/application/Logger/inc -I/usr/local/include/boost -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = Application1.0.0
 DISTDIR = /home/vts/repos/Slide_Editor/build/.tmp/Application1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) -lboost_json /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -71,7 +71,9 @@ SOURCES       = ../main.cpp \
 		../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp \
 		../application/Visualizetion/visualizer.cpp \
 		../application/Visualizetion/Shape/shape.cpp \
-		../application/Visualizetion/ShapeFactory/shapefactory.cpp 
+		../application/Visualizetion/ShapeFactory/shapefactory.cpp \
+		../application/Logger/src/logger.cpp \
+		../application/Logger/src/outoutDivace.cpp 
 OBJECTS       = main.o \
 		application.o \
 		editor.o \
@@ -91,7 +93,9 @@ OBJECTS       = main.o \
 		syntaxsAnalizert.o \
 		visualizer.o \
 		shape.o \
-		shapefactory.o
+		shapefactory.o \
+		logger.o \
+		outoutDivace.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -190,7 +194,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../application/UI/CLI/Parser/inc/syntaxsAnalizer.h \
 		../application/Visualizetion/visualizer.h \
 		../application/Visualizetion/Shape/shape.h \
-		../application/Visualizetion/ShapeFactory/shapefactory.h ../main.cpp \
+		../application/Visualizetion/ShapeFactory/shapefactory.h \
+		../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h ../main.cpp \
 		../application/application.cpp \
 		../application/Dacument/Editor/editor.cpp \
 		../application/Dacument/Editor/Action.cpp \
@@ -209,7 +215,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp \
 		../application/Visualizetion/visualizer.cpp \
 		../application/Visualizetion/Shape/shape.cpp \
-		../application/Visualizetion/ShapeFactory/shapefactory.cpp
+		../application/Visualizetion/ShapeFactory/shapefactory.cpp \
+		../application/Logger/src/logger.cpp \
+		../application/Logger/src/outoutDivace.cpp
 QMAKE_TARGET  = Application
 DESTDIR       = 
 TARGET        = Application
@@ -393,8 +401,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../application/application.h ../application/Dacument/Editor/editor.h ../application/Dacument/Editor/Action.h ../application/Dacument/Sterializer/Sterializer.h ../application/Dacument/inc/Slide/item.h ../application/Dacument/inc/Slide/page.h ../application/Dacument/inc/Slide/slide.h ../application/Dacument/inc/Slide/types.h ../application/Dacument/inc/dacument.h ../application/UI/CLI/cli.h ../application/UI/CLI/types.h ../application/UI/CLI/Cantroler/inc/controler.h ../application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h ../application/UI/CLI/SemanticAnalizer/inc/semanticFactory.h ../application/UI/CLI/ComandFactory/inc/comand.h ../application/UI/CLI/ComandFactory/inc/comandCreate.h ../application/UI/CLI/Parser/inc/lexer.h ../application/UI/CLI/Parser/inc/parser.h ../application/UI/CLI/Parser/inc/syntaxsAnalizer.h ../application/Visualizetion/visualizer.h ../application/Visualizetion/Shape/shape.h ../application/Visualizetion/ShapeFactory/shapefactory.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../application/application.cpp ../application/Dacument/Editor/editor.cpp ../application/Dacument/Editor/Action.cpp ../application/Dacument/Sterializer/Sterializer.cpp ../application/Dacument/src/ithem.cpp ../application/Dacument/src/page.cpp ../application/Dacument/src/slide.cpp ../application/Dacument/src/types.cpp ../application/UI/CLI/Cantroler/src/controler.cpp ../application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp ../application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp ../application/UI/CLI/ComandFactory/src/ComandCreate.cpp ../application/UI/CLI/ComandFactory/src/comand.cpp ../application/UI/CLI/Parser/src/lexer.cpp ../application/UI/CLI/Parser/src/parser.cpp ../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp ../application/Visualizetion/visualizer.cpp ../application/Visualizetion/Shape/shape.cpp ../application/Visualizetion/ShapeFactory/shapefactory.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../application/application.h ../application/Dacument/Editor/editor.h ../application/Dacument/Editor/Action.h ../application/Dacument/Sterializer/Sterializer.h ../application/Dacument/inc/Slide/item.h ../application/Dacument/inc/Slide/page.h ../application/Dacument/inc/Slide/slide.h ../application/Dacument/inc/Slide/types.h ../application/Dacument/inc/dacument.h ../application/UI/CLI/cli.h ../application/UI/CLI/types.h ../application/UI/CLI/Cantroler/inc/controler.h ../application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h ../application/UI/CLI/SemanticAnalizer/inc/semanticFactory.h ../application/UI/CLI/ComandFactory/inc/comand.h ../application/UI/CLI/ComandFactory/inc/comandCreate.h ../application/UI/CLI/Parser/inc/lexer.h ../application/UI/CLI/Parser/inc/parser.h ../application/UI/CLI/Parser/inc/syntaxsAnalizer.h ../application/Visualizetion/visualizer.h ../application/Visualizetion/Shape/shape.h ../application/Visualizetion/ShapeFactory/shapefactory.h ../application/Logger/inc/logger.h ../application/Logger/inc/outoutDivace.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../application/application.cpp ../application/Dacument/Editor/editor.cpp ../application/Dacument/Editor/Action.cpp ../application/Dacument/Sterializer/Sterializer.cpp ../application/Dacument/src/ithem.cpp ../application/Dacument/src/page.cpp ../application/Dacument/src/slide.cpp ../application/Dacument/src/types.cpp ../application/UI/CLI/Cantroler/src/controler.cpp ../application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp ../application/UI/CLI/SemanticAnalizer/src/semanticFactory.cpp ../application/UI/CLI/ComandFactory/src/ComandCreate.cpp ../application/UI/CLI/ComandFactory/src/comand.cpp ../application/UI/CLI/Parser/src/lexer.cpp ../application/UI/CLI/Parser/src/parser.cpp ../application/UI/CLI/Parser/src/syntaxsAnalizert.cpp ../application/Visualizetion/visualizer.cpp ../application/Visualizetion/Shape/shape.cpp ../application/Visualizetion/ShapeFactory/shapefactory.cpp ../application/Logger/src/logger.cpp ../application/Logger/src/outoutDivace.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -465,7 +473,9 @@ main.o: ../main.cpp ../application/application.h \
 		../application/UI/CLI/SemanticAnalizer/inc/semanticFactory.h \
 		../application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h \
 		../application/UI/CLI/Cantroler/inc/controler.h \
-		../application/Dacument/Sterializer/Sterializer.h
+		../application/Dacument/Sterializer/Sterializer.h \
+		../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 application.o: ../application/application.cpp ../application/application.h \
@@ -489,7 +499,9 @@ application.o: ../application/application.cpp ../application/application.h \
 		../application/UI/CLI/SemanticAnalizer/inc/semanticFactory.h \
 		../application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h \
 		../application/UI/CLI/Cantroler/inc/controler.h \
-		../application/Dacument/Sterializer/Sterializer.h
+		../application/Dacument/Sterializer/Sterializer.h \
+		../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o application.o ../application/application.cpp
 
 editor.o: ../application/Dacument/Editor/editor.cpp ../application/Dacument/Editor/editor.h \
@@ -551,7 +563,9 @@ controler.o: ../application/UI/CLI/Cantroler/src/controler.cpp ../application/UI
 		../application/UI/CLI/Parser/inc/parser.h \
 		../application/UI/CLI/Parser/inc/lexer.h \
 		../application/UI/CLI/Parser/inc/syntaxsAnalizer.h \
-		../application/Dacument/Sterializer/Sterializer.h
+		../application/Dacument/Sterializer/Sterializer.h \
+		../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controler.o ../application/UI/CLI/Cantroler/src/controler.cpp
 
 semanticAnaliz.o: ../application/UI/CLI/SemanticAnalizer/src/semanticAnaliz.cpp ../application/UI/CLI/SemanticAnalizer/inc/semanticAnaliz.h \
@@ -602,11 +616,15 @@ comand.o: ../application/UI/CLI/ComandFactory/src/comand.cpp ../application/UI/C
 		../application/UI/CLI/Parser/inc/syntaxsAnalizer.h \
 		../application/UI/CLI/ComandFactory/inc/comandCreate.h \
 		../application/UI/CLI/Cantroler/inc/controler.h \
-		../application/Dacument/Sterializer/Sterializer.h
+		../application/Dacument/Sterializer/Sterializer.h \
+		../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o comand.o ../application/UI/CLI/ComandFactory/src/comand.cpp
 
 lexer.o: ../application/UI/CLI/Parser/src/lexer.cpp ../application/UI/CLI/Parser/inc/lexer.h \
-		../application/UI/CLI/types.h
+		../application/UI/CLI/types.h \
+		../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lexer.o ../application/UI/CLI/Parser/src/lexer.cpp
 
 parser.o: ../application/UI/CLI/Parser/src/parser.cpp ../application/UI/CLI/Parser/inc/parser.h \
@@ -655,6 +673,13 @@ shapefactory.o: ../application/Visualizetion/ShapeFactory/shapefactory.cpp ../ap
 		../application/Dacument/inc/Slide/page.h \
 		../application/Dacument/inc/Slide/item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shapefactory.o ../application/Visualizetion/ShapeFactory/shapefactory.cpp
+
+logger.o: ../application/Logger/src/logger.cpp ../application/Logger/inc/logger.h \
+		../application/Logger/inc/outoutDivace.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o logger.o ../application/Logger/src/logger.cpp
+
+outoutDivace.o: ../application/Logger/src/outoutDivace.cpp ../application/Logger/inc/outoutDivace.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o outoutDivace.o ../application/Logger/src/outoutDivace.cpp
 
 ####### Install
 

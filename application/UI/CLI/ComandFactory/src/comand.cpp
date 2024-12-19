@@ -531,7 +531,70 @@ bool DrawPage::isOptionsValid(){
     return true;
 }
 
-std::shared_ptr<IComand> DrawPage::returnCopy()
-{
+std::shared_ptr<IComand> DrawPage::returnCopy(){
     return std::make_shared<DrawPage>();
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+void Open::execute(){
+    if(isOptionsValid()){
+        Application::getAplication().openSlide(Sterializer::getSterilizer().open(this->path));
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> Open::returnCopy(){
+    return std::shared_ptr<Open>();
+}
+
+bool Open::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("path"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorString.size() != 1 || !option->second.vectorInteger.empty()){
+        return false;
+    }
+    this->path = option->second.vectorString.front();
+    return true;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Save::execute(){
+    if(isOptionsValid()){
+        Sterializer::getSterilizer().save(path, Application::getAplication().getSlide());
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> Save::returnCopy(){
+    return std::shared_ptr<Save>();
+}
+
+bool Save::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("path"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorString.size() != 1 || !option->second.vectorInteger.empty()){
+        return false;
+    }
+    this->path = option->second.vectorString.front();
+    return true;
 }
