@@ -70,3 +70,23 @@ std::shared_ptr<IShape> ElipsShape::copy(){
     return std::make_shared<ElipsShape>();
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void LineShape::draw(QPainter *painter, const Ithem &ithem){
+    const sAtributs& atributs = ithem.getAtributs();
+    const sGeometry&  geometry = ithem.getGeometry();
+    setPen(painter, atributs);
+    setBrash(painter, atributs);
+    painter->drawLine(geometry.x, geometry.y, geometry.len, geometry.hig);
+}
+
+void LineShape::print(std::ostream &out, const Ithem &ithem){
+    const sAtributs& atributs = ithem.getAtributs();
+    const sGeometry&  geometry = ithem.getGeometry();
+    std::string type = atributs.map.at("type");
+    out<<"id: "<< ithem.getID()<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<< " len: "<< geometry.len<< " hig: "<< geometry.hig <<std::endl;
+}
+
+std::shared_ptr<IShape> LineShape::copy(){
+    return std::make_shared<ElipsShape>();
+}
+
