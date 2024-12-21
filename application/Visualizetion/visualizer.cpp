@@ -12,10 +12,6 @@ Visualizer::Visualizer():out(std::cout){
     shapeFactory.registrMap();
 }
 
-Visualizer &Visualizer::getVisualizer(){
-    static Visualizer visualizer;
-    return visualizer;
-}
 
 
 void Visualizer::printSlide(std::shared_ptr<Slide> slide){

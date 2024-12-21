@@ -76,7 +76,7 @@ void ColorFillIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const 
         temp.push_back(color.green);
         temp.push_back(color.blue);
         atributs.map.emplace(std::string("colorfill"), temp);
-    }else{
+    } else {
         std::unordered_map<std::string, color::sColor> colorMap;
         colorMap.emplace(std::string("black"), color::BLACK);
         colorMap.emplace(std::string("blue"), color::BLUE);
@@ -139,6 +139,15 @@ void ThicknessIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const 
     atributs.map.emplace(std::string("thickness"), std::to_string(param.vectorInteger.front()));
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool TextIsValid::analiz(const Params& param){
+    return (param.vectorString.size() == 1 && param.vectorInteger.empty());
+}
+
+void TextIsValid::initiliz(sGeometry &geometry, sAtributs &atributs, const Params &param){
+    atributs.map.emplace(std::string("text"), param.vectorString.front());
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void TypeIsValid::creatTypeMap(){
@@ -148,7 +157,11 @@ void TypeIsValid::creatTypeMap(){
     typeMap.emplace(std::string("e"), std::string("elips"));
     typeMap.emplace(std::string("line"), std::string("line"));
     typeMap.emplace(std::string("l"), std::string("line"));
+    typeMap.emplace(std::string("t"), std::string("text"));
+    typeMap.emplace(std::string("t"), std::string("text"));
+
 }
+
 
 bool TypeIsValid::analiz(const Params &param){
     creatTypeMap();

@@ -5,30 +5,14 @@
 
 #include <unordered_map>
 #include <stdexcept>
+#include <iostream>
 
 namespace sem
 {
     
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void SemanticFactory::registrSemanticAnalizType(){
-    anilizers.emplace("geometry", std::make_shared<GeometryIsValid>());
-    anilizers.emplace("g", std::make_shared<GeometryIsValid>());
-    anilizers.emplace("x", std::make_shared<XIsValid>());
-    anilizers.emplace("y", std::make_shared<YIsValid>());
-    anilizers.emplace("l", std::make_shared<LengthIsValid>());
-    anilizers.emplace("length", std::make_shared<LengthIsValid>());
-    anilizers.emplace("h", std::make_shared<HeightIsValid>());
-    anilizers.emplace("height", std::make_shared<HeightIsValid>());
-    anilizers.emplace("type", std::make_shared<TypeIsValid>());
-    anilizers.emplace("t", std::make_shared<TypeIsValid>());
-    anilizers.emplace("thickness", std::make_shared<ThicknessIsValid>());
-    anilizers.emplace("thc", std::make_shared<ThicknessIsValid>());
-    anilizers.emplace("colorfill", std::make_shared<ColorFillIsValid>());
-    anilizers.emplace("cf", std::make_shared<ColorFillIsValid>());
-    anilizers.emplace("colorpen", std::make_shared<ColorPenIsValid>());
-    anilizers.emplace("cp", std::make_shared<ColorPenIsValid>());
-
+void SemanticFactory::registrSemanticAnalizType(std::string str, std::shared_ptr<ISemanticAnalizer> ptr){
+    anilizers.emplace(str, ptr);
 }
 
 std::shared_ptr<ISemanticAnalizer> SemanticFactory::getAnilizer(const std::string& optionName){
@@ -41,21 +25,16 @@ std::shared_ptr<ISemanticAnalizer> SemanticFactory::getAnilizer(const std::strin
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-sGeometry &ShapeInitilizer::getGeometry(){
+sGeometry &AInitilizer::getGeometry(){
     return geometry_;
 }
 
-sAtributs &ShapeInitilizer::getAtributs(){
+sAtributs &AInitilizer::getAtributs(){
     return atributs_;
 }
 
-void ShapeInitilizer::setOptionValueMap(std::shared_ptr<std::unordered_map<Options, Params>> optionsValue){
-    this->factory.registrSemanticAnalizType();
-    optionsValue_ = optionsValue;
-}
-
-bool ShapeInitilizer::initiliz(){
-    for(auto el : (*optionsValue_)){
+bool AInitilizer::initiliz(){
+    for(auto el : optionsValue_.operator*()){
         std::shared_ptr<ISemanticAnalizer> anilizer = factory.getAnilizer(el.first);
         if(anilizer->analiz(el.second)){
             anilizer->initiliz(geometry_, atributs_, el.second);
@@ -65,5 +44,45 @@ bool ShapeInitilizer::initiliz(){
     }
     return true;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void ShapeInitilizer::setOptionValueMap(std::shared_ptr<std::unordered_map<Options, Params>> optionsValue){
+    this->optionsValue_ = optionsValue;
+    factory.registrSemanticAnalizType("geometry", std::make_shared<GeometryIsValid>());
+    factory.registrSemanticAnalizType("g", std::make_shared<GeometryIsValid>());
+    factory.registrSemanticAnalizType("x", std::make_shared<XIsValid>());
+    factory.registrSemanticAnalizType("y", std::make_shared<YIsValid>());
+    factory.registrSemanticAnalizType("l", std::make_shared<LengthIsValid>());
+    factory.registrSemanticAnalizType("length", std::make_shared<LengthIsValid>());
+    factory.registrSemanticAnalizType("h", std::make_shared<HeightIsValid>());
+    factory.registrSemanticAnalizType("height", std::make_shared<HeightIsValid>());
+    factory.registrSemanticAnalizType("type", std::make_shared<TypeIsValid>());
+    factory.registrSemanticAnalizType("t", std::make_shared<TypeIsValid>());
+    factory.registrSemanticAnalizType("thickness", std::make_shared<ThicknessIsValid>());
+    factory.registrSemanticAnalizType("thc", std::make_shared<ThicknessIsValid>());
+    factory.registrSemanticAnalizType("colorfill", std::make_shared<ColorFillIsValid>());
+    factory.registrSemanticAnalizType("cf", std::make_shared<ColorFillIsValid>());
+    factory.registrSemanticAnalizType("colorpen", std::make_shared<ColorPenIsValid>());
+    factory.registrSemanticAnalizType("cp", std::make_shared<ColorPenIsValid>());
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void TextInitilizer::setOptionValueMap(std::shared_ptr<std::unordered_map<Options, Params>> optionsValue){
+    optionsValue_ = optionsValue;
+    factory.registrSemanticAnalizType("x", std::make_shared<XIsValid>());
+    factory.registrSemanticAnalizType("y", std::make_shared<YIsValid>());
+    factory.registrSemanticAnalizType("text", std::make_shared<TextIsValid>());
+    factory.registrSemanticAnalizType("t", std::make_shared<TextIsValid>());
+    factory.registrSemanticAnalizType("thickness", std::make_shared<ThicknessIsValid>());
+    factory.registrSemanticAnalizType("thc", std::make_shared<ThicknessIsValid>());
+    factory.registrSemanticAnalizType("colorfill", std::make_shared<ColorFillIsValid>());
+    factory.registrSemanticAnalizType("cf", std::make_shared<ColorFillIsValid>());
+    factory.registrSemanticAnalizType("colorpen", std::make_shared<ColorPenIsValid>());
+    factory.registrSemanticAnalizType("cp", std::make_shared<ColorPenIsValid>());
+
+}
+
+
 
 } // namespace sem

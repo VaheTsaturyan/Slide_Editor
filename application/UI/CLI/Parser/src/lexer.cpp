@@ -3,9 +3,10 @@
 #include <algorithm>
 #include <iterator>
 
-
+#include "../../../../Logger/inc/logger.h"
 
 void Lexer::setString(std::istream& is){
+    Loger::getLoger().print(">");
     std::getline(is, inputStr);
     if(inputStr.empty()){
         tokeValidFactor = eTokenOrder::NULL_TOKEN;

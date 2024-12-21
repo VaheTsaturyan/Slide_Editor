@@ -10,14 +10,13 @@
 
 class Visualizer{
 public:
-    static Visualizer& getVisualizer();
+    Visualizer();
     void printSlide(std::shared_ptr<Slide> slide);
     void printPage(std::shared_ptr<Page> page);
 
     void drowPage(std::shared_ptr<Page> page, std::string path);
 
 private:
-    Visualizer();
 
 private:
     ShapeFactory shapeFactory;
