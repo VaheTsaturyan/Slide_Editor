@@ -87,6 +87,28 @@ void LineShape::print(std::ostream &out, const Ithem &ithem){
 }
 
 std::shared_ptr<IShape> LineShape::copy(){
-    return std::make_shared<ElipsShape>();
+    return std::make_shared<LineShape>();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void TextShape::draw(QPainter *painter, const Ithem &ithem){
+    const sAtributs& atributs = ithem.getAtributs();
+    const sGeometry&  geometry = ithem.getGeometry();
+    setPen(painter, atributs);
+    setBrash(painter, atributs);
+    QString text = QString::fromStdString(atributs.map.at("text"));
+    painter->drawText(geometry.x, geometry.y, text);
+}
+
+void TextShape::print(std::ostream &out, const Ithem &ithem){
+    const sAtributs& atributs = ithem.getAtributs();
+    const sGeometry&  geometry = ithem.getGeometry();
+    std::string type = atributs.map.at("type");
+    std::string text = atributs.map.at("text");
+    out<<"id: "<< ithem.getID()<<" type: "<< type <<" x: "<< geometry.x<<" y: "<< geometry.y<<" text: "<< text <<std::endl;
+}
+
+std::shared_ptr<IShape> TextShape::copy(){
+    return std::make_shared<TextShape>();
+}

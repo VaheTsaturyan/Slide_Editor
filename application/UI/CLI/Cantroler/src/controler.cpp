@@ -31,7 +31,8 @@ void Controler::registrComand(){
     comandFactory.registorComand("popbackpage", std::make_shared<PopBackPage>());                       //pop back page
     comandFactory.registorComand("swappage", std::make_shared<SwapPage>());                             //swsp page
     comandFactory.registorComand("openpage", std::make_shared<OpenPage>());                             //open page -pos
-    comandFactory.registorComand("addshape", std::make_shared<AddShape>());                             //add -t -x -y -length -hight                           
+    comandFactory.registorComand("addshape", std::make_shared<AddShape>());                             //add shape -t -x -y -length -hight                           
+    comandFactory.registorComand("addtext", std::make_shared<AddText>());                               //add text -x -y -text "text"
     comandFactory.registorComand("movevertical", std::make_shared<MoveVertical>());                     //move verticalid -x
     comandFactory.registorComand("movehorizontal", std::make_shared<MoveHorizontal>());                 //move horizontalid -x
     comandFactory.registorComand("changeithemlength", std::make_shared<ChangeIthemLenghth>());          //change ithem length -id -length
@@ -42,4 +43,6 @@ void Controler::registrComand(){
     comandFactory.registorComand("drawpage", std::make_shared<DrawPage>());                             //printPage
     comandFactory.registorComand("save", std::make_shared<Save>());                                     //save
     comandFactory.registorComand("open", std::make_shared<Open>());                                     //open
+    comandFactory.registorComand("help", std::make_shared<Help>());                                     //open
+
 }

@@ -4,6 +4,7 @@
 void ShapeFactory::registrMap(){
     shapeMap.emplace(std::string("rectangle"), std::make_shared<RectangleShape>());
     shapeMap.emplace(std::string("elips"), std::make_shared<ElipsShape>());
+    shapeMap.emplace(std::string("line"), std::make_shared<LineShape>());
 }
 
 std::shared_ptr<IShape> ShapeFactory::getShape(std::string type){

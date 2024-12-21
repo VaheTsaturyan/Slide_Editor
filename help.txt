@@ -1,0 +1,23 @@
+new
+open
+save
+add page -pos <integer>
+remove page -pos <integer>
+push back page
+pop back page
+swap page -pos <integer> <integer>
+open page -pos <integer>
+add shape -t <type> -x <integer> -y <integer> -length <integer> -hight <integer> -colorpen <integer> <integer> <integer> -colorfill <integer> <integer> <integer>
+add shape -t <type> -x <integer> -y <integer> -l <integer> -h <integer> -cp <integer> <integer> <integer> -cf <integer> <integer> <integer> 
+add shape -t <type> -geometry <integer> <integer> <integer> <integer> 
+add shape -t <type> -g <integer> <integer> <integer> <integer>                           
+move verticalid -id <integer> -delta <integer>
+move horizontalid -id <integer> -delta <integer>
+change ithem length -id <integer> -delta <integer>
+change ithem height -id <integer> -delta <integer>
+remove ithrm -id <integer>
+print slide
+print page -pos <integer>
+draw page -pos <integer> -path "string"
+undo
+redo

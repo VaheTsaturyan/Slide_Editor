@@ -73,6 +73,14 @@ public:
 protected:
 };
 
+class TextIsValid : public ISemanticAnalizer{
+public:
+    bool analiz(const Params& param) override;
+    void initiliz(sGeometry& geometry, sAtributs& atributs, const Params& param) override;
+protected:
+};
+
+
 class TypeIsValid : public ISemanticAnalizer{
 public:
     void creatTypeMap();

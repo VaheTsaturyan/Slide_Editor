@@ -6,7 +6,7 @@
 
 class Sterializer{
 public:
-    static Sterializer& getSterilizer();
+    Sterializer() = default;
     void save( const std::string& path, std::shared_ptr<Slide> slide );
     std::shared_ptr<Slide> open(const std::string& path);
 
@@ -15,10 +15,9 @@ private:
     std::shared_ptr<Ithem> jsonToItem(const boost::json::object& obj);
 
     boost::json::object pageToJson(std::shared_ptr<Page> slide);
-    std::shared_ptr<Page> jsonToPage(const boost::json::object& obj);
+    void jsonToPage(const boost::json::object& obj, std::shared_ptr<Page> page);
 
 private:
-    Sterializer() = default;
 
 };
 

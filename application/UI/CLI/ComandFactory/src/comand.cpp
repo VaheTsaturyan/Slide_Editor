@@ -5,6 +5,11 @@
 #include <stdexcept>
 #include <algorithm>
 #include <../../../../application.h>
+#include <fstream>
+
+const std::string HELP_TXT_PATH = std::string("/home/vts/repos/Slide_Editor/help.txt");
+
+
 
 
 
@@ -66,7 +71,7 @@ bool Redo::isOptionsValid(){
 void New::execute(){
     if(isOptionsValid()){
         std::shared_ptr<Page> newPage = std::make_shared<Page>();
-        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Slide> slide = Application::instance()->getSlide();
         Editor::getEditor().proces(std::make_shared<act::PushBack>(slide, newPage));        
     }else{
         throw std::runtime_error("The parameters are invalid\n");
@@ -86,7 +91,7 @@ bool New::isOptionsValid(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AddPage::execute(){
     if(isOptionsValid()){
-        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Slide> slide = Application::instance()->getSlide();
         std::shared_ptr<Page> newPage = std::make_shared<Page>();
         Editor::getEditor().proces(std::make_shared<act::AddPage>(slide, pos, newPage));
     }else{
@@ -124,7 +129,7 @@ bool AddPage::isOptionsValid(){
 void PushBackPage::execute(){
     if(isOptionsValid()){
         std::shared_ptr<Page> newPage = std::make_shared<Page>();
-        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Slide> slide = Application::instance()->getSlide();
         Editor::getEditor().proces(std::make_shared<act::PushBack>(slide, newPage)); 
     }else{
         throw std::runtime_error("The parameters are invalid\n");
@@ -145,7 +150,7 @@ bool PushBackPage::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PopBackPage::execute(){
     if(isOptionsValid()){
-        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Slide> slide = Application::instance()->getSlide();
         Editor::getEditor().proces(std::make_shared<act::PoPBack>(slide)); 
     }else{
         throw std::runtime_error("The parameters are invalid\n");
@@ -168,7 +173,7 @@ bool PopBackPage::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemovePage::execute(){
     if(isOptionsValid()){
-        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Slide> slide = Application::instance()->getSlide();
         std::shared_ptr<Page> newPage = std::make_shared<Page>();
 
         Editor::getEditor().proces(std::make_shared<act::RemovePage>(slide, pos));
@@ -205,7 +210,7 @@ bool RemovePage::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void OpenPage::execute(){
     if(isOptionsValid()){
-        Application::getAplication().openPage(pos);
+        Application::instance()->openPage(pos);
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
@@ -240,7 +245,7 @@ bool OpenPage::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void SwapPage::execute(){
     if(isOptionsValid()){
-        std::shared_ptr<Slide> slide = Application::getAplication().getSlide();
+        std::shared_ptr<Slide> slide = Application::instance()->getSlide();
         std::shared_ptr<Page> page1 = *(std::next(slide->begin(), vecInt[0]));
         std::shared_ptr<Page> page2 = *(std::next(slide->begin(), vecInt[1]));
         Editor::getEditor().proces(std::make_shared<act::SwapPages>(slide, page1, page2));
@@ -270,24 +275,7 @@ bool SwapPage::isOptionsValid(){
     this->vecInt = std::move(option->second.vectorInteger);
     return true;
 }
-/*
-AddShape::initSemanticMap(){
-    AddShape::semanticMap.emplace("g", std::make_shared<sem::GeometryIsValid>());
-    AddShape::semanticMap.emplace("geometry", std::make_shared<sem::GeometryIsValid>());
-    AddShape::semanticMap.emplace("x", std::make_shared<sem::XIsValid>());
-    AddShape::semanticMap.emplace("y", std::make_shared<sem::YIsValid>());
-    AddShape::semanticMap.emplace("length", std::make_shared<sem::LengthIsValid>());
-    AddShape::semanticMap.emplace("height", std::make_shared<sem::HeightIsValid>());
-    AddShape::semanticMap.emplace("t", std::make_shared<sem::TypeIsValid>());
-    AddShape::semanticMap.emplace("type", std::make_shared<sem::TypeIsValid>());
-    AddShape::semanticMap.emplace("color", std::make_shared<sem::ColorIsValid>());
-    AddShape::semanticMap.emplace("c", std::make_shared<sem::ColorIsValid>());
-    AddShape::semanticMap.emplace("thic", std::make_shared<sem::ThicknessIsValid>());
-    AddShape::semanticMap.emplace("thickness", std::make_shared<sem::ThicknessIsValid>());
 
-}
-
-*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AddShape::execute(){
@@ -295,7 +283,7 @@ void AddShape::execute(){
         std::shared_ptr<Ithem> ithem = std::make_shared<Ithem>(Editor::getEditor().genereytId());
         ithem->setGeometry(shpInit.getGeometry());
         ithem->setAtributs(std::move(shpInit.getAtributs()));
-        Editor::getEditor().proces(std::make_shared<act::AddShape>(Application::getAplication().getPage(), ithem));
+        Editor::getEditor().proces(std::make_shared<act::AddShape>(Application::instance()->getPage(), ithem));
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
@@ -311,12 +299,36 @@ bool AddShape::isOptionsValid(){
     this->shpInit.setOptionValueMap(ptrOptionValuMap);
     return shpInit.initiliz();
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void AddText::execute(){
+    if(isOptionsValid()){
+        std::shared_ptr<Ithem> ithem = std::make_shared<Ithem>(Editor::getEditor().genereytId());
+        ithem->setGeometry(txtInit.getGeometry());
+        sAtributs atr = txtInit.getAtributs();
+        atr.map.emplace(std::string("type"), std::string("text"));
+        ithem->setAtributs(std::move(atr));
+        Editor::getEditor().proces(std::make_shared<act::AddShape>(Application::instance()->getPage(), ithem));
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> AddText::returnCopy(){
+    return std::make_shared<AddText>();
+}
+
+bool AddText::isOptionsValid(){
+    std::unordered_map<Options, Params>& optionValuMap = getOptionValue();
+    std::shared_ptr<std::unordered_map<std::string, Params>> ptrOptionValuMap = std::make_shared<std::unordered_map<std::string, Params>>(optionValuMap);
+    this->txtInit.setOptionValueMap(ptrOptionValuMap);
+    return txtInit.initiliz();
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RemoveIthem::execute(){
     if(isOptionsValid()){
-        std::shared_ptr<Page> page = Application::getAplication().getPage();
+        std::shared_ptr<Page> page = Application::instance()->getPage();
         Editor::getEditor().proces(std::make_shared<act::RemoveIthem>(page, id));
     }else{
         throw std::runtime_error("The parameters are invalid\n");
@@ -384,7 +396,7 @@ bool AChangeIthemGeometry::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void MoveVertical::execute(){
     if(isOptionsValid()){
-        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        Ithem& ithem =  Application::instance()->getPage()->find(id);
         sGeometry geometry = ithem.getGeometry(); 
         geometry.y = geometry.y + changeSize;
         Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
@@ -400,7 +412,7 @@ std::shared_ptr<IComand> MoveVertical::returnCopy(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void MoveHorizontal::execute(){
     if(isOptionsValid()){
-        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        Ithem& ithem =  Application::instance()->getPage()->find(id);
         sGeometry geometry = ithem.getGeometry(); 
         geometry.x = geometry.x + changeSize;
         Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
@@ -416,7 +428,7 @@ std::shared_ptr<IComand> MoveHorizontal::returnCopy(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ChangeIthemLenghth::execute(){
     if(isOptionsValid()){
-        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        Ithem& ithem =  Application::instance()->getPage()->find(id);
         sGeometry geometry = ithem.getGeometry(); 
         geometry.len = geometry.len + changeSize;
         Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
@@ -432,7 +444,7 @@ std::shared_ptr<IComand> ChangeIthemLenghth::returnCopy(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ChangeIthemHeight::execute(){
     if(isOptionsValid()){
-        Ithem& ithem =  Application::getAplication().getPage()->find(id);
+        Ithem& ithem =  Application::instance()->getPage()->find(id);
         sGeometry geometry = ithem.getGeometry(); 
         geometry.hig = geometry.hig + changeSize;
         Editor::getEditor().proces(std::make_shared<act::ChangeIthemGeometry>(ithem, geometry));
@@ -448,7 +460,8 @@ std::shared_ptr<IComand> ChangeIthemHeight::returnCopy(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PrintSlide::execute(){
-    Visualizer::getVisualizer().printSlide(Application::getAplication().getSlide());
+    Visualizer visualizer;
+    visualizer.printSlide(Application::instance()->getSlide());
 }
 
 std::shared_ptr<IComand> PrintSlide::returnCopy(){
@@ -465,7 +478,8 @@ bool PrintSlide::isOptionsValid()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PrintPage::execute(){
     if(isOptionsValid()){
-        Visualizer::getVisualizer().printPage(Application::getAplication().getPage());
+        Visualizer visualizer;
+        visualizer.printPage(Application::instance()->getPage());
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
@@ -497,8 +511,8 @@ bool PrintPage::isOptionsValid(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void DrawPage::execute(){
     if(isOptionsValid()){
-
-        Visualizer::getVisualizer().drowPage(Application::getAplication().getPage(), path);
+        Visualizer visualizer;
+        visualizer.drowPage(Application::instance()->getPage(), path);
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
@@ -539,14 +553,29 @@ std::shared_ptr<IComand> DrawPage::returnCopy(){
 /////////////////////////////////////////////////////////////////////////////////////////////
 void Open::execute(){
     if(isOptionsValid()){
-        Application::getAplication().openSlide(Sterializer::getSterilizer().open(this->path));
+        if((Application::instance()->getSlide()->getPageCount() != 0)){
+            Loger::getLoger().print("You currently have a slide open. Do you want to save it?y(+path)/n\n");
+            Parser parser;
+            parser.input(std::cin);
+            parser.parsing();
+            ComandFactory factory;
+            factory.registorComand(std::string("yes"), std::make_shared<YesSave>());
+            factory.registorComand(std::string("no"), std::make_shared<DontSave>());
+            factory.registorComand(std::string("y"), std::make_shared<YesSave>());
+            factory.registorComand(std::string("n"), std::make_shared<DontSave>());
+            std::shared_ptr<IComand> comand = factory.createComand(parser.getComand());
+            comand->setOptionValue(parser.getOptionsValue());
+            comand->execute();    
+        }       
+        Sterializer streilizer;
+        Application::instance()->openSlide(streilizer.open(this->path));
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
 std::shared_ptr<IComand> Open::returnCopy(){
-    return std::shared_ptr<Open>();
+    return std::make_shared<Open>();
 }
 
 bool Open::isOptionsValid(){
@@ -571,14 +600,15 @@ bool Open::isOptionsValid(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Save::execute(){
     if(isOptionsValid()){
-        Sterializer::getSterilizer().save(path, Application::getAplication().getSlide());
+        Sterializer streilizer;
+        streilizer.save(path, Application::instance()->getSlide());
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }
 }
 
 std::shared_ptr<IComand> Save::returnCopy(){
-    return std::shared_ptr<Save>();
+    return std::make_shared<Save>();
 }
 
 bool Save::isOptionsValid(){
@@ -597,4 +627,85 @@ bool Save::isOptionsValid(){
     }
     this->path = option->second.vectorString.front();
     return true;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+void YesSave::execute(){
+    if(isOptionsValid()){
+        Sterializer streilizer;
+        streilizer.save(path, Application::instance()->getSlide());
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> YesSave::returnCopy(){
+    return std::make_shared<YesSave>();
+}
+
+bool YesSave::isOptionsValid(){
+    if(getOptionValue().size()!= 1){
+        return false;
+    }
+    auto option = this->getOptionValue().find(std::string("path"));
+    if(option == this->getOptionValue().end()){
+        option = this->getOptionValue().find(std::string("p"));
+        if(option == this->getOptionValue().end()){
+            return false;    
+        }
+    }
+    if(option->second.vectorString.size() != 1 || !option->second.vectorInteger.empty()){
+        return false;
+    }
+    this->path = option->second.vectorString.front();
+    return true;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+void DontSave::execute(){
+    if(isOptionsValid()){
+        return;
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> DontSave::returnCopy(){
+    return std::make_shared<DontSave>();
+}
+
+bool DontSave::isOptionsValid(){    
+    return getOptionValue().empty();
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Help::execute(){
+    if(isOptionsValid()){
+        std::ifstream file;
+        file.open(HELP_TXT_PATH);
+            if (!file) {
+                throw std::runtime_error("The parameters are invalid\n");
+            }
+
+        std::string line;
+        while (std::getline(file, line)) {
+            Loger::getLoger().print(line);
+            Loger::getLoger().print("\n");
+        }
+
+        file.close();
+    }else{
+        throw std::runtime_error("The parameters are invalid\n");
+    }
+}
+
+std::shared_ptr<IComand> Help::returnCopy(){
+    return std::make_shared<Help>();
+}
+
+bool Help::isOptionsValid(){    
+    return getOptionValue().empty();
 }

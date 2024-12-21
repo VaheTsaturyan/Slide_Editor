@@ -3,10 +3,6 @@
 #include <fstream>
 #include <memory>
 
-Sterializer &Sterializer::getSterilizer(){
-    static Sterializer sterilizer;
-    return sterilizer; 
-}
 
 void Sterializer::save(const std::string &path, std::shared_ptr<Slide> slide){
     
@@ -26,7 +22,7 @@ void Sterializer::save(const std::string &path, std::shared_ptr<Slide> slide){
 std::shared_ptr<Slide> Sterializer::open(const std::string &path){
     std::ifstream file(path);
     if (!file.is_open()) {
-        throw std::runtime_error("Could not open file");
+        throw std::runtime_error("Could not open file\n");
     }
 
     std::string json_str((std::istreambuf_iterator<char>(file)),
@@ -36,16 +32,13 @@ std::shared_ptr<Slide> Sterializer::open(const std::string &path){
     boost::json::value jv = boost::json::parse(json_str);
     boost::json::array json_array = jv.as_array();
 
+    
+
     std::shared_ptr<Slide> slide = std::make_shared<Slide>();
 
     for (const auto& inner_array : json_array) {
-
         std::shared_ptr<Page> page  = std::make_shared<Page>();
-
-        for (const auto& itemObj : inner_array.as_array()) {
-            std::shared_ptr<Ithem> ithem = jsonToItem(itemObj.as_object());
-            page->addIthem(*ithem);
-        }
+        jsonToPage(inner_array.as_object(), page);
         slide->pushBackPage(page);
     }
 
@@ -63,7 +56,7 @@ boost::json::object Sterializer::pageToJson(std::shared_ptr<Page> page){
         itemArr.push_back(itemToJson(el.second));
     }
 
-    jsonObj["items"] = itemArr;
+    jsonObj.emplace("items", itemArr);
     return jsonObj;
 
 }
@@ -73,8 +66,6 @@ boost::json::object Sterializer::itemToJson(const Ithem& item){
     boost::json::object jsonObj;
 
     jsonObj["id"] = item.getID();
-    jsonObj["type"] = item.getType();
-
     boost::json::object geoObj;
     geoObj["x"] = item.getGeometry().x;
     geoObj["y"] = item.getGeometry().y;
@@ -93,17 +84,14 @@ boost::json::object Sterializer::itemToJson(const Ithem& item){
 }
 
 
-std::shared_ptr<Page> Sterializer::jsonToPage(const boost::json::object &obj){
-    auto page = std::make_shared<Page>(); 
+void Sterializer::jsonToPage(const boost::json::object &obj, std::shared_ptr<Page> page){
 
     boost::json::array itemsArray = obj.at("items").as_array(); 
     
     for (const auto& itemObjj : itemsArray) {
-
         page->addIthem(*(jsonToItem(itemObjj.as_object())));
     }
 
-    return page;
 }
 
 std::shared_ptr<Ithem> Sterializer::jsonToItem(const boost::json::object &obj){

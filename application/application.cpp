@@ -1,18 +1,21 @@
 #include "application.h"
 #include <iostream>
 
-Application::Application(){
+Application* Application::app = nullptr;
+
+Application::Application(int &argc, char *argv[]) : QApplication(argc, argv){
     slide = std::make_shared<Slide>();
     controler = std::make_shared<Controler>();
     Loger::getLoger().addDivace(std::make_shared<OstreamDivace>(std::cout));
+    app = this;
 }
 
-Application &Application::getAplication(){
-    static Application aplication;
-    return aplication;
+Application *Application::instance(){
+    return app;
 }
 
-int Application::exec(){
+int Application::exec()
+{
     controler->startProces();
     return 0;
 }
