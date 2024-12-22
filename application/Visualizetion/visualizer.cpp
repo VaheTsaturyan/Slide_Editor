@@ -13,7 +13,6 @@ Visualizer::Visualizer():out(std::cout){
 }
 
 
-
 void Visualizer::printSlide(std::shared_ptr<Slide> slide){
     for(auto it = slide->cBegin(); it != slide->cEnd(); ++it){
         std::cout<<"page : "<<std::distance(slide->cBegin() , it)<<std::endl; 

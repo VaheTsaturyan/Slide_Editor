@@ -39,19 +39,10 @@ public:
 };
 
 
-
-class LineShape : public AShape{
-public:    
-    void draw(QPainter* painter , const Ithem& ithem);
-    void print(std::ostream& out, const Ithem& ithem);
-    std::shared_ptr<IShape> copy(); 
-};
-
-
 class TextShape : public AShape{
 public:    
     void draw(QPainter* painter , const Ithem& ithem);
-    void print(std::ostream& out, const Ithem& ithem);
+    void print(std::ostream& out, const Ithem& ithem) override;
     std::shared_ptr<IShape> copy(); 
 };
 
