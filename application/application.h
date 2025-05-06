@@ -31,5 +31,5 @@ private:
     std::shared_ptr<Slide> slide;
     std::shared_ptr<Page> page;
     std::shared_ptr<Controler> controler;
-    static Application* app;
+
 }; 

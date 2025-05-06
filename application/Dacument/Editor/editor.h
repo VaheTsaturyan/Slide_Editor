@@ -13,6 +13,7 @@ public:
     void proces(std::shared_ptr<act::IAction> action);
     void undo();
     void redo();
+    void clear();
     ID genereytId();
 
 private:

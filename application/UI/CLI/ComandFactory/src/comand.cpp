@@ -569,6 +569,7 @@ void Open::execute(){
         }       
         Sterializer streilizer;
         Application::instance()->openSlide(streilizer.open(this->path));
+        Editor::getEditor().clear();
     }else{
         throw std::runtime_error("The parameters are invalid\n");
     }

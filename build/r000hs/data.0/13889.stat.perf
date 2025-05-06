@@ -1,0 +1,29 @@
+# AMPLXE_PERF_STAT
+# hostname : VTs
+# os release : 5.15.167.4-microsoft-standard-WSL2
+# arch : x86_64
+# cpuid : GenuineIntel,6,165,2
+# cpudesc : Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz
+# total memory : 3930136 kB
+# nrcpus online : 8
+# nrcpus avail : 8
+# sibling cores : 0-7
+# sibling threads : 0-1
+# sibling threads : 2-3
+# sibling threads : 4-5
+# sibling threads : 6-7
+# process id : 13889
+;;2173320021;0
+;;1355507608;1
+;;3212329046;2
+;;12762645;3
+;;13252594;4
+;;1097;5
+;;10;6
+;;15;7
+;;3265;8
+;;15;9
+;;2;10
+;;366826;11
+;;3037412983;12
+;;3887112561;13

@@ -36,7 +36,14 @@ void Editor::redo(){
     redo_.pop();
 }
 
-
+void Editor::clear(){
+    while(!redo_.empty()){
+        redo_.pop();
+    }
+    while(!undo_.empty()){
+        undo_.pop();
+    }
+}
 
 ID Editor::genereytId(){
     return ithemCaont++;

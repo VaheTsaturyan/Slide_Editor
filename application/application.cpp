@@ -1,17 +1,15 @@
 #include "application.h"
 #include <iostream>
 
-Application* Application::app = nullptr;
 
 Application::Application(int &argc, char *argv[]) : QApplication(argc, argv){
     slide = std::make_shared<Slide>();
     controler = std::make_shared<Controler>();
     Loger::getLoger().addDivace(std::make_shared<OstreamDivace>(std::cout));
-    app = this;
 }
 
 Application *Application::instance(){
-    return app;
+    return static_cast<Application*>(QApplication::instance());
 }
 
 int Application::exec()
